@@ -24,7 +24,7 @@ class neko(commands.Cog):
     async def on_ready(self):
         log.warn(f"{self.__class__.__name__} Cog has been loaded")
 
-    @commands.command()
+    @commands.command(name="purr", description="Pics of Catgirls (old command)")
     async def purr(self, ctx):
         num = randint(1, 15)
         try:
@@ -44,13 +44,13 @@ class neko(commands.Cog):
             return
         poke_users = "".join(f'{users.mention} ' for users in user)
         embed = discord.Embed(
-            title="***poke poke***",
-            description=f"{ctx.author.mention} just poked {poke_users}",
-            color=0xFFC0CB,
+            title="***Poke poke***",
+            description=f"**{ctx.message.author.name}** just poked {poke_users}",
+            color=ctx.message.author.color,
             timestamp=ctx.message.created_at,
         )
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/poke"))
-        await ctx.reply(", ".join([users.mention for users in user]), embed=embed)
+        await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
     @commands.command(name="pat", description="Pat someone")
@@ -64,13 +64,13 @@ class neko(commands.Cog):
             return
         pat_users = "".join(f'{users.mention} ' for users in user)
         embed = discord.Embed(
-            title="*cute pats*",
-            description=f"{ctx.author.mention} just patted {pat_users}",
-            color=0xFFC0CB,
+            title="*Cute pats*",
+            description=f"**{ctx.message.author.name}** just patted {pat_users}",
+            color=ctx.message.author.color,
             timestamp=ctx.message.created_at,
         )
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/pat"))
-        await ctx.reply(", ".join([users.mention for users in user]), embed=embed)
+        await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
     @commands.command(name="baka", description="YOU ARE A BAKA!!!!")
@@ -81,13 +81,12 @@ class neko(commands.Cog):
         bakas = "".join(f'{users.mention} ' for users in user)
         embed = discord.Embed(
             title="**BAKA!!**",
-            description=f"{bakas}, ANTA BAKA??!?!?!?",
-            color=0xFFC0CB,
+            description=f"{bakas}, Hehe Sussy Baka!",
+            color=ctx.message.author.color,
             timestamp=ctx.message.created_at,
         )
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/baka"))
-
-        await ctx.reply(", ".join([users.mention for users in user]), embed=embed)
+        await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
     @commands.command(name="lick", description="Lick someone")
@@ -97,15 +96,14 @@ class neko(commands.Cog):
             return
         licked_users = "".join(f'{users.mention} ' for users in user)
         embed = discord.Embed(
-            title="*Tasty*",
-            description=f"{ctx.author.mention} just licked {licked_users}",
-            color=0xFFC0CB,
+            title="*Slurp Slurp!*",
+            description=f"**{ctx.message.author.name}** just licked {licked_users}",
+            color=ctx.message.author.color,
             timestamp=ctx.message.created_at,
         )
         response = await api_call("http://api.nekos.fun:8080/api/lick", state=False)
         embed.set_image(url=response['image'])
-
-        await ctx.reply(", ".join([users.mention for users in user]), embed=embed)
+        await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
     @commands.command(name="hug", description="Hug someone UwU")
@@ -115,14 +113,13 @@ class neko(commands.Cog):
             return
         hugged_users = "".join(f'{users.mention} ' for users in user)
         embed = discord.Embed(
-            title="aww hugs uwu",
-            description=f"{ctx.author.mention} just hugged {hugged_users}",
-            color=0xFFC0CB,
+            title="Aww hugs uwu",
+            description=f"**{ctx.message.author.name}** just hugged {hugged_users}",
+            color=ctx.message.author.color,
             timestamp=ctx.message.created_at,
         )
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/hug"))
-
-        await ctx.reply(", ".join([users.mention for users in user]), embed=embed)
+        await ctx.reply(embed=embed)
     
     @commands.cooldown(3, 5, commands.BucketType.user)
     @commands.command(name="kiss", description="OwO Kiss someone :flushed:")
@@ -138,13 +135,12 @@ class neko(commands.Cog):
         kissed_users = "".join(f'{users.mention} ' for users in user)
         embed = discord.Embed(
             title="Awww",
-            description=f"{ctx.author.mention} just kissed {kissed_users}",
-            color=0xFFC0CB,
+            description=f"**{ctx.message.author.name}** just kissed {kissed_users}",
+            color=ctx.message.author.color,
             timestamp=ctx.message.created_at,
         )
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/kiss"))
-
-        await ctx.reply(", ".join([users.mention for users in user]), embed=embed)
+        await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
     @commands.command(name="cuddle", description="Cuddle someone")
@@ -154,14 +150,13 @@ class neko(commands.Cog):
             return
         cuddle_users = "".join(f'{users.mention} ' for users in user)
         embed = discord.Embed(
-            title="aww cuddles uwu",
-            description=f"{ctx.author.mention} just cuddled {cuddle_users}",
-            color=0xFFC0CB,
+            title="Aww cuddles uwu",
+            description=f"**{ctx.message.author.name}** just cuddled {cuddle_users}",
+            color=ctx.message.author.color,
             timestamp=ctx.message.created_at,
         )
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/cuddle"))
-
-        await ctx.reply(", ".join([users.mention for users in user]), embed=embed)
+        await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
     @commands.command(name="slap", description="Bitch slap moment")
@@ -176,13 +171,12 @@ class neko(commands.Cog):
         slapped_users = "".join(f'{users.mention} ' for users in user)
         embed = discord.Embed(
             title="**Damn son!**",
-            description=f"{slapped_users} just got slapped by {ctx.author.mention}.",
-            color=0xFFC0CB,
+            description=f"{slapped_users} just got slapped by **{ctx.message.author.name}**.",
+            color=ctx.message.author.color,
             timestamp=ctx.message.created_at,
         )
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/slap"))
-
-        await ctx.reply(", ".join([users.mention for users in user]), embed=embed)
+        await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
     @commands.command(name="tickle", description="Tickle someone!")
@@ -197,13 +191,12 @@ class neko(commands.Cog):
         tickled_users = "".join([f"{users.mention} " for users in user])
         embed = discord.Embed(
             title="Tickle, tickle!",
-            description=f"{tickled_users} just got tickled by {ctx.author.mention}.",
-            color=0xFFC0CB,
+            description=f"{tickled_users} just got tickled by **{ctx.message.author.name}**.",
+            color=ctx.message.author.color,
             timestamp=ctx.message.created_at,
         )
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/tickle"))
-
-        await ctx.reply(", ".join([users.mention for users in user]), embed=embed)
+        await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
     @commands.command(name="feed", description="gib me food plz")
@@ -214,14 +207,12 @@ class neko(commands.Cog):
         fed_users = "".join(f'{users.mention} ' for users in user)
         embed = discord.Embed(
             title="",
-            description=f"<:kanna:820279669131575306> {ctx.author.mention} fed {fed_users}",
-            color=0xFFC0CB,
+            description=f"**{ctx.message.author.name}** fed {fed_users}",
+            color=ctx.message.author.color,
             timestamp=ctx.message.created_at,
         )
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/feed"))
-
-        await ctx.send(", ".join([users.mention for users in user]), embed=embed)
-
+        await ctx.reply(embed=embed)
 
 
 def setup(client):

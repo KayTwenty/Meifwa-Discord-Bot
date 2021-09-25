@@ -173,6 +173,5 @@ class Help(commands.Cog):
                 emb = await self.make_error_embed(ctx, input)
                 return await send_embed(ctx, emb)
 
-
 def setup(bot):
     bot.add_cog(Help(bot))

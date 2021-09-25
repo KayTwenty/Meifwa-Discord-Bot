@@ -197,6 +197,93 @@ class nsfw(commands.Cog):
             )
             await ctx.message.reply(embed=embed, delete_after=20)
 
+    @commands.cooldown(5, 7, commands.BucketType.user)
+    @commands.command(name="blowjob", aliases=["bj"])
+    async def blowjob(self, ctx):
+        if ctx.channel.is_nsfw():
+            embed = discord.Embed(
+                title="Blow. Job.",
+                color=ctx.message.author.color,
+                timestamp=ctx.message.created_at,
+            )
+            embed.set_footer(
+                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
+                icon_url=ctx.message.author.avatar_url,
+            )
+            embed.set_author(
+                name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
+            )
+            embed.set_image(url=await api_call("https://nekos.life/api/v2/img/blowjob"))
+
+            await ctx.message.reply(embed=embed)
+        else:
+            embed = discord.Embed(
+                title="HoldUp!!",
+                description="This command can only be used in a NSFW channel.",
+                color=0xFF0000,
+                timestamp=ctx.message.created_at,
+            )
+            await ctx.message.reply(embed=embed, delete_after=20)
+
+    @commands.cooldown(5, 7, commands.BucketType.user)
+    @commands.command()
+    async def pussy(self, ctx):
+        if ctx.channel.is_nsfw():
+            embed = discord.Embed(
+                title="Dang!",
+                color=ctx.message.author.color,
+                timestamp=ctx.message.created_at,
+            )
+            embed.set_footer(
+                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
+                icon_url=ctx.message.author.avatar_url,
+            )
+            embed.set_author(
+                name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
+            )
+            embed.set_image(url=await api_call("https://nekos.life/api/v2/img/pussy"))
+
+            await ctx.message.reply(embed=embed)
+        else:
+            embed = discord.Embed(
+                title="HoldUp!!",
+                description="This command can only be used in a NSFW channel.",
+                color=0xFF0000,
+                timestamp=ctx.message.created_at,
+            )
+            await ctx.message.reply(embed=embed, delete_after=20)
+
+    @commands.cooldown(5, 7, commands.BucketType.user)
+    @commands.command()
+    async def spank(self, ctx, user: commands.Greedy[discord.Member] = None):
+        if ctx.channel.is_nsfw():
+            if user == None:
+                await ctx.message.reply("Who do you want to spank?")
+                return
+            spanked_users = "".join([f"{users.mention} " for users in user])
+            embed = discord.Embed(
+                title="Oooof!",
+                description=f"{spanked_users} got spanked by {ctx.author.mention}",
+                color=ctx.message.author.color,
+                timestamp=ctx.message.created_at,
+            )
+            embed.set_footer(
+                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
+                icon_url=ctx.message.author.avatar_url,
+            )
+            embed.set_author(
+                name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
+            )
+            embed.set_image(url=await api_call("https://nekos.life/api/v2/img/spank"))
+            await ctx.message.reply(embed=embed)
+        else:
+            embed = discord.Embed(
+                title="HoldUp!!",
+                description="This command can only be used in a NSFW channel.",
+                color=0xFF0000,
+                timestamp=ctx.message.created_at,
+            )
+            await ctx.message.reply(embed=embed, delete_after=20)
 
 def setup(bot):
 	bot.add_cog(nsfw(bot))
