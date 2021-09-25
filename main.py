@@ -40,6 +40,4 @@ async def on_ready():
 client.loop.create_task(status())
 
 
-
-
 client.run(TOKEN)

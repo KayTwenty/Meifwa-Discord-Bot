@@ -134,6 +134,7 @@ class neko(commands.Cog):
         if user == ctx.author:
             await ctx.message.reply("Imagine kissing yourself...")
             return
+            
         kissed_users = "".join(f'{users.mention} ' for users in user)
         embed = discord.Embed(
             title="Awww",
@@ -203,7 +204,25 @@ class neko(commands.Cog):
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/tickle"))
 
         await ctx.reply(", ".join([users.mention for users in user]), embed=embed)
-    
+
+    @commands.cooldown(3, 5, commands.BucketType.user)
+    @commands.command(name="feed", description="gib me food plz")
+    async def feed(self, ctx, user: commands.Greedy[discord.Member] = None):
+        if user == None:
+            await ctx.message.reply(f"Who tf are you feeding?")
+            return
+        fed_users = "".join(f'{users.mention} ' for users in user)
+        embed = discord.Embed(
+            title="",
+            description=f"<:kanna:820279669131575306> {ctx.author.mention} fed {fed_users}",
+            color=0xFFC0CB,
+            timestamp=ctx.message.created_at,
+        )
+        embed.set_image(url=await api_call("https://nekos.life/api/v2/img/feed"))
+
+        await ctx.send(", ".join([users.mention for users in user]), embed=embed)
+
+
 
 def setup(client):
     client.add_cog(neko(client))
