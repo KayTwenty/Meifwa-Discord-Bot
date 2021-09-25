@@ -285,5 +285,30 @@ class nsfw(commands.Cog):
             )
             await ctx.message.reply(embed=embed, delete_after=20)
 
+    @commands.cooldown(5, 7, commands.BucketType.user)
+    @commands.command()
+    async def trap(self, ctx):
+        if ctx.channel.is_nsfw():
+            embed = discord.Embed(
+                color=ctx.message.author.color, timestamp=ctx.message.created_at
+            )
+            embed.set_footer(
+                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
+                icon_url=ctx.message.author.avatar_url,
+            )
+            embed.set_author(
+                name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
+            )
+            embed.set_image(url=await api_call("https://nekos.life/api/v2/img/trap"))
+            await ctx.message.reply(embed=embed)
+        else:
+            embed = discord.Embed(
+                title="HoldUp!!",
+                description="This command can only be used in a NSFW channel.",
+                color=0xFF0000,
+                timestamp=ctx.message.created_at,
+            )
+            await ctx.message.reply(embed=embed, delete_after=20)
+
 def setup(bot):
 	bot.add_cog(nsfw(bot))
