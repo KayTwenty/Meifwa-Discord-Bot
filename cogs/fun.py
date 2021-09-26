@@ -15,7 +15,7 @@ async def api_call(call_uri, state=True):
 			if state == False:
 				return response
 
-class Config(commands.Cog):
+class fun(commands.Cog):
     def __init__(self, client):
         self.client = client
     
@@ -47,4 +47,4 @@ class Config(commands.Cog):
             await ctx.message.reply(embed=embed)
 
 def setup(client):
-    client.add_cog(Config(client))
+    client.add_cog(fun(client))
