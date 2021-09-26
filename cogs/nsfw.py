@@ -309,6 +309,117 @@ class nsfw(commands.Cog):
                 timestamp=ctx.message.created_at,
             )
             await ctx.message.reply(embed=embed, delete_after=20)
+        
+    @commands.cooldown(5, 7, commands.BucketType.user)
+    @commands.command(name="thicc", aliases=["thiccthigh", "animethigh"])
+    async def thicc(self, ctx):
+        if ctx.channel.is_nsfw():
+            embed = discord.Embed(
+                title="Thic thighs!",
+                color=ctx.message.author.color,
+                timestamp=ctx.message.created_at,
+            )
+            embed.set_footer(
+                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
+                icon_url=ctx.message.author.avatar_url,
+            )
+            embed.set_author(
+                name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
+            )
+            embed.set_image(
+                url=await api_call("https://shiro.gg/api/images/nsfw/thighs")
+            )
+            await ctx.message.reply(embed=embed)
+        else:
+            embed = discord.Embed(
+                title="HoldUp!!",
+                description="This command can only be used in a NSFW channel.",
+                color=0xFF0000,
+                timestamp=ctx.message.created_at,
+            )
+            await ctx.message.reply(embed=embed, delete_after=20)
+    
+    @commands.cooldown(3, 7, commands.BucketType.user)
+    @commands.command(name="thigh", aliases=["thighs"])
+    async def thigh(self, ctx):
+        if ctx.channel.is_nsfw():
+            response = await api_call("https://nekobot.xyz/api/image?type=thigh", True)
+            embed = discord.Embed(
+                title="", color=response["color"], timestamp=ctx.message.created_at
+            )
+
+            embed.set_footer(
+                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
+                icon_url=ctx.message.author.avatar_url,
+            )
+            embed.set_author(
+                name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
+            )
+
+            embed.set_image(url=response["message"])
+            await ctx.message.reply(embed=embed)
+        else:
+            embed = discord.Embed(
+                title="HoldUp!!",
+                description="This command can only be used in a NSFW channel.",
+                color=0xFF0000,
+                timestamp=ctx.message.created_at,
+            )
+            await ctx.message.reply(embed=embed, delete_after=20)
+
+    @commands.cooldown(5, 7, commands.BucketType.user)
+    @commands.command(name="lesbian")
+    async def lesbian(self, ctx):
+        if ctx.channel.is_nsfw():
+            embed = discord.Embed(
+                color=ctx.message.author.color, timestamp=ctx.message.created_at
+            )
+            embed.set_footer(
+                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
+                icon_url=ctx.message.author.avatar_url,
+            )
+            embed.set_author(
+                name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
+            )
+            embed.set_image(url=await api_call("https://nekos.life/api/v2/img/les"))
+            await ctx.message.reply(embed=embed)
+        else:
+            embed = discord.Embed(
+                title="HoldUp!!",
+                description="This command can only be used in a NSFW channel.",
+                color=0xFF0000,
+                timestamp=ctx.message.created_at,
+            )
+            await ctx.message.reply(embed=embed, delete_after=20)
+        
+    @commands.cooldown(1, 5, commands.BucketType.user)
+    @commands.command()
+    async def erofeet(self, ctx):
+        if ctx.channel.is_nsfw():
+            embed = discord.Embed(
+                title="",
+                color=ctx.message.author.color,
+                timestamp=ctx.message.created_at,
+            )
+            embed.set_footer(
+                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
+                icon_url=ctx.message.author.avatar_url,
+            )
+            embed.set_author(
+                name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
+            )
+            embed.set_image(url=await api_call("https://nekos.life/api/v2/img/erofeet"))
+
+            await ctx.message.reply(embed=embed)
+        else:
+            embed = discord.Embed(
+                title="HoldUp!!",
+                description="This command can only be used in a NSFW channel.",
+                color=0xFF0000,
+                timestamp=ctx.message.created_at,
+            )
+            await ctx.message.reply(embed=embed, delete_after=20) 
+
 
 def setup(bot):
-	bot.add_cog(nsfw(bot))
+    bot.add_cog(nsfw(bot))
