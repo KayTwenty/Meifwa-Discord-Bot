@@ -38,7 +38,7 @@ class fun(commands.Cog):
                 icon_url=ctx.message.author.avatar_url,
             )
             embed.set_author(
-                name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
+                name=self.client.user.display_name, icon_url=self.client.user.avatar_url
             )
 
             embed.set_image(
