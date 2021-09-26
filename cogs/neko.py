@@ -273,6 +273,26 @@ class neko(commands.Cog):
                 icon_url=self.client.user.avatar_url,
             )
         await ctx.reply(embed=embed)
+
+    @commands.cooldown(3, 5, commands.BucketType.user)
+    @commands.command(name="bonk", description="bonk users")
+    async def bite(self, ctx, user: commands.Greedy[discord.Member] = None):
+        if user == None:
+            await ctx.message.reply(f"No Bonk! :(")
+            return
+        bonk_users = "".join(f'{users.mention} ' for users in user)
+        embed = discord.Embed(
+            title="",
+            description=f"**{ctx.message.author.name}** bit {bonk_users}",
+            color=ctx.message.author.color,
+            timestamp=ctx.message.created_at,
+        )
+        embed.set_image(url=await api_call("https://api.waifu.pics/sfw/bonk"))
+        embed.set_author(
+                name=ctx.message.author.display_name,
+                icon_url=self.client.user.avatar_url,
+            )
+        await ctx.reply(embed=embed)
     
 
 def setup(client):
