@@ -276,7 +276,7 @@ class neko(commands.Cog):
 
     @commands.cooldown(3, 5, commands.BucketType.user)
     @commands.command(name="bonk", description="bonk users")
-    async def bite(self, ctx, user: commands.Greedy[discord.Member] = None):
+    async def bonk(self, ctx, user: commands.Greedy[discord.Member] = None):
         if user == None:
             await ctx.message.reply(f"No Bonk! :(")
             return
