@@ -50,6 +50,10 @@ class neko(commands.Cog):
             timestamp=ctx.message.created_at,
         )
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/poke"))
+        embed.set_author(
+                name=ctx.message.author.display_name,
+                icon_url=ctx.message.guild.icon_url,
+            )
         await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
@@ -70,6 +74,10 @@ class neko(commands.Cog):
             timestamp=ctx.message.created_at,
         )
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/pat"))
+        embed.set_author(
+                name=ctx.message.author.display_name,
+                icon_url=ctx.message.guild.icon_url,
+            )
         await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
@@ -86,6 +94,10 @@ class neko(commands.Cog):
             timestamp=ctx.message.created_at,
         )
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/baka"))
+        embed.set_author(
+                name=ctx.message.author.display_name,
+                icon_url=ctx.message.guild.icon_url,
+            )
         await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
@@ -103,6 +115,10 @@ class neko(commands.Cog):
         )
         response = await api_call("http://api.nekos.fun:8080/api/lick", state=False)
         embed.set_image(url=response['image'])
+        embed.set_author(
+                name=ctx.message.author.display_name,
+                icon_url=ctx.message.guild.icon_url,
+            )
         await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
@@ -119,6 +135,10 @@ class neko(commands.Cog):
             timestamp=ctx.message.created_at,
         )
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/hug"))
+        embed.set_author(
+                name=ctx.message.author.display_name,
+                icon_url=ctx.message.guild.icon_url,
+            )
         await ctx.reply(embed=embed)
     
     @commands.cooldown(3, 5, commands.BucketType.user)
@@ -140,6 +160,10 @@ class neko(commands.Cog):
             timestamp=ctx.message.created_at,
         )
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/kiss"))
+        embed.set_author(
+                name=ctx.message.author.display_name,
+                icon_url=ctx.message.guild.icon_url,
+            )
         await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
@@ -156,6 +180,10 @@ class neko(commands.Cog):
             timestamp=ctx.message.created_at,
         )
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/cuddle"))
+        embed.set_author(
+                name=ctx.message.author.display_name,
+                icon_url=ctx.message.guild.icon_url,
+            )
         await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
@@ -176,6 +204,10 @@ class neko(commands.Cog):
             timestamp=ctx.message.created_at,
         )
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/slap"))
+        embed.set_author(
+                name=ctx.message.author.display_name,
+                icon_url=ctx.message.guild.icon_url,
+            )
         await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
@@ -196,6 +228,10 @@ class neko(commands.Cog):
             timestamp=ctx.message.created_at,
         )
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/tickle"))
+        embed.set_author(
+                name=ctx.message.author.display_name,
+                icon_url=ctx.message.guild.icon_url,
+            )
         await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
@@ -212,8 +248,32 @@ class neko(commands.Cog):
             timestamp=ctx.message.created_at,
         )
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/feed"))
+        embed.set_author(
+                name=ctx.message.author.display_name,
+                icon_url=ctx.message.guild.icon_url,
+            )
         await ctx.reply(embed=embed)
 
+    @commands.cooldown(3, 5, commands.BucketType.user)
+    @commands.command(name="bite", description="bite's users")
+    async def bite(self, ctx, user: commands.Greedy[discord.Member] = None):
+        if user == None:
+            await ctx.message.reply(f"Who tf are you biting?")
+            return
+        bit_users = "".join(f'{users.mention} ' for users in user)
+        embed = discord.Embed(
+            title="",
+            description=f"**{ctx.message.author.name}** bit {bit_users}",
+            color=ctx.message.author.color,
+            timestamp=ctx.message.created_at,
+        )
+        embed.set_image(url=await api_call("https://api.waifu.pics/sfw/bite"))
+        embed.set_author(
+                name=ctx.message.author.display_name,
+                icon_url=ctx.message.guild.icon_url,
+            )
+        await ctx.reply(embed=embed)
+    
 
 def setup(client):
     client.add_cog(neko(client))

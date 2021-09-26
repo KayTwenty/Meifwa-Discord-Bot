@@ -25,7 +25,7 @@ class nsfw(commands.Cog):
         log.warn(f"{self.__class__.__name__} Cog has been loaded")
 
     @commands.cooldown(5, 7, commands.BucketType.user)
-    @commands.command()
+    @commands.command(name="hentai", description="Yk what it does..")
     async def hentai(self, ctx):
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
@@ -85,7 +85,7 @@ class nsfw(commands.Cog):
             await ctx.message.reply(embed=embed, delete_after=20)
 
     @commands.cooldown(5, 7, commands.BucketType.user)
-    @commands.command()
+    @commands.command(name="cum", description="Yk what it does..")
     async def cum(self, ctx):
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
@@ -141,7 +141,7 @@ class nsfw(commands.Cog):
             await ctx.message.reply(embed=embed, delete_after=20)
 
     @commands.cooldown(5, 7, commands.BucketType.user)
-    @commands.command(name="futanari")
+    @commands.command(name="futanari", description="It's basically traps in a way") 
     async def futanari(self, ctx):
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
@@ -170,7 +170,7 @@ class nsfw(commands.Cog):
             await ctx.message.reply(embed=embed, delete_after=20)
     
     @commands.cooldown(5, 7, commands.BucketType.user)
-    @commands.command(name="boobs", aliases=["boob"])
+    @commands.command(name="boobs", description="Bondonkers", aliases=["boob"])
     async def boobs(self, ctx):
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
