@@ -283,7 +283,7 @@ class neko(commands.Cog):
         bonk_users = "".join(f'{users.mention} ' for users in user)
         embed = discord.Embed(
             title="",
-            description=f"**{ctx.message.author.name}** bit {bonk_users}",
+            description=f"**{ctx.message.author.name}** bonked {bonk_users}",
             color=ctx.message.author.color,
             timestamp=ctx.message.created_at,
         )
