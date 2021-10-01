@@ -1,9 +1,13 @@
 import aiohttp
 import discord
+import asyncio
 import logging
+import base64, json
+from .utils.chat_formatting import bold
 from random import randint
 from discord.ext import commands
 from discord.ext.commands import cooldown, BucketType
+from .utils import helpers
 
 log = logging.getLogger("actions cog")
 
@@ -293,7 +297,6 @@ class neko(commands.Cog):
                 icon_url=self.client.user.avatar_url,
             )
         await ctx.reply(embed=embed)
-    
 
 def setup(client):
     client.add_cog(neko(client))

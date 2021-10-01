@@ -43,5 +43,23 @@ async def on_ready():
     print("Logged in as: " + client.user.name + "\n")
 client.loop.create_task(status())
 
+@client.command(name="invite", description="Get a invite link to add me to your server")
+async def invite(ctx):
+
+    perms = discord.Permissions.all()
+
+    em = discord.Embed(color=discord.Color.blurple())
+
+    em.set_author(name=client.user.name,
+                icon_url=client.user.avatar_url)
+    em.set_thumbnail(url=ctx.message.author.avatar_url)
+    em.add_field(
+        name="Invite Me!",
+        inline=False,
+        value=f"[Click Here](<{discord.utils.oauth_url(client.user.id, permissions=perms)}>)",
+    )
+    
+    em.set_footer(text=f"{ctx.author}", icon_url=ctx.message.author.avatar_url)
+    await ctx.send(embed=em)
 
 client.run(TOKEN)
