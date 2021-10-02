@@ -27,15 +27,9 @@ for filename in os.listdir('./cogs'):
 async def status(): #Status changer for the bot
     while True:
         await client.wait_until_ready()
-        await client.change_presence(status=discord.Status.online, activity=discord.Game("Prefix: ;"))
+        await client.change_presence(activity=discord.Streaming(name=";help", url="https://www.youtube.com/watch?v=lQBtXEAAkLU"))
         await sleep(1500)
         await client.change_presence(status=discord.Status.online, activity=discord.Game(";invite"))
-        await sleep(1500)
-        await client.change_presence(status=discord.Status.online, activity=discord.Game("Nyoom Nyoom"))
-        await sleep(1500)
-        await client.change_presence(status=discord.Status.online, activity=discord.Game(";help"))
-        await sleep(1500)
-        await client.change_presence(status=discord.Status.online, activity=discord.Game("Nya Nya"))
         await sleep(1500)
 
 @client.event
