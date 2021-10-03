@@ -136,7 +136,7 @@ class Fun(commands.Cog):
     @commands.command()
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def marriages(self, ctx):
-        data = await r.table("marriage").get(str(ctx.author.id)).run(self.bot.r_conn)
+        data = r.table("marriage").get(str(ctx.author.id)).run(r_conn)
         if not data:
             return await ctx.send("You are not married to anybody")
 
