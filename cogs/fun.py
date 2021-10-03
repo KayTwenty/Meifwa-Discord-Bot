@@ -1,5 +1,5 @@
 import discord, asyncio
-import rethinkdb as r
+from rethinkdb import RethinkDB; r = RethinkDB()
 import aiohttp
 import random
 import base64, json
