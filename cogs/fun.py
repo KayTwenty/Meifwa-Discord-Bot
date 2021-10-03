@@ -17,6 +17,11 @@ r_conn = r.connect(db="meifwa")
 class Fun(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        self.session = aiohttp.ClientSession()
+    
+    def cog_unload(self):
+        self.session.close()
+        del self.session
 
     async def get_cached_user(self, user_id: int):
             cache = await self.bot.redis.get("user_cache:{}".format(user_id))
