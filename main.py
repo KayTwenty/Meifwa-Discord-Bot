@@ -34,7 +34,8 @@ async def status(): #Status changer for the bot
         await sleep(1500)
 
 async def _init_rethink():
-            client.r_conn = await r.connect(host="localhost", db="meifwa")
+    while True:
+        await r.connect(host="localhost", port=28015, db="meifwa")
 
 @client.event
 async def on_ready():
