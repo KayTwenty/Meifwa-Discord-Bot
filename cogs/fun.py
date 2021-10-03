@@ -40,7 +40,7 @@ class Fun(commands.Cog):
     async def marry(self, ctx, user: discord.Member):
         if user == ctx.author:
             return await ctx.send(bold("You can't marry yourself."))
-        author_data = await r.table("marriage").get(str(ctx.author.id)).run(r_conn)
+        author_data = r.table("marriage").get(str(ctx.author.id)).run(r_conn)
         if not author_data:
             author_data = {
                 "id": str(ctx.author.id),
@@ -53,7 +53,7 @@ class Fun(commands.Cog):
         elif len(author_data.get("marriedTo", [])) >= 4:
             return await ctx.send(bold("You are married to too many users"))
 
-        user_data = await r.table("marriage").get(str(user.id)).run(r_conn)
+        user_data = r.table("marriage").get(str(user.id)).run(r_conn)
         if not user_data:
             user_data = {
                 "id": str(user.id),
