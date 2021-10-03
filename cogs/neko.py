@@ -1,9 +1,6 @@
 import aiohttp
-import discord
-import asyncio
+import discord, asyncio
 import logging
-import base64, json
-from .utils.chat_formatting import bold
 from random import randint
 from discord.ext import commands
 from discord.ext.commands import cooldown, BucketType

@@ -3,6 +3,7 @@ import random
 import os
 import json
 import asyncio
+import rethinkdb as r
 from asyncio import sleep
 from discord.ext import commands
 
@@ -32,10 +33,15 @@ async def status(): #Status changer for the bot
         await client.change_presence(status=discord.Status.online, activity=discord.Game(";invite"))
         await sleep(1500)
 
+async def _init_rethink():
+            r.set_loop_type("asyncio")
+            client.r_conn = await r.connect(host="localhost", db="meifwa")
+
 @client.event
 async def on_ready():
     print("Logged in as: " + client.user.name + "\n")
 client.loop.create_task(status())
+client.loop.create_task(_init_rethink())
 
 @client.command(name="invite", description="Get a invite link to add me to your server")
 async def invite(ctx):
