@@ -46,8 +46,8 @@ class Fun(commands.Cog):
                 "id": str(ctx.author.id),
                 "marriedTo": []
             }
-        ues = r.table("marriage").insert(author_data).run(r_conn)
-        await ues
+        r.table("marriage").insert(author_data).run(r_conn)
+        
         if str(user.id) in author_data.get("marriedTo", []):
             return await ctx.send(bold("You are already married to that user."))
         elif len(author_data.get("marriedTo", [])) >= 4:
@@ -59,8 +59,8 @@ class Fun(commands.Cog):
                 "id": str(user.id),
                 "marriedTo": []
             }
-        ues = r.table("marriage").insert(user_data).run(r_conn)
-        await ues
+        r.table("marriage").insert(user_data).run(r_conn)
+        
         if len(user_data.get("marriedTo", [])) >= 4:
             return await ctx.send("That user is already married to too many users")
 
@@ -81,10 +81,9 @@ class Fun(commands.Cog):
         user_marriedTo = user_data.get("marriedTo", [])
         author_marriedTo.append(str(user.id))
         user_marriedTo.append(str(ctx.author.id))
-        ues = r.table("marriage").get(str(ctx.author.id)).update({"marriedTo": author_marriedTo}).run(r_conn)
-        ues2 = r.table("marriage").get(str(user.id)).update({"marriedTo": user_marriedTo}).run(r_conn)
-        await ues
-        await ues2
+        r.table("marriage").get(str(ctx.author.id)).update({"marriedTo": author_marriedTo}).run(r_conn)
+        r.table("marriage").get(str(user.id)).update({"marriedTo": user_marriedTo}).run(r_conn)
+
     @commands.command()
     @commands.guild_only()
     @commands.cooldown(1, 4, commands.BucketType.user)
