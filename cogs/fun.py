@@ -138,34 +138,5 @@ class Fun(commands.Cog):
         r.table("marriage").get(str(ctx.author.id)).update({"marriedTo": new_author_married}).run(r_conn)
         await ctx.send("{} divorced {} 😦😢".format(helpers.clean_text(ctx.author.name), helpers.clean_text(user.name)))
 
-    @commands.command()
-    @commands.cooldown(1, 5, commands.BucketType.user)
-    async def marriages(self, ctx):
-        data = r.table("marriage").get(str(ctx.author.id)).run(r_conn)
-        if not data:
-            return await ctx.send("You are not married to anybody")
-
-        message = "**Married To**:\n"
-        for uid in data.get("marriedTo", []):
-            cached = await self.get_cached_user(int(uid))
-            message += "    - **{}#{}** ({})\n".format(
-                helpers.clean_text(cached["name"]), cached["discriminator"], cached["id"]
-            )
-
-        await ctx.send(message)
-
-    @commands.command()
-    @commands.cooldown(1, 5, commands.BucketType.user)
-    async def phcomment(self, ctx, *, comment: str):
-        """PronHub Comment Image"""
-        await ctx.trigger_typing()
-        async with self.session.get(f"https://nekobot.xyz/api/imagegen?type=phcomment"
-                          f"&image={ctx.author.avatar_url_as(format='png')}"
-                          f"&text={comment}&username={ctx.author.name}") as r:
-            res = await r.json()
-        if not res["success"]:
-            return await ctx.send("**Failed to successfully get image.**")
-        await ctx.send(embed=self.__embed_json(res))
-
 def setup(bot):
     bot.add_cog(Fun(bot))
