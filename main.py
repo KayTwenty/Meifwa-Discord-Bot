@@ -3,6 +3,7 @@ import random
 import os
 import json
 import asyncio
+import aioredis
 import rethinkdb as r
 from asyncio import sleep
 from discord.ext import commands
@@ -33,6 +34,9 @@ async def status(): #Status changer for the bot
         await client.change_presence(status=discord.Status.online, activity=discord.Game(";invite"))
         await sleep(1500)
 
+async def _init_redis():
+    client.redis = await aioredis.create_redis(address=("redis-17358.c8.us-east-1-4.ec2.cloud.redislabs.com", 17358), loop=client.loop)
+
 async def _init_rethink():
     r_conn = r.connect(host="127.0.0.1", port=28015, db="meifwa")
 
@@ -41,6 +45,7 @@ async def on_ready():
     print("Logged in as: " + client.user.name + "\n")
 client.loop.create_task(status())
 client.loop.create_task(_init_rethink())
+client.loop.create_task(_init_redis())
 
 @client.command(name="invite", description="Get a invite link to add me to your server")
 async def invite(ctx):
