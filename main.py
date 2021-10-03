@@ -35,7 +35,6 @@ async def status(): #Status changer for the bot
 
 async def _init_rethink():
     r_conn = r.connect(host="127.0.0.1", port=28015, db="meifwa")
-    print(client.user.name + " is connected to: RethinkDB")
 
 @client.event
 async def on_ready():
