@@ -37,9 +37,8 @@ async def status(): #Status changer for the bot
 @client.event
 async def on_ready():
     print("Logged in as: " + client.user.name + "\n")
-    rdb = r.RethinkDB()
-    rdb.connect(host="127.0.0.1", port=28015, db="meifwa")
-    print(client.user.name + "is connected to: RethinkDB")
+    r.connect(host="127.0.0.1", port=28015, db="meifwa")
+    print(client.user.name + " is connected to: RethinkDB")
 client.loop.create_task(status())
 
 

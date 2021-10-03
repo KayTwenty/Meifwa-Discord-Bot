@@ -1,5 +1,5 @@
 import discord, asyncio
-from rethinkdb import RethinkDB; r = RethinkDB()
+import rethinkdb as r
 import aiohttp
 import random
 import base64, json
@@ -159,7 +159,6 @@ class Fun(commands.Cog):
         if not res["success"]:
             return await ctx.send("**Failed to successfully get image.**")
         await ctx.send(embed=self.__embed_json(res))
-
 
 def setup(bot):
     bot.add_cog(Fun(bot))
