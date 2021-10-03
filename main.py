@@ -33,16 +33,15 @@ async def status(): #Status changer for the bot
         await client.change_presence(status=discord.Status.online, activity=discord.Game(";invite"))
         await sleep(1500)
 
-async def _init_rethink():
-    while True:
-        rdb = r.RethinkDB()
-        await rdb.connect(host="127.0.0.1", port=28015, db="meifwa")
 
 @client.event
 async def on_ready():
     print("Logged in as: " + client.user.name + "\n")
+    rdb = r.RethinkDB()
+    rdb.connect(host="127.0.0.1", port=28015, db="meifwa")
+    print(client.user.name + "is connected to: RethinkDB")
 client.loop.create_task(status())
-client.loop.create_task(_init_rethink())
+
 
 @client.command(name="invite", description="Get a invite link to add me to your server")
 async def invite(ctx):
