@@ -35,7 +35,7 @@ async def status(): #Status changer for the bot
         await sleep(1500)
 
 async def _init_redis():
-    client.redis = await aioredis.create_redis(address=("redis-17358.c8.us-east-1-4.ec2.cloud.redislabs.com", 17358), loop=client.loop)
+    redis = await aioredis.from_url(address=("redis-17358.c8.us-east-1-4.ec2.cloud.redislabs.com", 17358), loop=client.loop)
 
 async def _init_rethink():
     r_conn = r.connect(host="127.0.0.1", port=28015, db="meifwa")
