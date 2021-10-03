@@ -101,10 +101,10 @@ class Fun(commands.Cog):
         if user.id == ctx.author.id:
             return await ctx.send("You can't divorce yourself")
 
-        author_data = await r.table("marriage").get(str(ctx.author.id)).run(self.bot.r_conn)
+        author_data = r.table("marriage").get(str(ctx.author.id)).run(r_conn)
         if not author_data:
             return await ctx.send(bold("You are not married"))
-        user_data = await r.table("marriage").get(str(user.id)).run(self.bot.r_conn)
+        user_data = r.table("marriage").get(str(user.id)).run(r_conn)
         if not user_data:
             return await ctx.send("That user is not married to anyone")
         if not str(ctx.author.id) in user_data.get("marriedTo", []):
@@ -129,8 +129,8 @@ class Fun(commands.Cog):
             if u != str(ctx.author.id):
                 new_user_married.append(u)
 
-        await r.table("marriage").get(str(user.id)).update({"marriedTo": new_user_married}).run(self.bot.r_conn)
-        await r.table("marriage").get(str(ctx.author.id)).update({"marriedTo": new_author_married}).run(self.bot.r_conn)
+        r.table("marriage").get(str(user.id)).update({"marriedTo": new_user_married}).run(r_conn)
+        r.table("marriage").get(str(ctx.author.id)).update({"marriedTo": new_author_married}).run(r_conn)
         await ctx.send("{} divorced {} 😦😢".format(helpers.clean_text(ctx.author.name), helpers.clean_text(user.name)))
 
     @commands.command()
