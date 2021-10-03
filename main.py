@@ -34,7 +34,6 @@ async def status(): #Status changer for the bot
         await sleep(1500)
 
 async def _init_rethink():
-            r.set_loop_type("asyncio")
             client.r_conn = await r.connect(host="localhost", db="meifwa")
 
 @client.event
