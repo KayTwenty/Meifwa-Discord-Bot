@@ -1,9 +1,10 @@
+import aiohttp
 import discord
 import random
 import os
 import json
 import asyncio
-import aioredis
+import aiohttp
 import rethinkdb as r
 from asyncio import sleep
 from discord.ext import commands
@@ -61,5 +62,32 @@ async def invite(ctx):
     
     em.set_footer(text=f"{ctx.author}", icon_url=ctx.message.author.avatar_url)
     await ctx.send(embed=em)
+
+async def send_cmd_help(ctx):
+    return await ctx.send_help(ctx.command)
+
+async def on_command_error(ctx, exception):
+    error = getattr(exception, "original", exception)
+    if isinstance(error, discord.NotFound):
+        return
+    elif isinstance(error, discord.Forbidden):
+        return
+    elif isinstance(error, discord.HTTPException) or isinstance(error, aiohttp.ClientConnectionError):
+        return await ctx.send("Failed to get data.")
+    if isinstance(exception, commands.NoPrivateMessage):
+        return
+    elif isinstance(exception, commands.DisabledCommand):
+        return
+    elif isinstance(exception, commands.BadArgument):
+        await client.send_cmd_help(ctx)
+    elif isinstance(exception, commands.MissingRequiredArgument):
+        await client.send_cmd_help(ctx)
+    elif isinstance(exception, commands.CheckFailure):
+        await ctx.send("You are not allowed to use that command.", delete_after=5)
+    elif isinstance(exception, commands.CommandOnCooldown):
+        await ctx.send("Command is on cooldown... {:.2f}s left".format(exception.retry_after), delete_after=5)
+    elif isinstance(exception, commands.CommandNotFound):
+        return
+    return
 
 client.run(TOKEN)

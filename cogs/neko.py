@@ -55,6 +55,7 @@ class neko(commands.Cog):
                 name=ctx.message.author.display_name,
                 icon_url=self.client.user.avatar_url,
             )
+        embed.set_footer(text="Command: ;poke @user")
         await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
@@ -79,6 +80,7 @@ class neko(commands.Cog):
                 name=ctx.message.author.display_name,
                 icon_url=self.client.user.avatar_url,
             )
+        embed.set_footer(text="Command: ;pat @user")
         await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
@@ -99,6 +101,7 @@ class neko(commands.Cog):
                 name=ctx.message.author.display_name,
                 icon_url=self.client.user.avatar_url,
             )
+        embed.set_footer(text="Command: ;baka @user")
         await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
@@ -120,6 +123,7 @@ class neko(commands.Cog):
                 name=ctx.message.author.display_name,
                 icon_url=self.client.user.avatar_url,
             )
+        embed.set_footer(text="Command: ;lick @user")
         await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
@@ -140,6 +144,7 @@ class neko(commands.Cog):
                 name=ctx.message.author.display_name,
                 icon_url=self.client.user.avatar_url,
             )
+        embed.set_footer(text="Command: ;hug @user")
         await ctx.reply(embed=embed)
     
     @commands.cooldown(3, 5, commands.BucketType.user)
@@ -165,6 +170,7 @@ class neko(commands.Cog):
                 name=ctx.message.author.display_name,
                 icon_url=self.client.user.avatar_url,
             )
+        embed.set_footer(text="Command: ;kiss @user")
         await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
@@ -185,6 +191,7 @@ class neko(commands.Cog):
                 name=ctx.message.author.display_name,
                 icon_url=self.client.user.avatar_url,
             )
+        embed.set_footer(text="Command: ;cuddle @user")
         await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
@@ -209,6 +216,7 @@ class neko(commands.Cog):
                 name=ctx.message.author.display_name,
                 icon_url=self.client.user.avatar_url,
             )
+        embed.set_footer(text="Command: ;slap @user")
         await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
@@ -233,6 +241,7 @@ class neko(commands.Cog):
                 name=ctx.message.author.display_name,
                 icon_url=self.client.user.avatar_url,
             )
+        embed.set_footer(text="Command: ;tickle @user")
         await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
@@ -253,6 +262,7 @@ class neko(commands.Cog):
                 name=ctx.message.author.display_name,
                 icon_url=self.client.user.avatar_url,
             )
+        embed.set_footer(text="Command: ;feed @user")
         await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
@@ -273,6 +283,7 @@ class neko(commands.Cog):
                 name=ctx.message.author.display_name,
                 icon_url=self.client.user.avatar_url,
             )
+        embed.set_footer(text="Command: ;bite @user")
         await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
@@ -293,6 +304,7 @@ class neko(commands.Cog):
                 name=ctx.message.author.display_name,
                 icon_url=self.client.user.avatar_url,
             )
+        embed.set_footer(text="Command: ;bonk @user")
         await ctx.reply(embed=embed)
 
 def setup(client):
