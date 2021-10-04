@@ -143,7 +143,7 @@ class Fun(commands.Cog):
         embed = discord.Embed(title="This person had sex with you ;)", description="**{1}** fucked **{0}**!".format(member.name, ctx.message.author.name), color=0x680af5)
         embed.set_author(name="Fucked by " + str(ctx.message.author), icon_url=ctx.message.author.avatar_url)
         embed.set_image(url="https://media1.tenor.com/images/fa98b23ca1dba1925da62f834f27153f/tenor.gif?itemid=19355212")
-        embed.set_footer(text="Command: 9frick @user")
+        embed.set_footer(text="Command: ;fuck @user")
         await ctx.reply(embed=embed)
 
 def setup(bot):
