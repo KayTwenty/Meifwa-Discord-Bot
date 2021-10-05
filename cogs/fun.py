@@ -141,7 +141,7 @@ class Fun(commands.Cog):
     @commands.command(aliases=['sex', 'fuck']) #Frick Command
     async def frick(self, ctx, member: discord.Member):
         embed = discord.Embed(title=f"{ctx.message.author.name} wants to fuck you. Do you accept?", description="Type yes or no.", color=0xb22222, timestamp=ctx.message.created_at)
-        embed.set_author(name=ctx.message.author.display_name, icon_url=self.client.user.avatar_url)
+        embed.set_author(name=ctx.message.author.display_name, icon_url=self.bot.user.avatar_url)
         await ctx.send(embed=embed)
         
         try:
