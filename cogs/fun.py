@@ -145,7 +145,7 @@ class Fun(commands.Cog):
         await ctx.send(embed=embed)
         
         try:
-            msg = await self.bot.wait_for("message", check=lambda x: x.channel == ctx.message.channel and x.author == ctx.author, timeout=60.0)
+            msg = await self.bot.wait_for("message", check=lambda x: x.channel == ctx.message.channel and x.author == member, timeout=60.0)
             if msg.content.lower() != "yes":
                 return await ctx.send(f"**{member.name} declined** :|")
         except asyncio.TimeoutError:
