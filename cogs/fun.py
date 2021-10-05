@@ -140,13 +140,14 @@ class Fun(commands.Cog):
 
     @commands.command(aliases=['sex', 'fuck']) #Frick Command
     async def frick(self, ctx, member: discord.Member):
-        embed = discord.Embed(title=f"{ctx.message.author.name} wants to fuck you. Do you accept?", description="Type yes or no.", color=ctx.message.author.color)
+        embed = discord.Embed(title=f"{ctx.message.author.name} wants to fuck you. Do you accept?", description="Type yes or no.", color=0xb22222, timestamp=ctx.message.created_at)
+        embed.set_author(name=ctx.message.author.display_name, icon_url=self.client.user.avatar_url)
         await ctx.send(embed=embed)
         
         try:
-            msg = await self.bot.wait_for("message", check=lambda x: x.channel == ctx.message.channel and x.author == ctx.author, timeout=15.0)
+            msg = await self.bot.wait_for("message", check=lambda x: x.channel == ctx.message.channel and x.author == ctx.author, timeout=60.0)
             if msg.content.lower() != "yes":
-                return await ctx.send("**Cancelled.**")
+                return await ctx.send(f"**{member.name} declined** :|")
         except asyncio.TimeoutError:
             return await ctx.send("**Cancelled.**")
          
