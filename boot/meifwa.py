@@ -86,7 +86,7 @@ class MeifwaBot(commands.AutoShardedBot):
     async def on_ready(self):
         if self.uptime is not None:
             return
-        self.uptime = discord.utils.utcnow()
+        self.uptime = datetime.datetime.utcnow()
         self.logger.info(
             f"FINISHED CHUNKING {len(self.guilds)} GUILDS AND CACHING {len(self.users)} USERS",
         )
@@ -115,7 +115,7 @@ class MeifwaBot(commands.AutoShardedBot):
         self.logger.info(f"Total mounted cogs: {loaded_cogs}")
         msg = f"Total unmounted cogs: {unloaded_cogs}"
         self.logger.info(msg) if unloaded_cogs == 0 else self.logger.warning(msg)
-        time_difference = ((self.startup_time - discord.utils.utcnow()) * 1000).total_seconds()
+        time_difference = ((self.startup_time - datetime.datetime.utcnow()) * 1000).total_seconds()
         formatted_time_difference = str(time_difference).replace("-", "")
         self.logger.info(f"Elapsed Time Since Startup: {formatted_time_difference} Ms")
         self.logger.info("STARTUP COMPLETE. READY!")
