@@ -5,10 +5,10 @@ import logging
 from discord.ext import commands
 from discord.ext.commands import cooldown, BucketType
 
-from .utils import helpers
+from boot.meifwa import MeifwaBot
 
 class fun(commands.Cog):
-    def __init__(self, bot):
+    def __init__(self, bot: MeifwaBot):
         self.bot = bot
         self.session = aiohttp.ClientSession()
     

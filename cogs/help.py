@@ -1,9 +1,11 @@
 import discord
 import logging
 import DiscordUtils
+
 from discord import Embed
 from discord.ext import commands
 from discord.errors import Forbidden
+from boot.meifwa import MeifwaBot
 
 log = logging.getLogger("help cog")
 
@@ -22,7 +24,7 @@ async def send_embed(ctx, embed):
 
 
 class Help(commands.Cog):
-    def __init__(self, bot):
+    def __init__(self, bot: MeifwaBot):
         self.bot = bot
 
     async def make_error_embed(self, ctx, name):

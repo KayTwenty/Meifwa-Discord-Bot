@@ -14,6 +14,11 @@ class MeifwaBot(commands.AutoShardedBot):
     def __init__(self, *args, **kwargs):
         for logger in [
             "meifwa",
+            "discord.client",
+            "discord.gateway",
+            "discord.http",
+            "discord.ext.commands.core",
+            "listeners",
             "main",
         ]:
             logging.getLogger(logger).setLevel(
