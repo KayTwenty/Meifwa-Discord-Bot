@@ -3,8 +3,9 @@ import logging
 import os
 import discord
 import toml
+import DiscordUtils
+import datetime
 
-from datetime import datetime
 from aiohttp import ClientSession
 from databases import Database
 from discord.ext import commands
