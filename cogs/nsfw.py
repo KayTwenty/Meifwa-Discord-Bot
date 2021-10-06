@@ -1,8 +1,10 @@
 import discord
 import aiohttp
 import logging
+
 from discord.ext import commands
 from discord.ext.commands import cooldown, BucketType
+from boot.meifwa import MeifwaBot
 
 log = logging.getLogger("NSFW cog")
 
@@ -15,9 +17,8 @@ async def api_call(call_uri, returnObj=False):
 			elif returnObj == True:
 				return response
 
-
 class nsfw(commands.Cog):
-    def __init__(self, bot):
+    def __init__(self, bot: MeifwaBot):
 	    self.bot = bot
 
     @commands.Cog.listener()
