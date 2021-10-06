@@ -139,3 +139,23 @@ class MeifwaBot(commands.AutoShardedBot):
         await self.db.disconnect()
         self.logger.info("Database Connection Closed")
         exit(code=26)
+
+    async def reload_all_extensions(self, ctx: commands.Context = None):
+        self.logger.info("Signal recieved to reload all bot extensions")
+        success = 0
+        failed = 0
+        for cog in os.listdir("./cogs"):
+            if cog.endswith(".py"):
+                try:
+                    self.reload_extension(f"cogs.{cog[:-3]}")
+                    self.logger.info(f"Reloaded {cog}")
+                    success += 1
+                except Exception as e:
+                    self.logger.warning(f"Failed reloading {cog}\n{e}")
+                    failed += 1
+        if ctx:
+            await ctx.send(
+                embed=discord.Embed(
+                description=f"Successfully reloaded {success} cog(s)\n Failed reloading {failed} cog(s)", color=self.ok_color,
+                ).set_footer(text="If any cogs failed to reload, check console for feedback.")
+            )
