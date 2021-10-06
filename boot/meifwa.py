@@ -3,7 +3,6 @@ import logging
 import os
 import discord
 import toml
-import DiscordUtils
 import datetime
 
 from aiohttp import ClientSession
@@ -49,7 +48,7 @@ class MeifwaBot(commands.AutoShardedBot):
         )
         self.uptime = None
         self._session = None
-        self.startup_time = discord.utils.utcnow()
+        self.startup_time = datetime.datetime.utcnow()
         self.version = "3.2.2"
         self.db = Database("sqlite:///meifwa.db")
         self.executed_commands = 0
