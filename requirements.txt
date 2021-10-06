@@ -1,3 +1,4 @@
 discord.py
 DiscordUtils
-rethinkdb
+databases
+aiohttp
