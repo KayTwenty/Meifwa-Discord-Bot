@@ -4,3 +4,7 @@ databases
 aiohttp
 colorama
 toml
+psutil
+aiosqlite
+voxelbotutils
+tabulate
