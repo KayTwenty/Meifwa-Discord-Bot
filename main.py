@@ -1,9 +1,9 @@
-import discord
-import os
 import asyncio
 import logging
+import os
 
 from discord.ext import commands
+import discord
 
 from boot.dbmanagers import PrefixManager
 from boot.meifwa import MeifwaBot
