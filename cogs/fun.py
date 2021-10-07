@@ -13,7 +13,6 @@ class fun(commands.Cog):
         self.session = aiohttp.ClientSession()
     
     def cog_unload(self):
-        self.session.close()
         del self.session
 
     @commands.command(aliases=['sex', 'fuck']) #Frick Command
