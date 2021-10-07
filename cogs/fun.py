@@ -18,8 +18,8 @@ class fun(commands.Cog):
 
     @commands.command(aliases=['sex', 'fuck']) #Frick Command
     async def frick(self, ctx, member: discord.Member):
-        embed = discord.Embed(title=f"{ctx.message.author.name} wants to fuck you. Do you accept?", description="Type yes or no.", color=0xb22222, timestamp=ctx.message.created_at)
-        embed.set_author(name=ctx.message.author.display_name, icon_url=self.bot.user.avatar_url)
+        embed = discord.Embed(title=f"{ctx.message.author.name} wants to fuck you. Do you accept?", description="Type yes or no.", color=self.bot.error_color, timestamp=ctx.message.created_at)
+        embed.set_author(name=ctx.message.author.display_name, icon_url=self.bot.user.avatar.url)
         await ctx.send(embed=embed)
         
         try:
@@ -30,7 +30,7 @@ class fun(commands.Cog):
             return await ctx.send("**Cancelled.**")
          
         embed = discord.Embed(title="This person had sex with you ;)", description="**{1}** fucked **{0}**!".format(member.name, ctx.message.author.name), color=ctx.message.author.color, timestamp=ctx.message.created_at)
-        embed.set_author(name="Fucked by " + str(ctx.message.author), icon_url=ctx.message.author.avatar_url)
+        embed.set_author(name="Fucked by " + str(ctx.message.author), icon_url=ctx.message.author.avatar.url)
         embed.set_image(url="https://media1.tenor.com/images/fa98b23ca1dba1925da62f834f27153f/tenor.gif?itemid=19355212")
         embed.set_footer(text="Command: ;fuck @user")
         await ctx.reply(embed=embed)
@@ -42,7 +42,7 @@ class fun(commands.Cog):
         em = discord.Embed(color=discord.Color.blurple())
 
         em.set_author(name=self.bot.user.name,
-                    icon_url=self.bot.user.avatar_url)
+                    icon_url=self.bot.user.avatar.url)
         em.set_thumbnail(url=ctx.message.author.avatar_url)
         em.add_field(
             name="Invite Me!",
@@ -50,7 +50,7 @@ class fun(commands.Cog):
             value=f"[Click Here](<{discord.utils.oauth_url(self.bot.user.id, permissions=perms)}>)",
         )
 
-        em.set_footer(text=f"{ctx.author}", icon_url=ctx.message.author.avatar_url)
+        em.set_footer(text=f"{ctx.author}", icon_url=ctx.message.author.avatar.url)
         await ctx.send(embed=em)
 
 def setup(bot):

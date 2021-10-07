@@ -8,3 +8,4 @@ psutil
 aiosqlite
 voxelbotutils
 tabulate
+humanize

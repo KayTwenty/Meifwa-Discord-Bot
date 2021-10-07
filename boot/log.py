@@ -31,7 +31,7 @@ styles = {
     "CRITICAL": Style.BRIGHT,
 }
 names = {
-    "kurisu": Fore.BLUE,
+    "meifwa": Fore.BLUE,
     "discord.client": Fore.GREEN,
     "discord.gateway": Fore.MAGENTA,
     "discord.ext.commands.core": Fore.YELLOW,

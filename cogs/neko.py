@@ -10,7 +10,7 @@ from boot.meifwa import MeifwaBot
 log = logging.getLogger("actions cog")
 
 async def api_call(call_uri, state=True):
-	async with aiohttp.botSession() as session:
+	async with aiohttp.ClientSession() as session:
 		async with session.get(f"{call_uri}") as response:
 			response = await response.json()
 			if state:
@@ -54,7 +54,7 @@ class neko(commands.Cog):
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/poke"))
         embed.set_author(
                 name=ctx.message.author.display_name,
-                icon_url=self.bot.user.avatar_url,
+                icon_url=self.bot.user.avatar.url,
             )
         embed.set_footer(text="Command: ;poke @user")
         await ctx.reply(embed=embed)
@@ -79,7 +79,7 @@ class neko(commands.Cog):
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/pat"))
         embed.set_author(
                 name=ctx.message.author.display_name,
-                icon_url=self.bot.user.avatar_url,
+                icon_url=self.bot.user.avatar.url,
             )
         embed.set_footer(text="Command: ;pat @user")
         await ctx.reply(embed=embed)
@@ -100,7 +100,7 @@ class neko(commands.Cog):
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/baka"))
         embed.set_author(
                 name=ctx.message.author.display_name,
-                icon_url=self.bot.user.avatar_url,
+                icon_url=self.bot.user.avatar.url,
             )
         embed.set_footer(text="Command: ;baka @user")
         await ctx.reply(embed=embed)
@@ -122,7 +122,7 @@ class neko(commands.Cog):
         embed.set_image(url=response['image'])
         embed.set_author(
                 name=ctx.message.author.display_name,
-                icon_url=self.bot.user.avatar_url,
+                icon_url=self.bot.user.avatar.url,
             )
         embed.set_footer(text="Command: ;lick @user")
         await ctx.reply(embed=embed)
@@ -143,7 +143,7 @@ class neko(commands.Cog):
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/hug"))
         embed.set_author(
                 name=ctx.message.author.display_name,
-                icon_url=self.bot.user.avatar_url,
+                icon_url=self.bot.user.avatar.url,
             )
         embed.set_footer(text="Command: ;hug @user")
         await ctx.reply(embed=embed)
@@ -169,7 +169,7 @@ class neko(commands.Cog):
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/kiss"))
         embed.set_author(
                 name=ctx.message.author.display_name,
-                icon_url=self.bot.user.avatar_url,
+                icon_url=self.bot.user.avatar.url,
             )
         embed.set_footer(text="Command: ;kiss @user")
         await ctx.reply(embed=embed)
@@ -190,7 +190,7 @@ class neko(commands.Cog):
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/cuddle"))
         embed.set_author(
                 name=ctx.message.author.display_name,
-                icon_url=self.bot.user.avatar_url,
+                icon_url=self.bot.user.avatar.url,
             )
         embed.set_footer(text="Command: ;cuddle @user")
         await ctx.reply(embed=embed)
@@ -215,7 +215,7 @@ class neko(commands.Cog):
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/slap"))
         embed.set_author(
                 name=ctx.message.author.display_name,
-                icon_url=self.bot.user.avatar_url,
+                icon_url=self.bot.user.avatar.url,
             )
         embed.set_footer(text="Command: ;slap @user")
         await ctx.reply(embed=embed)
@@ -240,7 +240,7 @@ class neko(commands.Cog):
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/tickle"))
         embed.set_author(
                 name=ctx.message.author.display_name,
-                icon_url=self.bot.user.avatar_url,
+                icon_url=self.bot.user.avatar.url,
             )
         embed.set_footer(text="Command: ;tickle @user")
         await ctx.reply(embed=embed)
@@ -261,7 +261,7 @@ class neko(commands.Cog):
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/feed"))
         embed.set_author(
                 name=ctx.message.author.display_name,
-                icon_url=self.bot.user.avatar_url,
+                icon_url=self.bot.user.avatar.url,
             )
         embed.set_footer(text="Command: ;feed @user")
         await ctx.reply(embed=embed)
@@ -282,7 +282,7 @@ class neko(commands.Cog):
         embed.set_image(url=await api_call("https://api.waifu.pics/sfw/bite"))
         embed.set_author(
                 name=ctx.message.author.display_name,
-                icon_url=self.bot.user.avatar_url,
+                icon_url=self.bot.user.avatar.url,
             )
         embed.set_footer(text="Command: ;bite @user")
         await ctx.reply(embed=embed)
@@ -303,7 +303,7 @@ class neko(commands.Cog):
         embed.set_image(url=await api_call("https://api.waifu.pics/sfw/bonk"))
         embed.set_author(
                 name=ctx.message.author.display_name,
-                icon_url=self.bot.user.avatar_url,
+                icon_url=self.bot.user.avatar.url,
             )
         embed.set_footer(text="Command: ;bonk @user")
         await ctx.reply(embed=embed)

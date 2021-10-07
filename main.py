@@ -4,7 +4,6 @@ import asyncio
 import logging
 
 from discord.ext import commands
-from asyncio import sleep
 
 from boot.dbmanagers import PrefixManager
 from boot.meifwa import MeifwaBot
@@ -36,19 +35,11 @@ async def DatabaseInit(Schema: str):
     bot.logger.info("Guild Prefixes Successfully Appended To On-Memory Cache.")
     bot.logger.info("Database Initialization Complete.")
 
+asyncio.run(DatabaseInit(schema))
+
 if not bot.get_config("configoptions", "options", "no_priviledged_owners"):
     for o in bot.get_config("config", "config", "owner_ids"):
         bot.owner_ids.add(o)
 
-async def status(): #Status changer for the bot
-    while True:
-        await bot.wait_until_ready()
-        await bot.change_presence(activity=discord.Streaming(name=";help", url="https://www.youtube.com/watch?v=lQBtXEAAkLU"))
-        await sleep(1500)
-        await bot.change_presence(status=discord.Status.online, activity=discord.Game(";invite"))
-        await sleep(1500)
-bot.loop.create_task(status())
-
-asyncio.run(DatabaseInit(schema))
-bot.logger.info(f"Starting Kurisu with Process ID {os.getpid()}")
+bot.logger.info(f"Starting Meifwa with Process ID {os.getpid()}")
 bot.run(bot.get_config("config", "config", "token"))

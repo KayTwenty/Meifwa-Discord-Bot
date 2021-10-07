@@ -37,10 +37,10 @@ class nsfw(commands.Cog):
 
             embed.set_footer(
                 text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
-                icon_url=ctx.message.author.avatar_url,
+                icon_url=ctx.message.author.avatar.url,
             )
             embed.set_author(
-                name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
+                name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url
             )
 
             embed.set_image(
@@ -68,10 +68,10 @@ class nsfw(commands.Cog):
 
             embed.set_footer(
                 text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
-                icon_url=ctx.message.author.avatar_url,
+                icon_url=ctx.message.author.avatar.url,
             )
             embed.set_author(
-                name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
+                name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url
             )
 
             embed.set_image(url=await api_call("https://nekos.life/api/v2/img/feetg"))
@@ -96,10 +96,10 @@ class nsfw(commands.Cog):
             )
             embed.set_footer(
                 text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
-                icon_url=ctx.message.author.avatar_url,
+                icon_url=ctx.message.author.avatar.url,
             )
             embed.set_author(
-                name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
+                name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url
             )
             embed.set_image(url=await api_call("https://nekos.life/api/v2/img/cum"))
             await ctx.message.reply(embed=embed)
@@ -123,10 +123,10 @@ class nsfw(commands.Cog):
             )
             embed.set_footer(
                 text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
-                icon_url=ctx.message.author.avatar_url,
+                icon_url=ctx.message.author.avatar.url,
             )
             embed.set_author(
-                name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
+                name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url
             )
             embed.set_image(
                 url=await api_call("https://nekos.life/api/v2/img/nsfw_neko_gif")
@@ -152,10 +152,10 @@ class nsfw(commands.Cog):
             )
             embed.set_footer(
                 text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
-                icon_url=ctx.message.author.avatar_url,
+                icon_url=ctx.message.author.avatar.url,
             )
             embed.set_author(
-                name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
+                name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url
             )
             embed.set_image(
                 url=await api_call("https://nekos.life/api/v2/img/futanari")
@@ -181,10 +181,10 @@ class nsfw(commands.Cog):
             )
             embed.set_footer(
                 text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
-                icon_url=ctx.message.author.avatar_url,
+                icon_url=ctx.message.author.avatar.url,
             )
             embed.set_author(
-                name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
+                name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url
             )
             embed.set_image(url=await api_call("https://nekos.life/api/v2/img/boobs"))
 
@@ -209,10 +209,10 @@ class nsfw(commands.Cog):
             )
             embed.set_footer(
                 text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
-                icon_url=ctx.message.author.avatar_url,
+                icon_url=ctx.message.author.avatar.url,
             )
             embed.set_author(
-                name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
+                name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url
             )
             embed.set_image(url=await api_call("https://nekos.life/api/v2/img/blowjob"))
 
@@ -237,10 +237,10 @@ class nsfw(commands.Cog):
             )
             embed.set_footer(
                 text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
-                icon_url=ctx.message.author.avatar_url,
+                icon_url=ctx.message.author.avatar.url,
             )
             embed.set_author(
-                name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
+                name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url
             )
             embed.set_image(url=await api_call("https://nekos.life/api/v2/img/pussy"))
 
@@ -270,10 +270,10 @@ class nsfw(commands.Cog):
             )
             embed.set_footer(
                 text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
-                icon_url=ctx.message.author.avatar_url,
+                icon_url=ctx.message.author.avatar.url,
             )
             embed.set_author(
-                name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
+                name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url
             )
             embed.set_image(url=await api_call("https://nekos.life/api/v2/img/spank"))
             await ctx.message.reply(embed=embed)
@@ -295,10 +295,10 @@ class nsfw(commands.Cog):
             )
             embed.set_footer(
                 text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
-                icon_url=ctx.message.author.avatar_url,
+                icon_url=ctx.message.author.avatar.url,
             )
             embed.set_author(
-                name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
+                name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url
             )
             embed.set_image(url=await api_call("https://nekos.life/api/v2/img/trap"))
             await ctx.message.reply(embed=embed)
@@ -322,10 +322,10 @@ class nsfw(commands.Cog):
             )
             embed.set_footer(
                 text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
-                icon_url=ctx.message.author.avatar_url,
+                icon_url=ctx.message.author.avatar.url,
             )
             embed.set_author(
-                name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
+                name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url
             )
             embed.set_image(
                 url=await api_call("https://shiro.gg/api/images/nsfw/thighs")
@@ -351,10 +351,10 @@ class nsfw(commands.Cog):
 
             embed.set_footer(
                 text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
-                icon_url=ctx.message.author.avatar_url,
+                icon_url=ctx.message.author.avatar.url,
             )
             embed.set_author(
-                name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
+                name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url
             )
 
             embed.set_image(url=response["message"])
@@ -377,10 +377,10 @@ class nsfw(commands.Cog):
             )
             embed.set_footer(
                 text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
-                icon_url=ctx.message.author.avatar_url,
+                icon_url=ctx.message.author.avatar.url,
             )
             embed.set_author(
-                name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
+                name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url
             )
             embed.set_image(url=await api_call("https://nekos.life/api/v2/img/les"))
             await ctx.message.reply(embed=embed)
@@ -404,10 +404,10 @@ class nsfw(commands.Cog):
             )
             embed.set_footer(
                 text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
-                icon_url=ctx.message.author.avatar_url,
+                icon_url=ctx.message.author.avatar.url,
             )
             embed.set_author(
-                name=self.bot.user.display_name, icon_url=self.bot.user.avatar_url
+                name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url
             )
             embed.set_image(url=await api_call("https://nekos.life/api/v2/img/erofeet"))
 
