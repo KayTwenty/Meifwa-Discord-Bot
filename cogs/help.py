@@ -39,6 +39,7 @@ class Help(commands.Cog):
     async def on_ready(self):
         log.warn(f"{self.__class__.__name__} Cog has been loaded")
 
+    @commands.guild_only()
     @commands.command(hidden=True)
     async def help(self, ctx, *, input: str = None):
         if "<@" in str(ctx.prefix) and ">" in str(ctx.prefix):
