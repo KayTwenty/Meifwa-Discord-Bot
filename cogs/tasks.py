@@ -1,5 +1,6 @@
 import asyncio
 from asyncio import sleep
+from asyncio.tasks import Task
 
 from discord.ext import commands, tasks
 import discord
@@ -30,3 +31,5 @@ class Tasks(commands.Cog):
         await self.bot.change_presence(activity=discord.Game("K-20 rad <3"))
         
 
+def setup(bot):
+    bot.add_cog(Tasks(bot))
