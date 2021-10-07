@@ -9,6 +9,7 @@ from boot.meifwa import MeifwaBot
 
 logging.getLogger("listeners")
 
+
 class Listeners(commands.Cog):
     def __init__(self, bot: MeifwaBot):
         self.bot = bot
@@ -17,6 +18,7 @@ class Listeners(commands.Cog):
 
     @commands.Cog.listener()
     async def on_command_error(self, ctx: commands.Context, error: commands.CommandError):
+        """Handle errors caused by commands."""
         # Skips errors that were already handled locally.
         if getattr(ctx, "handled", False):
             return
@@ -139,6 +141,7 @@ class Listeners(commands.Cog):
                     self.bot.logger.info(f"Failed to forward dms to the owner due to: {e}")
 
     async def edit_process_commands(self, message: discord.Message):
+        """Same as Airi's method (Airi.process_commands), but don't dispatch message_without_command."""
         if not message.author.bot:
             ctx = await self.bot.get_context(message)
             await self.bot.invoke(ctx)
@@ -159,6 +162,7 @@ class Listeners(commands.Cog):
         self.bot.logger.info(
             f"Removed {guild.name} from on-memory prefix cache and database table."
         )
+
 
 def setup(bot):
     bot.add_cog(Listeners(bot))
