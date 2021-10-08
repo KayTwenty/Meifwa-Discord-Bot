@@ -2,7 +2,9 @@ import os
 import platform
 import time
 
+from datetime import datetime, timezone
 from discord.ext import commands, vbu
+
 import aiohttp
 import discord
 import humanize
@@ -126,7 +128,7 @@ class misc(commands.Cog):
         )
         embed2.add_field(
             name="Uptime",
-            value=f"{humanize.time.naturaldelta(discord.utils.utcnow() - self.bot.uptime)}",
+            value=f"{humanize.time.naturaldelta(datetime.utcnow() - self.bot.uptime)}",
             inline=False,
         )
         embed2.add_field(
@@ -152,7 +154,7 @@ class misc(commands.Cog):
     async def uptime(self, ctx: commands.Context):
         """Shows bot's uptime."""
         since = self.bot.uptime.strftime("%H:%M:%S UTC | %Y-%m-%d")
-        delta = discord.utils.utcnow() - self.bot.uptime
+        delta = datetime.utcnow() - self.bot.uptime
         uptime_text = humanize.time.precisedelta(delta) or "Less than one second."
         embed = discord.Embed(colour=self.bot.ok_color)
         embed.add_field(name=f"{self.bot.user.name} has been up for:", value=uptime_text)

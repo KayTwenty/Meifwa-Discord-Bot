@@ -88,7 +88,7 @@ class Listeners(commands.Cog):
                     owner = await self.bot.fetch_user(o)
                     await owner.send(
                         embed=discord.Embed(
-                            title="You Baka!",
+                            title="You Sussy Baka!",
                             description=f"`{ctx.command}` errored out in `{ctx.guild}({ctx.guild.id})`\n```py\n{error}\n```",
                             color=self.bot.error_color,
                         )
