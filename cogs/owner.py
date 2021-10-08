@@ -426,6 +426,33 @@ class BotOwner(commands.Cog):
         except (discord.HTTPException, discord.Forbidden) as e:
             await ctx.send(embed=discord.Embed(description=e, color=self.bot.error_color))
 
+    @commands.command(name="frick", aliases=["sho"], hidden=True)
+    @commands.is_owner()
+    @commands.guild_only()
+    async def frick(self, ctx: commands.Context, limit: int = 50) -> None:
+
+        prefix = self.bot.get_config("config", "config", "prefix")
+
+        if ctx.channel.permissions_for(ctx.me).manage_messages:
+            messages = await ctx.channel.purge(
+                check=lambda message: message.author == ctx.me
+                or message.content.startswith(prefix),
+                bulk=True,
+                limit=limit,
+            )
+        else:
+            messages = await ctx.channel.purge(
+                check=lambda message: message.author == ctx.me, bulk=False, limit=limit
+            )
+
+        await ctx.send(
+            embed=discord.Embed(
+                description=f"Found and deleted `{len(messages)}` of my message(s) out of the last `{limit}` message(s).",
+                color=self.bot.ok_color,
+            ),
+            delete_after=5,
+        )
+
     @commands.command(hidden=True)
     @commands.is_owner()
     async def leave(self, ctx: commands.Context, guild: discord.Guild):
