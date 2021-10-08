@@ -97,7 +97,7 @@ class Help(commands.Cog):
                     text=f"Requested by {ctx.message.author}",
                     icon_url=self.bot.user.avatar.url,
                 )
-                embed.set_thumbnail(url=ctx.message.author.avatar_url)
+                embed.set_thumbnail(url=ctx.message.author.avatar.url)
                 embed.set_author(
                     name=ctx.message.author.display_name,
                     icon_url=self.bot.user.avatar.url,
