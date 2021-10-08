@@ -169,7 +169,7 @@ class misc(commands.Cog):
 
         em.set_author(name=self.bot.user.name,
                     icon_url=self.bot.user.avatar.url)
-        em.set_thumbnail(url=ctx.message.author.avatar_url)
+        em.set_thumbnail(url=ctx.message.author.avatar.url)
         em.add_field(
             name="Invite Me!",
             inline=False,
