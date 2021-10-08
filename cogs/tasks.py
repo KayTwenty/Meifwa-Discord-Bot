@@ -26,7 +26,7 @@ class Tasks(commands.Cog):
         await sleep(1500)
         await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=f"you @{self.bot.user.name} help"))
         await sleep(1500)
-        await self.bot.change_presence(activity=discord.Game("Purrrr"))
+        await self.bot.change_presence(activity=discord.Game("Don't know?"))
         await sleep(1500)
         await self.bot.change_presence(activity=discord.Game("Transfrogmers"))
         await sleep(1500)
