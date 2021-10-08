@@ -426,10 +426,10 @@ class BotOwner(commands.Cog):
         except (discord.HTTPException, discord.Forbidden) as e:
             await ctx.send(embed=discord.Embed(description=e, color=self.bot.error_color))
 
-    @commands.command(name="frick", aliases=["sho"], hidden=True)
+    @commands.command(name="erase", aliases=["sho"], hidden=True)
     @commands.is_owner()
     @commands.guild_only()
-    async def frick(self, ctx: commands.Context, limit: int = 50) -> None:
+    async def erase(self, ctx: commands.Context, limit: int = 50) -> None:
 
         prefix = self.bot.get_config("config", "config", "prefix")
 
