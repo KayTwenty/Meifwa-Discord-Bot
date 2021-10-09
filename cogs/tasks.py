@@ -31,6 +31,8 @@ class Tasks(commands.Cog):
         await self.bot.change_presence(activity=discord.Game("Transfrogmers"))
         await sleep(1500)
         await self.bot.change_presence(activity=discord.Game("K-20 rad <3"))
+        await sleep(1500)
+        await self.bot.change_presence(activity=discord.Game("nyah"))
         
 
 def setup(bot):
