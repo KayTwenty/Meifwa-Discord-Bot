@@ -43,7 +43,7 @@ class Snipe(commands.Cog):
         if message.attachments:
             snipe["attachment"] = message.attachments[0].proxy_url
 
-        await asyncio.sleep(120)
+        await asyncio.sleep(43200)
 
         if message.id == snipe["id"]:
             snipe["id"] = None
