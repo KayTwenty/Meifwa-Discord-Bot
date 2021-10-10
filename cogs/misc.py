@@ -18,7 +18,7 @@ class Misc(commands.Cog):
         self.bot = bot
 
     @commands.has_permissions(embed_links=True)
-    @commands.command()
+    @commands.command(name="ping", description="This pings the bot")
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def ping(
         self,
@@ -61,7 +61,7 @@ class Misc(commands.Cog):
         )
         await message.edit(embed=emb)
 
-    @commands.command()
+    @commands.command(name="stats", description="Shows the Stats")
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def stats(self, ctx: commands.Context):
         """Some stats about me."""
@@ -149,7 +149,7 @@ class Misc(commands.Cog):
         )
         await vbu.Paginator([embed, embed2, embed3], per_page=1).start(ctx)
 
-    @commands.command()
+    @commands.command(name="uptime", description="Shows the uptime")
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def uptime(self, ctx: commands.Context):
         """Shows bot's uptime."""

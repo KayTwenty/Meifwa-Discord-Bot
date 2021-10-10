@@ -18,9 +18,7 @@ class Tasks(commands.Cog):
         await self.bot.wait_until_ready()
         await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=f"@{self.bot.user.name} help"))
         await sleep(1500)
-        await self.bot.change_presence(activity=discord.Streaming(name=";help", url="https://www.youtube.com/watch?v=eDiu5rk8Mno"))
-        await sleep(1500)
-        await self.bot.change_presence(activity=discord.Streaming(name=";invite", url="https://tinyurl.com/b6dnkjpt"))
+        await self.bot.change_presence(activity=discord.Streaming(name=";invite", url="https://www.youtube.com/watch?v=eDiu5rk8Mno"))
         await sleep(1500)
         await self.bot.change_presence(activity=discord.Game(f"with {len(self.bot.users)} humans!"))
         await sleep(1500)
@@ -32,8 +30,8 @@ class Tasks(commands.Cog):
         await sleep(1500)
         await self.bot.change_presence(activity=discord.Game("K-20 rad <3"))
         await sleep(1500)
-        await self.bot.change_presence(activity=discord.Game("nyah"))
-        
+        await self.bot.change_presence(activity=discord.Game("Nyah Nyah"))
+        await sleep(1500)
 
 def setup(bot):
     bot.add_cog(Tasks(bot))

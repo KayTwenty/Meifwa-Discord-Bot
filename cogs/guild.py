@@ -9,7 +9,7 @@ class Guild(commands.Cog):
         self.bot = bot
         self.prefix_manager = PrefixManager(bot=self.bot)
 
-    @commands.group(name="prefix", description="Guild prefixes related commands", invoke_without_command=True)
+    @commands.group(name="prefix", description=";prefix set or ;prefix reset", invoke_without_command=True)
     async def prefix(self, ctx: commands.Context):
         g_prefix = self.bot.prefixes.get(str(ctx.guild.id)) or self.bot.get_config(
             "config", "config", "prefix"

@@ -74,7 +74,7 @@ class Snipe(commands.Cog):
             edit_snipe["guild"] = None
             edit_snipe["channel"] = None
 
-    @commands.command(aliases=["imagesnipe"])
+    @commands.command(name="snipe", aliases=["imagesnipe"], description="Shows deleted msgs and images")
     @commands.cooldown(1, 10, commands.BucketType.member)
     async def snipe(self, ctx: commands.Context):
         """Snipe the last deleted message, works with images"""
@@ -110,7 +110,7 @@ class Snipe(commands.Cog):
             await ctx.send(embed=embed)
             snipe["attachment"] = None
 
-    @commands.command(aliases=["esnipe"])
+    @commands.command(name="editsnipe", aliases=["esnipe"], description="It can show past edited msg")
     @commands.cooldown(1, 10, commands.BucketType.member)
     async def editsnipe(self, ctx: commands.Context):
         """Sneaky Sneaky snipe the edited message"""

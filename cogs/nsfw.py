@@ -57,7 +57,7 @@ class Nsfw(commands.Cog):
             await ctx.message.reply(embed=embed, delete_after=20)
 
     @commands.cooldown(5, 7, commands.BucketType.user)
-    @commands.command(name="feet", aliases=["feetgif", "foot"])
+    @commands.command(name="feet", aliases=["feetgif", "foot"], description="Yk what it does..")
     async def feet(self, ctx):
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
@@ -113,7 +113,7 @@ class Nsfw(commands.Cog):
             await ctx.message.reply(embed=embed, delete_after=20)
 
     @commands.cooldown(5, 7, commands.BucketType.user)
-    @commands.command(name="nekofuck", aliases=["nekosex", "nekogif"])
+    @commands.command(name="nekofuck", aliases=["nekosex", "nekogif"], description="Yk what it does..")
     async def nekofuck(self, ctx):
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
@@ -199,7 +199,7 @@ class Nsfw(commands.Cog):
             await ctx.message.reply(embed=embed, delete_after=20)
 
     @commands.cooldown(5, 7, commands.BucketType.user)
-    @commands.command(name="blowjob", aliases=["bj"])
+    @commands.command(name="blowjob", aliases=["bj"], description="No It doesn't say PJ")
     async def blowjob(self, ctx):
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
@@ -227,7 +227,7 @@ class Nsfw(commands.Cog):
             await ctx.message.reply(embed=embed, delete_after=20)
 
     @commands.cooldown(5, 7, commands.BucketType.user)
-    @commands.command()
+    @commands.command(name="pussy", description="It's not a cat command")
     async def pussy(self, ctx):
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
@@ -255,7 +255,7 @@ class Nsfw(commands.Cog):
             await ctx.message.reply(embed=embed, delete_after=20)
 
     @commands.cooldown(5, 7, commands.BucketType.user)
-    @commands.command()
+    @commands.command(name="spank", description="Yk what it does..")
     async def spank(self, ctx, user: commands.Greedy[discord.Member] = None):
         if ctx.channel.is_nsfw():
             if user == None:
@@ -287,7 +287,7 @@ class Nsfw(commands.Cog):
             await ctx.message.reply(embed=embed, delete_after=20)
 
     @commands.cooldown(5, 7, commands.BucketType.user)
-    @commands.command()
+    @commands.command(name="trap", description="Not a rat trap")
     async def trap(self, ctx):
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
@@ -312,7 +312,7 @@ class Nsfw(commands.Cog):
             await ctx.message.reply(embed=embed, delete_after=20)
         
     @commands.cooldown(5, 7, commands.BucketType.user)
-    @commands.command(name="thicc", aliases=["thiccthigh", "animethigh"])
+    @commands.command(name="thicc", aliases=["thiccthigh", "animethigh"], description="Dreamland command")
     async def thicc(self, ctx):
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
@@ -341,7 +341,7 @@ class Nsfw(commands.Cog):
             await ctx.message.reply(embed=embed, delete_after=20)
     
     @commands.cooldown(3, 7, commands.BucketType.user)
-    @commands.command(name="thigh", aliases=["thighs"])
+    @commands.command(name="thigh", aliases=["thighs"], description="Yk what it does..")
     async def thigh(self, ctx):
         if ctx.channel.is_nsfw():
             response = await api_call("https://nekobot.xyz/api/image?type=thigh", True)
@@ -369,7 +369,7 @@ class Nsfw(commands.Cog):
             await ctx.message.reply(embed=embed, delete_after=20)
 
     @commands.cooldown(5, 7, commands.BucketType.user)
-    @commands.command(name="lesbian")
+    @commands.command(name="lesbian", description="Yk what it does..")
     async def lesbian(self, ctx):
         if ctx.channel.is_nsfw():
             embed = discord.Embed(
@@ -394,7 +394,7 @@ class Nsfw(commands.Cog):
             await ctx.message.reply(embed=embed, delete_after=20)
         
     @commands.cooldown(1, 5, commands.BucketType.user)
-    @commands.command()
+    @commands.command(name="erofeet", description="Feet in a way")
     async def erofeet(self, ctx):
         if ctx.channel.is_nsfw():
             embed = discord.Embed(

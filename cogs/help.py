@@ -5,6 +5,7 @@ import DiscordUtils
 from discord import Embed
 from discord.ext import commands
 from discord.errors import Forbidden
+from discord.utils import normalise_optional_params
 from boot.meifwa import MeifwaBot
 
 log = logging.getLogger("help cog")
@@ -59,7 +60,11 @@ class Help(commands.Cog):
                 name=ctx.message.author.display_name,
                 icon_url=ctx.message.guild.icon.url,
             )
-
+            emb.add_field(
+                name="Consider Upvoting?",
+                value=f"[Click Here](https://discordbotlist.com/bots/meifwa/upvote)",
+                inline=False
+            )
             cogs_desc = ""
             for cog in self.bot.cogs:
                 commands = self.bot.get_cog(cog).get_commands()
@@ -121,7 +126,7 @@ class Help(commands.Cog):
                             embed.title = f"{command.cog_name} - Commands"
                             embed.description = self.bot.cogs[cog].__doc__
                             embed.set_footer(
-                                text="<> Denotes required argument. [] Denotes optional argument"
+                                text="Commands: @Meifwa help"
                             )
                             if command.hidden:
                                 continue

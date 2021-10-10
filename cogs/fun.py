@@ -11,7 +11,7 @@ class Fun(commands.Cog):
     def __init__(self, bot: MeifwaBot):
         self.bot = bot
 
-    @commands.command(aliases=['sex', 'fuck']) #Frick Command
+    @commands.command(aliases=['sex', 'fuck'], description="You know what this does") #Frick Command
     async def frick(self, ctx, member: discord.Member):
         embed = discord.Embed(title=f"{ctx.message.author.name} wants to fuck you. Do you accept?", description="Type yes or no.", color=self.bot.error_color, timestamp=ctx.message.created_at)
         embed.set_author(name=ctx.message.author.display_name, icon_url=self.bot.user.avatar.url)
