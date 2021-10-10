@@ -4,7 +4,7 @@ from discord.ext import commands
 from boot.dbmanagers import PrefixManager
 from boot.meifwa import MeifwaBot
 
-class guild(commands.Cog):
+class Guild(commands.Cog):
     def __init__(self, bot: MeifwaBot):
         self.bot = bot
         self.prefix_manager = PrefixManager(bot=self.bot)
@@ -44,4 +44,4 @@ class guild(commands.Cog):
         )
 
 def setup(bot):
-    bot.add_cog(guild(bot))
+    bot.add_cog(Guild(bot))

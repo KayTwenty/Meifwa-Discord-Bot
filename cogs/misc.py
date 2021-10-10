@@ -13,7 +13,7 @@ import psutil
 from boot.funcs import box
 from boot.meifwa import MeifwaBot
 
-class misc(commands.Cog):
+class Misc(commands.Cog):
     def __init__(self, bot: MeifwaBot):
         self.bot = bot
 
@@ -180,4 +180,4 @@ class misc(commands.Cog):
         await ctx.send(embed=em)
 
 def setup(bot):
-    bot.add_cog(misc(bot))
+    bot.add_cog(Misc(bot))

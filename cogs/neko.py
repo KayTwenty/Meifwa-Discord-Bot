@@ -18,7 +18,7 @@ async def api_call(call_uri, state=True):
 			if state == False:
 				return response
 
-class neko(commands.Cog):
+class Social(commands.Cog):
     def __init__(self, bot: MeifwaBot):
         self.bot = bot
 
@@ -309,4 +309,4 @@ class neko(commands.Cog):
         await ctx.reply(embed=embed)
 
 def setup(bot):
-    bot.add_cog(neko(bot))
+    bot.add_cog(Social(bot))

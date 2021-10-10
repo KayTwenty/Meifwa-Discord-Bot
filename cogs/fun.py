@@ -7,7 +7,7 @@ from discord.ext.commands import cooldown, BucketType
 
 from boot.meifwa import MeifwaBot
 
-class fun(commands.Cog):
+class Fun(commands.Cog):
     def __init__(self, bot: MeifwaBot):
         self.bot = bot
 
@@ -31,4 +31,4 @@ class fun(commands.Cog):
         await ctx.reply(embed=embed)
 
 def setup(bot):
-    bot.add_cog(fun(bot))
+    bot.add_cog(Fun(bot))

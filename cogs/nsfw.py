@@ -17,7 +17,7 @@ async def api_call(call_uri, returnObj=False):
 			elif returnObj == True:
 				return response
 
-class nsfw(commands.Cog):
+class Nsfw(commands.Cog):
     def __init__(self, bot: MeifwaBot):
 	    self.bot = bot
 
@@ -423,4 +423,4 @@ class nsfw(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(nsfw(bot))
+    bot.add_cog(Nsfw(bot))
