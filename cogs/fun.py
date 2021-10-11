@@ -46,13 +46,13 @@ class Fun(commands.Cog):
         await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                f'https://some-random-api.ml/canvas/horny?avatar={member.avatar_url_as(format="png")}'
+                f'https://some-random-api.ml/canvas/horny?avatar={member.avatar.url_as(format="png")}'
             ) as af:
                 if 300 > af.status >= 200:
                     fp = io.BytesIO(await af.read())
                     file = discord.File(fp, "horny.png")
                     embed = discord.Embed(title="Bam! U're free!", color=0xf1f1f1)
-                    embed.set_author(name="Command used by: " + str(ctx.message.author), icon_url=ctx.message.author.avatar_url)
+                    embed.set_author(name="Command used by: " + str(ctx.message.author), icon_url=ctx.message.author.avatar.url)
                     embed.set_image(url="attachment://horny.png")
                     embed.set_footer(text=f'Command: {ctx.prefix}horny @user')
                     await ctx.reply(embed=embed, file=file)
