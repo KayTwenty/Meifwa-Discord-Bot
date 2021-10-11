@@ -44,8 +44,11 @@ class Fun(commands.Cog):
     @commands.command(aliases=['meow', 'simba', 'cats'], description="Cats!!")
     async def cat(self, ctx):
         response = await api_call("http://aws.random.cat/meow", False)
-        embed = discord.Embed(title="Cute catto!",
-                              color=ctx.message.author.color, timestamp=ctx.message.created_at)
+        embed = discord.Embed(
+            title="Cute catto!",
+            color=ctx.message.author.color, 
+            timestamp=ctx.message.created_at
+            )
         embed.set_image(url=response['file'])
         embed.set_author(name=self.bot.user.display_name,
                          icon_url=self.bot.user.avatar_url)
