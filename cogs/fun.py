@@ -51,7 +51,7 @@ class Fun(commands.Cog):
             )
         embed.set_image(url=response['file'])
         embed.set_author(name=self.bot.user.display_name,
-                         icon_url=self.bot.user.avatar_url)
+                         icon_url=self.bot.user.avatar.url)
         embed.set_footer(text=f"Command: {ctx.prefix}cat @user")
         await ctx.message.reply(embed=embed)
 
@@ -64,7 +64,7 @@ class Fun(commands.Cog):
             timestamp=ctx.message.created_at
         )
         embed.set_author(name=self.bot.user.display_name,
-                         icon_url=self.bot.user.avatar_url)
+                         icon_url=self.bot.user.avatar.url)
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/goose"))
         embed.set_footer(text=f"Command: {ctx.prefix}goose @user")
         await ctx.message.reply(embed=embed)
@@ -78,7 +78,7 @@ class Fun(commands.Cog):
             timestamp=ctx.message.created_at
         )
         embed.set_author(name=self.bot.user.display_name,
-                         icon_url=self.bot.user.avatar_url)
+                         icon_url=self.bot.user.avatar.url)
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/waifu"))
         embed.set_footer(text=f"Command: {ctx.prefix}waifu @user")
         await ctx.send(embed=embed)
