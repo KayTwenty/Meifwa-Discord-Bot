@@ -54,7 +54,7 @@ class Social(commands.Cog):
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/poke"))
         embed.set_author(
                 name=ctx.message.author.display_name,
-                icon_url=self.bot.user.avatar.url,
+                icon_url=ctx.message.author.avatar.url,
             )
         embed.set_footer(text=f"Command: {ctx.prefix}poke @user")
         await ctx.reply(embed=embed)
@@ -79,7 +79,7 @@ class Social(commands.Cog):
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/pat"))
         embed.set_author(
                 name=ctx.message.author.display_name,
-                icon_url=self.bot.user.avatar.url,
+                icon_url=ctx.message.author.avatar.url,
             )
         embed.set_footer(text=f"Command: {ctx.prefix}pat @user")
         await ctx.reply(embed=embed)
@@ -100,7 +100,7 @@ class Social(commands.Cog):
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/baka"))
         embed.set_author(
                 name=ctx.message.author.display_name,
-                icon_url=self.bot.user.avatar.url,
+                icon_url=ctx.message.author.avatar.url,
             )
         embed.set_footer(text=f"Command: {ctx.prefix}baka @user")
         await ctx.reply(embed=embed)
@@ -122,7 +122,7 @@ class Social(commands.Cog):
         embed.set_image(url=response['image'])
         embed.set_author(
                 name=ctx.message.author.display_name,
-                icon_url=self.bot.user.avatar.url,
+                icon_url=ctx.message.author.avatar.url,
             )
         embed.set_footer(text=f"Command: {ctx.prefix}lick @user")
         await ctx.reply(embed=embed)
@@ -143,7 +143,7 @@ class Social(commands.Cog):
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/hug"))
         embed.set_author(
                 name=ctx.message.author.display_name,
-                icon_url=self.bot.user.avatar.url,
+                icon_url=ctx.message.author.avatar.url,
             )
         embed.set_footer(text=f"Command: {ctx.prefix}hug @user")
         await ctx.reply(embed=embed)
@@ -169,7 +169,7 @@ class Social(commands.Cog):
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/kiss"))
         embed.set_author(
                 name=ctx.message.author.display_name,
-                icon_url=self.bot.user.avatar.url,
+                icon_url=ctx.message.author.avatar.url,
             )
         embed.set_footer(text=f"Command: {ctx.prefix}kiss @user")
         await ctx.reply(embed=embed)
@@ -190,7 +190,7 @@ class Social(commands.Cog):
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/cuddle"))
         embed.set_author(
                 name=ctx.message.author.display_name,
-                icon_url=self.bot.user.avatar.url,
+                icon_url=ctx.message.author.avatar.url,
             )
         embed.set_footer(text=f"Command: {ctx.prefix}cuddle @user")
         await ctx.reply(embed=embed)
@@ -215,7 +215,7 @@ class Social(commands.Cog):
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/slap"))
         embed.set_author(
                 name=ctx.message.author.display_name,
-                icon_url=self.bot.user.avatar.url,
+                icon_url=ctx.message.author.avatar.url,
             )
         embed.set_footer(text=f"Command: {ctx.prefix}slap @user")
         await ctx.reply(embed=embed)
@@ -240,7 +240,7 @@ class Social(commands.Cog):
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/tickle"))
         embed.set_author(
                 name=ctx.message.author.display_name,
-                icon_url=self.bot.user.avatar.url,
+                icon_url=ctx.message.author.avatar.url,
             )
         embed.set_footer(text=f"Command: {ctx.prefix}tickle @user")
         await ctx.reply(embed=embed)
@@ -261,7 +261,7 @@ class Social(commands.Cog):
         embed.set_image(url=await api_call("https://nekos.life/api/v2/img/feed"))
         embed.set_author(
                 name=ctx.message.author.display_name,
-                icon_url=self.bot.user.avatar.url,
+                icon_url=ctx.message.author.avatar.url,
             )
         embed.set_footer(text=f"Command: {ctx.prefix}feed @user")
         await ctx.reply(embed=embed)
@@ -282,7 +282,7 @@ class Social(commands.Cog):
         embed.set_image(url=await api_call("https://api.waifu.pics/sfw/bite"))
         embed.set_author(
                 name=ctx.message.author.display_name,
-                icon_url=self.bot.user.avatar.url,
+                icon_url=ctx.message.author.avatar.url,
             )
         embed.set_footer(text=f"Command: {ctx.prefix}bite @user")
         await ctx.reply(embed=embed)
@@ -303,7 +303,7 @@ class Social(commands.Cog):
         embed.set_image(url=await api_call("https://api.waifu.pics/sfw/bonk"))
         embed.set_author(
                 name=ctx.message.author.display_name,
-                icon_url=self.bot.user.avatar.url,
+                icon_url=ctx.message.author.avatar.url,
             )
         embed.set_footer(text=f"Command: {ctx.prefix}bonk @user")
         await ctx.reply(embed=embed)
