@@ -2,9 +2,10 @@ import discord, asyncio
 import aiohttp
 import random
 import logging
+import io
+
 from discord.ext import commands
 from discord.ext.commands import cooldown, BucketType
-
 from boot.meifwa import MeifwaBot
 
 async def api_call(call_uri, state=True):
@@ -39,23 +40,25 @@ class Fun(commands.Cog):
         embed.set_footer(text=f"Command: {ctx.prefix}fuck @user")
         await ctx.reply(embed=embed)
 
-    @commands.cooldown(3, 5, commands.BucketType.user)
-    @commands.command(aliases=['dog'], name="woof", description="Shows a doggo")
-    async def woof(self, ctx):  
-        embed = discord.Embed(
-            title="***Woof Woof***",
-            description=f"Random Doggo Images",
-            color=ctx.message.author.color,
-            timestamp=ctx.message.created_at,
-        )
-        embed.set_image(url=await api_call("https://random.dog/"))
-        embed.set_author(
-                name=ctx.message.author.display_name,
-                icon_url=self.bot.user.avatar.url,
-            )
-        embed.set_footer(text=f"Command: {ctx.prefix}woof")
-        await ctx.reply(embed=embed)
-    
+    @commands.command(name="horny", description="Gives people horny license")
+    async def horny(self, ctx, member: discord.Member = None):   
+        member = member or ctx.author
+        await ctx.trigger_typing()
+        async with aiohttp.ClientSession() as session:
+            async with session.get(
+                f'https://some-random-api.ml/canvas/horny?avatar={member.avatar_url_as(format="png")}'
+            ) as af:
+                if 300 > af.status >= 200:
+                    fp = io.BytesIO(await af.read())
+                    file = discord.File(fp, "horny.png")
+                    embed = discord.Embed(title="Bam! U're free!", color=0xf1f1f1)
+                    embed.set_author(name="Command used by: " + str(ctx.message.author), icon_url=ctx.message.author.avatar_url)
+                    embed.set_image(url="attachment://horny.png")
+                    embed.set_footer(text=f'Command: {ctx.prefix}horny @user')
+                    await ctx.reply(embed=embed, file=file)
+                else:
+                    await ctx.reply('No horny :(')
+                await session.close()
 
 def setup(bot):
     bot.add_cog(Fun(bot))
