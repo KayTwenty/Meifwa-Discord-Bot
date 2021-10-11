@@ -7,6 +7,15 @@ from discord.ext.commands import cooldown, BucketType
 
 from boot.meifwa import MeifwaBot
 
+async def api_call(call_uri, state=True):
+	async with aiohttp.ClientSession() as session:
+		async with session.get(f"{call_uri}") as response:
+			response = await response.json()
+			if state:
+				return response['url']
+			if state == False:
+				return response
+
 class Fun(commands.Cog):
     def __init__(self, bot: MeifwaBot):
         self.bot = bot
@@ -27,8 +36,26 @@ class Fun(commands.Cog):
         embed = discord.Embed(title="This person had sex with you ;)", description="**{1}** fucked **{0}**!".format(member.name, ctx.message.author.name), color=ctx.message.author.color, timestamp=ctx.message.created_at)
         embed.set_author(name="Fucked by " + str(ctx.message.author), icon_url=ctx.message.author.avatar.url)
         embed.set_image(url="https://media1.tenor.com/images/fa98b23ca1dba1925da62f834f27153f/tenor.gif?itemid=19355212")
-        embed.set_footer(text="Command: ;fuck @user")
+        embed.set_footer(text=f"Command: {ctx.prefix}fuck @user")
         await ctx.reply(embed=embed)
+
+    @commands.cooldown(3, 5, commands.BucketType.user)
+    @commands.command(aliases=['dog'], name="woof", description="Shows a doggo")
+    async def woof(self, ctx):  
+        embed = discord.Embed(
+            title="***Woof Woof***",
+            description=f"Random Doggo Images",
+            color=ctx.message.author.color,
+            timestamp=ctx.message.created_at,
+        )
+        embed.set_image(url=await api_call("https://random.dog/"))
+        embed.set_author(
+                name=ctx.message.author.display_name,
+                icon_url=self.bot.user.avatar.url,
+            )
+        embed.set_footer(text=f"Command: {ctx.prefix}woof")
+        await ctx.reply(embed=embed)
+    
 
 def setup(bot):
     bot.add_cog(Fun(bot))
