@@ -40,6 +40,45 @@ class Fun(commands.Cog):
         embed.set_footer(text=f"Command: {ctx.prefix}fuck @user")
         await ctx.reply(embed=embed)
 
-    
+    @commands.cooldown(1, 5, commands.BucketType.user)
+    @commands.command(aliases=['meow', 'simba', 'cats'], description="Cats!!")
+    async def cat(self, ctx):
+        response = await api_call("http://aws.random.cat/meow", False)
+        embed = discord.Embed(title="Cute catto!",
+                              color=ctx.message.author.color, timestamp=ctx.message.created_at)
+        embed.set_image(url=response['file'])
+        embed.set_author(name=self.bot.user.display_name,
+                         icon_url=self.bot.user.avatar_url)
+        embed.set_footer(text=f"Command: {ctx.prefix}cat @user")
+        await ctx.message.reply(embed=embed)
+
+    @commands.cooldown(5, 7, commands.BucketType.user)
+    @commands.command(name="goose", description="Shows a picture of a goose")
+    async def goose(self, ctx):
+        embed = discord.Embed(
+            title="",
+            color=ctx.message.author.color,
+            timestamp=ctx.message.created_at
+        )
+        embed.set_author(name=self.bot.user.display_name,
+                         icon_url=self.bot.user.avatar_url)
+        embed.set_image(url=await api_call("https://nekos.life/api/v2/img/goose"))
+        embed.set_footer(text=f"Command: {ctx.prefix}goose @user")
+        await ctx.message.reply(embed=embed)
+
+    @commands.cooldown(3, 7, commands.BucketType.user)
+    @commands.command(name="waifu", description="Generates waifu")
+    async def waifu(self, ctx):
+        embed = discord.Embed(
+            title="",
+            color=ctx.message.author.color,
+            timestamp=ctx.message.created_at
+        )
+        embed.set_author(name=self.bot.user.display_name,
+                         icon_url=self.bot.user.avatar_url)
+        embed.set_image(url=await api_call("https://nekos.life/api/v2/img/waifu"))
+        embed.set_footer(text=f"Command: {ctx.prefix}waifu @user")
+        await ctx.send(embed=embed)
+
 def setup(bot):
     bot.add_cog(Fun(bot))
