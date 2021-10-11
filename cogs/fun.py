@@ -46,7 +46,7 @@ class Fun(commands.Cog):
         await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
             async with session.get(
-                f'https://some-random-api.ml/canvas/horny?avatar={member.avatar.url_as(format="png")}'
+                f'https://some-random-api.ml/canvas/horny?avatar={member.avatar.url(format="png")}'
             ) as af:
                 if 300 > af.status >= 200:
                     fp = io.BytesIO(await af.read())
