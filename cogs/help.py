@@ -77,7 +77,7 @@ class Help(commands.Cog):
                 if hidden_count == len(commands):
                     continue
                 emb.add_field(
-                    name=f"{cog}", value="Select this module", inline=False)
+                    name=f"{cog}", value=self.bot.cogs[cog].__doc__, inline=False)
             commands_desc = ""
             for command in self.bot.walk_commands():
                 if not command.cog_name and not command.hidden:
