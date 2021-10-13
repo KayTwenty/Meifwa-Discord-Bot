@@ -14,25 +14,21 @@ from boot.meifwa import MeifwaBot
 class Music(commands.Cog):
     def __init__(self, bot: MeifwaBot):
         self.bot = bot
-        self.bot.loop.create_task(self.node_init())
-        self.ll_ip = self.bot.get_config("config", "music", "ll_host")
-        self.ll_ws_port = self.bot.get_config("config", "music", "ll_port")
-        self.ll_password = self.bot.get_config("config", "music", "ll_password")
+        
+        if not hasattr(bot, 'lavalink'):  # This ensures the client isn't overwritten during cog reloads.
+            bot.lavalink = lavalink.Client(bot.user.id)
+            bot.lavalink.add_node('127.0.0.1', 7000, 'testing', 'na', 'default-node')  # Host, Port, Password, Region, Name
+            bot.add_listener(bot.lavalink.voice_update_handler, 'on_socket_response')
 
-    async def node_init(self):
-        """Initialize LavaLink Node"""
-        try:
-            await lavalink.initialize(
-                bot=self.bot, host=self.ll_ip, ws_port=self.ll_ws_port, password=self.ll_password
-            )
-            self.bot.logger.info(
-                f"Initialized LavaLink Node\nIP: {self.ll_ip}\nPort: {self.ll_ws_port}"
-            )
-        except:
-            self.bot.logger.warning(
-                "Error thrown in Music Init. This usually means theres an error in your ll credentials.\nUnloading Cog Now."
-            )
-            self.cog_unload()
+        lavalink.add_event_hook(self.track_hook)
+
+    def cog_unload(self):
+        """ Cog unload handler. This removes any event hooks that were registered. """
+        self.bot.lavalink._event_hooks.clear()
+
+    async def cog_before_invoke(self, ctx):
+        """ Command before-invoke handler. """
+        await self.ensure_voice(ctx)
 
     async def ensure_voice(self, ctx):
         """ This check ensures that the bot and command author are in the same voicechannel. """
