@@ -3,3 +3,4 @@ data/config.json
 /.vscode
 *.db
 config.toml
+logs

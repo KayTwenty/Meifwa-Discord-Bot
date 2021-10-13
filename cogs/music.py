@@ -9,7 +9,6 @@ from discord.ext import commands
 import discord
 
 from utils.commons.regex import url_rx, track_title_rx
-from dislash import ActionRow, Button, ButtonStyle
 from boot.meifwa import MeifwaBot
 
 class Music(commands.Cog):
@@ -156,11 +155,6 @@ class Music(commands.Cog):
 
     @commands.command(aliases=['np', 'playing'], name="now", description="Shows the currently playing track")
     async def now(self, ctx):
-        row = ActionRow(
-            Button(style=ButtonStyle.green, label="⏯", custom_id="resume_button"),
-            Button(style=ButtonStyle.green, label="⏭", custom_id="skip_button"),
-            Button(style=ButtonStyle.green, label="🔁", custom_id="loop_button")
-            )
         player = self.bot.lavalink.player_manager.get(ctx.guild.id)
 
         if not player.current:
@@ -180,45 +174,8 @@ class Music(commands.Cog):
             embed.set_thumbnail(url=currentTrackData["thumbnail"]["genius"])
             embed.description += f"\n[LYRICS]({currentTrackData['links']['genius']}) | [ARTIST](https://genius.com/artists/{currentTrackData['author'].replace(' ', '%20')})"
 
-        msg = await ctx.reply(embed=embed, components=[row])
+        await ctx.reply(embed=embed)
 
-        on_click = msg.create_click_listener(timeout=60)
-
-        @on_click.matching_id("skip_button")
-        async def on_skip_button(inter):
-            player = self.bot.lavalink.player_manager.get(ctx.guild.id)
-
-            await player.skip()
-            await inter.reply('⏭ | Skipped.')
-        
-        @on_click.matching_id("resume_button")
-        async def on_resume_button(inter):
-            player = self.bot.lavalink.player_manager.get(ctx.guild.id)
-
-            if not player.is_playing:
-                return await inter.reply('Not playing.')
-
-            if player.paused:
-                await player.set_pause(False)
-                await inter.reply('⏯ | Resumed')
-            else:
-                await player.set_pause(True)
-                await inter.reply('⏯ | Paused')
-        
-        @on_click.matching_id("loop_button")
-        async def on_loop_button(inter):
-            player = self.bot.lavalink.player_manager.get(ctx.guild.id)
-
-            if not player.is_playing:
-                return await inter.reply('Nothing playing.')
-
-            player.repeat = not player.repeat
-            await ctx.inter('🔁 | Repeat ' + ('enabled' if player.repeat else 'disabled'))
-
-        @on_click.timeout
-        async def on_timeout():
-            await msg.edit(components=[])
-        
     @commands.command(aliases=['q'], name="queue", description="Shows the player's queue")
     async def queue(self, ctx, page: int = 1):
         player = self.bot.lavalink.player_manager.get(ctx.guild.id)
