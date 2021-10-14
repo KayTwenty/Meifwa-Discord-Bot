@@ -2,6 +2,7 @@ import asyncio
 import logging
 import os
 import discord
+import lavalink
 import toml
 import datetime
 
@@ -130,6 +131,7 @@ class MeifwaBot(commands.AutoShardedBot):
     async def close(self):
         """Logs out bot and closes any active connections. Method is used to restart bot."""
         await super().close()
+        await lavalink.close(self)
         self.logger.info("Severed LL Connections.")
         if self._session:
             await self._session.close()
@@ -140,6 +142,7 @@ class MeifwaBot(commands.AutoShardedBot):
 
     async def full_exit(self):
         """Completely kills the process and closes all connections. However, it will continue to restart if being ran with PM2"""
+        await lavalink.close(self)
         if self._session:
             await self._session.close()
             self.logger.info("HTTP Client Session Closed.")
