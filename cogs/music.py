@@ -5,8 +5,6 @@ from discord.ext import commands, vbu
 from tabulate import tabulate
 import discord
 import lavalink
-from discord.interactions import Interaction
-from discord.ui import button, View, Button
 
 from boot.context import MeifwaContext
 from boot.funcs import box, parse_llnode_stat
@@ -193,7 +191,7 @@ class Music(commands.Cog):
             color=self.bot.ok_color,
             timestamp=discord.utils.utcnow(),
         )
-        components = discord.ui.Message.Components(
+        components = discord.ui.Message.components(
             discord.ui.ActionRow(
                 discord.ui.SelectMenu(
                     custom_id="MUSIC_TRACK",
