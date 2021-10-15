@@ -5,7 +5,8 @@ from discord.ext import commands, vbu
 from tabulate import tabulate
 import discord
 import lavalink
-from discord_components import Button, ButtonStyle, Select, SelectOption
+from discord.interactions import Interaction
+from discord.ui import button, View, Button
 
 from boot.context import MeifwaContext
 from boot.funcs import box, parse_llnode_stat

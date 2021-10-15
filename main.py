@@ -3,7 +3,6 @@ import logging
 import os
 
 from discord.ext import commands
-from discord_components import DiscordComponents
 import discord
 
 from boot.dbmanagers import PrefixManager
@@ -19,7 +18,6 @@ def get_prefix(bot: MeifwaBot, msg: discord.Message):
 
 bot = MeifwaBot(command_prefix=get_prefix, case_insensitive=True)
 pm = PrefixManager(bot=bot)
-DiscordComponents(bot)
 
 async def DatabaseInit(Schema: str):
     bot.logger.info("Initializing Database...")
