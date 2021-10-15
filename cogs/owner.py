@@ -7,8 +7,7 @@ import subprocess
 import textwrap
 import traceback
 
-from discord.interactions import Interaction
-from discord.ui import button, View, Button
+
 
 from discord.ext import commands
 from contextlib import redirect_stdout
@@ -72,7 +71,7 @@ class BotOwner(commands.Cog):
                     color=self.bot.error_color,
                 )
             )
-        components = discord.ui.MessageComponents(
+        components = discord.ui.Message.Components(
             discord.ui.ActionRow(
                 discord.ui.Button(label="yes", style=discord.ui.ButtonStyle.green)
             )
@@ -225,7 +224,7 @@ class BotOwner(commands.Cog):
         """Restarts the bot"""
         embed = discord.Embed(title="Are you sure you want me to restart?")
         embed.color = self.bot.ok_color
-        components = discord.ui.MessageComponents(
+        components = discord.ui.Message.Components(
             discord.ui.ActionRow(
                 discord.ui.Button(
                     label="Yes", style=discord.ui.ButtonStyle.green, custom_id="YES_RESTART"
@@ -270,7 +269,7 @@ class BotOwner(commands.Cog):
 
         embed = discord.Embed(title="Are you sure you want me to shutdown?")
         embed.color = self.bot.ok_color
-        components = discord.ui.MessageComponents(
+        components = discord.ui.Message.Components(
             discord.ui.ActionRow(
                 discord.ui.Button(
                     label="Yes", style=discord.ui.ButtonStyle.green, custom_id="YES_SHUT"

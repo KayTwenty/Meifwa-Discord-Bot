@@ -17,6 +17,14 @@ def get_prefix(bot: MeifwaBot, msg: discord.Message):
     return commands.when_mentioned_or(bot.prefixes.get(str(msg.guild.id)))(bot, msg)
 
 bot = MeifwaBot(command_prefix=get_prefix, case_insensitive=True)
+
+if discord.__version__ != "2.0.0a":
+    bot.logger.critical(
+        f"DISCORD.PY VERSION REQUIREMENT NOT MET. EXPECTED 2.0.0a, GOT {discord.__version__}."
+    )
+    bot.logger.critical("EXITING!")
+    exit(code=26)
+
 pm = PrefixManager(bot=bot)
 
 async def DatabaseInit(Schema: str):

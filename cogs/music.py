@@ -193,7 +193,7 @@ class Music(commands.Cog):
             color=self.bot.ok_color,
             timestamp=discord.utils.utcnow(),
         )
-        components = discord.ui.MessageComponents(
+        components = discord.ui.Message.Components(
             discord.ui.ActionRow(
                 discord.ui.SelectMenu(
                     custom_id="MUSIC_TRACK",
