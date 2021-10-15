@@ -6,7 +6,8 @@ import re
 import subprocess
 import textwrap
 import traceback
-from discord_ui import UI, LinkButton, Button
+
+from discord_components import Button, ButtonStyle, Select, SelectOption
 
 from discord.ext import commands
 from contextlib import redirect_stdout
