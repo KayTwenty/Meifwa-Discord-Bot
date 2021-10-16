@@ -237,7 +237,7 @@ class Music(commands.Cog):
             await ctx.send_ok(f"Added {tracks.tracks[a_int].title} to the queue.")
         else:
             track = tracks.tracks[0]
-            embed.discord.Embed(title=f"Now Playing {tracks.tracks[a_int].title}", color="ffb6c1")
+            embed = discord.Embed(title=f"Now Playing {tracks.tracks[a_int].title}", color="ffb6c1")
             embed.set_thumbnail(url=f"https://i.ytimg.com/vi/{track['info']['identifier']}/hqdefault.jpg")
             embed.set_footer(name=f"Like what you hear? Check out [Spot](https://tinyurl.com/2v2pkr8e)")
             await ctx.send(embed=embed)
