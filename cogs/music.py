@@ -43,7 +43,7 @@ class Music(commands.Cog):
         await lavalink.connect(ctx.author.voice.channel, True)
         await ctx.send_ok(f"Connected to {ctx.author.voice.channel.name}")
 
-    @commands.command(aliases=["np"])
+    @commands.command(aliases=["np", "now"])
     async def nowplaying(self, ctx: MeifwaContext):
         """See what the current song is"""
         try:
@@ -104,7 +104,7 @@ class Music(commands.Cog):
         else:
             await ctx.send(tabs[0])
 
-    @commands.command()
+    @commands.command(aliases=["vol"])
     async def volume(self, ctx: MeifwaContext, vol: int = None):
         """Change Volume"""
         try:
@@ -258,7 +258,7 @@ class Music(commands.Cog):
             await ctx.send_error("No player found")
         await player.resume()
 
-    @commands.command()
+    @commands.command(aliases=["dc"])
     async def disconnect(self, ctx: MeifwaContext):
         """Disconnect me from vc"""
         if not ctx.me.voice:
