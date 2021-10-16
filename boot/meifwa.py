@@ -49,7 +49,7 @@ class MeifwaBot(commands.AutoShardedBot):
         self.uptime = None
         self._session = None
         self.startup_time = datetime.datetime.utcnow()
-        self.version = "3.2.2"
+        self.version = "4.0.0"
         self.db = Database("sqlite:///meifwa.db")
         self.executed_commands = 0
         self.prefixes = {}
