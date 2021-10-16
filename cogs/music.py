@@ -236,7 +236,10 @@ class Music(commands.Cog):
         if player.is_playing:
             await ctx.send_ok(f"Added {tracks.tracks[a_int].title} to the queue.")
         else:
-            await ctx.send_ok(f"Now Playing {tracks.tracks[a_int].title}")
+            track = tracks.tracks[0]
+            embed.discord.Embed(title=f"Now Playing {tracks.tracks[a_int].title}")
+            embed.set_thumbnail(url=f"https://i.ytimg.com/vi/{track['info']['identifier']}/hqdefault.jpg")
+            embed.set_footer(name=f"Like what you hear? Check out [Spot](https://tinyurl.com/2v2pkr8e)")
         if not player.current:
             await player.play()
 
