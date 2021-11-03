@@ -56,7 +56,7 @@ class Social(commands.Cog):
                 name=ctx.message.author.display_name,
                 icon_url=ctx.message.author.avatar.url,
             )
-        embed.set_footer(text=f"Command: {ctx.prefix}poke @user")
+        embed.set_footer(text=f"Command: {ctx.prefix}poke @mention")
         await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
@@ -81,7 +81,7 @@ class Social(commands.Cog):
                 name=ctx.message.author.display_name,
                 icon_url=ctx.message.author.avatar.url,
             )
-        embed.set_footer(text=f"Command: {ctx.prefix}pat @user")
+        embed.set_footer(text=f"Command: {ctx.prefix}pat @mention")
         await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
@@ -102,7 +102,7 @@ class Social(commands.Cog):
                 name=ctx.message.author.display_name,
                 icon_url=ctx.message.author.avatar.url,
             )
-        embed.set_footer(text=f"Command: {ctx.prefix}baka @user")
+        embed.set_footer(text=f"Command: {ctx.prefix}baka @mention")
         await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
@@ -124,7 +124,7 @@ class Social(commands.Cog):
                 name=ctx.message.author.display_name,
                 icon_url=ctx.message.author.avatar.url,
             )
-        embed.set_footer(text=f"Command: {ctx.prefix}lick @user")
+        embed.set_footer(text=f"Command: {ctx.prefix}lick @mention")
         await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
@@ -145,7 +145,7 @@ class Social(commands.Cog):
                 name=ctx.message.author.display_name,
                 icon_url=ctx.message.author.avatar.url,
             )
-        embed.set_footer(text=f"Command: {ctx.prefix}hug @user")
+        embed.set_footer(text=f"Command: {ctx.prefix}hug @mention")
         await ctx.reply(embed=embed)
     
     @commands.cooldown(3, 5, commands.BucketType.user)
@@ -171,7 +171,7 @@ class Social(commands.Cog):
                 name=ctx.message.author.display_name,
                 icon_url=ctx.message.author.avatar.url,
             )
-        embed.set_footer(text=f"Command: {ctx.prefix}kiss @user")
+        embed.set_footer(text=f"Command: {ctx.prefix}kiss @mention")
         await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
@@ -192,7 +192,7 @@ class Social(commands.Cog):
                 name=ctx.message.author.display_name,
                 icon_url=ctx.message.author.avatar.url,
             )
-        embed.set_footer(text=f"Command: {ctx.prefix}cuddle @user")
+        embed.set_footer(text=f"Command: {ctx.prefix}cuddle @mention")
         await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
@@ -217,7 +217,7 @@ class Social(commands.Cog):
                 name=ctx.message.author.display_name,
                 icon_url=ctx.message.author.avatar.url,
             )
-        embed.set_footer(text=f"Command: {ctx.prefix}slap @user")
+        embed.set_footer(text=f"Command: {ctx.prefix}slap @mention")
         await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
@@ -242,7 +242,7 @@ class Social(commands.Cog):
                 name=ctx.message.author.display_name,
                 icon_url=ctx.message.author.avatar.url,
             )
-        embed.set_footer(text=f"Command: {ctx.prefix}tickle @user")
+        embed.set_footer(text=f"Command: {ctx.prefix}tickle @mention")
         await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
@@ -263,7 +263,7 @@ class Social(commands.Cog):
                 name=ctx.message.author.display_name,
                 icon_url=ctx.message.author.avatar.url,
             )
-        embed.set_footer(text=f"Command: {ctx.prefix}feed @user")
+        embed.set_footer(text=f"Command: {ctx.prefix}feed @mention")
         await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
@@ -284,7 +284,7 @@ class Social(commands.Cog):
                 name=ctx.message.author.display_name,
                 icon_url=ctx.message.author.avatar.url,
             )
-        embed.set_footer(text=f"Command: {ctx.prefix}bite @user")
+        embed.set_footer(text=f"Command: {ctx.prefix}bite @mention")
         await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
@@ -305,7 +305,7 @@ class Social(commands.Cog):
                 name=ctx.message.author.display_name,
                 icon_url=ctx.message.author.avatar.url,
             )
-        embed.set_footer(text=f"Command: {ctx.prefix}bonk @user")
+        embed.set_footer(text=f"Command: {ctx.prefix}bonk @mention")
         await ctx.reply(embed=embed)
 
 def setup(bot):

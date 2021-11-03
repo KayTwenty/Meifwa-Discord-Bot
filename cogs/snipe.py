@@ -66,7 +66,7 @@ class Snipe(commands.Cog):
         edit_snipe["guild"] = before.guild
         edit_snipe["channel"] = before.channel
 
-        await asyncio.sleep(60)
+        await asyncio.sleep(43200)
 
         if before.id == after.id:
             edit_snipe["author"] = None
@@ -89,7 +89,7 @@ class Snipe(commands.Cog):
                 color=self.bot.ok_color,
                 description="There's nothing to snipe!",
             )
-            return await ctx.send(embed=emb, delete_after=5)
+            return await ctx.send(embed=emb)
 
         embed = discord.Embed(description=str(snipe["content"]), colour=0xFFCDCD)
         embed.set_author(

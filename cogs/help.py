@@ -62,7 +62,7 @@ class Help(commands.Cog):
             )
             emb.add_field(
                 name="Consider Upvoting?",
-                value=f"[Click Here](https://discordbotlist.com/bots/meifwa/upvote)",
+                value=f"[Click Here](https://top.gg/bot/753264842080649259)",
                 inline=False
             )
             cogs_desc = ""

@@ -37,7 +37,7 @@ class Fun(commands.Cog):
         embed = discord.Embed(title="This person had sex with you ;)", description="**{1}** fucked **{0}**!".format(member.name, ctx.message.author.name), color=ctx.message.author.color, timestamp=ctx.message.created_at)
         embed.set_author(name="Fucked by " + str(ctx.message.author), icon_url=ctx.message.author.avatar.url)
         embed.set_image(url="https://media1.tenor.com/images/fa98b23ca1dba1925da62f834f27153f/tenor.gif?itemid=19355212")
-        embed.set_footer(text=f"Command: {ctx.prefix}fuck @user")
+        embed.set_footer(text=f"Command: {ctx.prefix}fuck @mention")
         await ctx.reply(embed=embed)
 
     @commands.cooldown(1, 5, commands.BucketType.user)
