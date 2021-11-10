@@ -113,11 +113,17 @@ class Nsfw(commands.Cog):
             await ctx.message.reply(embed=embed, delete_after=20)
 
     @commands.cooldown(5, 7, commands.BucketType.user)
-    @commands.command(name="nekofuck", aliases=["nekosex", "nekogif"], description="Yk what it does..")
-    async def nekofuck(self, ctx):
+    @commands.command(name="nekofuck", aliases=["nekosex"], description="Yk what it does..")
+    async def nekofuck(self, ctx, user: commands.Greedy[discord.Member] = None):
         if ctx.channel.is_nsfw():
+            if user == None:
+                await ctx.message.reply(f"U Lonely fuck! U can't Nekofuck yourself :C")
+                return
+            
+            nf_users = "".join(f'{users.mention} ' for users in user)
             embed = discord.Embed(
-                title="Catgirls!!!!",
+                title="Better than Hello Kitty",
+                description=f"**{ctx.message.author.name}** prentended to be a Neko & fucked {nf_users}",
                 color=ctx.message.author.color,
                 timestamp=ctx.message.created_at,
             )
