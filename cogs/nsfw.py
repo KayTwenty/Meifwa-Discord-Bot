@@ -87,17 +87,20 @@ class Nsfw(commands.Cog):
 
     @commands.cooldown(5, 7, commands.BucketType.user)
     @commands.command(name="cum", description="Yk what it does..")
-    async def cum(self, ctx):
+    async def cum(self, ctx, user: commands.Greedy[discord.Member] = None):
         if ctx.channel.is_nsfw():
+            if user == None:
+                await ctx.message.reply(f"No cumming for you :)")
+                return
+            
+            cum_users = "".join(f'{users.mention} ' for users in user)
             embed = discord.Embed(
                 title="***Sticky white stuff!***",
+                description=f"**{ctx.message.author.name}** just cummed to {cum_users}",
                 color=ctx.message.author.color,
                 timestamp=ctx.message.created_at,
             )
-            embed.set_footer(
-                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
-                icon_url=ctx.message.author.avatar.url,
-            )
+            embed.set_footer(text=f"Command: {ctx.prefix}cum @mention")
             embed.set_author(
                 name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url
             )
@@ -127,10 +130,7 @@ class Nsfw(commands.Cog):
                 color=ctx.message.author.color,
                 timestamp=ctx.message.created_at,
             )
-            embed.set_footer(
-                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
-                icon_url=ctx.message.author.avatar.url,
-            )
+            embed.set_footer(text=f"Command: {ctx.prefix}nekofuck @mention")
             embed.set_author(
                 name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url
             )
@@ -274,10 +274,7 @@ class Nsfw(commands.Cog):
                 color=ctx.message.author.color,
                 timestamp=ctx.message.created_at,
             )
-            embed.set_footer(
-                text=f"Requested by {ctx.message.author.display_name}#{ctx.message.author.discriminator}",
-                icon_url=ctx.message.author.avatar.url,
-            )
+            embed.set_footer(text=f"Command: {ctx.prefix}spank @mention")
             embed.set_author(
                 name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url
             )
