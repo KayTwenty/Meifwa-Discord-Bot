@@ -86,22 +86,23 @@ class Fun(commands.Cog):
     @commands.command()
     async def horny(ctx, member: discord.Member = None):
         member = member or ctx.author
-        async with aiohttp.ClientSession() as session:
-            async with session.get(
-            f'https://some-random-api.ml/canvas/horny?avatar={member.avatar_url_format("png")}'
-        ) as af:
-                if 300 > af.status >= 200:
-                    fp = io.BytesIO(await af.read())
-                    file = discord.File(fp, "horny.png")
-                    em = discord.Embed(
-                        title="bonk",
-                        color=0xf1f1f1,
-                    )
-                    em.set_image(url="attachment://horny.png")
-                    await ctx.send(embed=em, file=file)
-                else:
-                    await ctx.send('No horny :(')
-                await session.close()
+        async with ctx.typing():
+            async with aiohttp.ClientSession() as session:
+                async with session.get(
+                f'https://some-random-api.ml/canvas/horny?avatar={member.avatar_url_format("png")}'
+            ) as af:
+                    if 300 > af.status >= 200:
+                        fp = io.BytesIO(await af.read())
+                        file = discord.File(fp, "horny.png")
+                        em = discord.Embed(
+                            title="bonk",
+                            color=0xf1f1f1,
+                        )
+                        em.set_image(url="attachment://horny.png")
+                        await ctx.send(embed=em, file=file)
+                    else:
+                        await ctx.send('No horny :(')
+                    await session.close()
 
 def setup(bot):
     bot.add_cog(Fun(bot))
