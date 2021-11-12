@@ -88,7 +88,7 @@ class Fun(commands.Cog):
         member = member or ctx.author
         async with aiohttp.ClientSession() as session:
             async with session.get(
-            f'https://some-random-api.ml/canvas/horny?avatar={member.avatar_url_format("png")}'
+            f'https://some-random-api.ml/canvas/horny?avatar={member.avatar.with_format("png").url}'
         ) as af:
                 if 300 > af.status >= 200:
                     fp = io.BytesIO(await af.read())
