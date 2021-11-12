@@ -86,7 +86,6 @@ class Fun(commands.Cog):
     @commands.command()
     async def horny(ctx, member: discord.Member = None):
         member = member or ctx.author
-        await ctx.trigger_typing()
         async with aiohttp.ClientSession() as session:
             async with session.get(
             f'https://some-random-api.ml/canvas/horny?avatar={member.avatar_url_format("png")}'
