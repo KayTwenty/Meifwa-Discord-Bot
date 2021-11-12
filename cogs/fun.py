@@ -84,11 +84,11 @@ class Fun(commands.Cog):
         await ctx.send(embed=embed)
     
     @commands.command()
-    async def horny(ctx, member: discord.Member = None):
-        member = member or ctx.author
+    async def horny(ctx, user: discord.Member = None):
+        user = user or ctx.author
         async with aiohttp.ClientSession() as session:
             async with session.get(
-            f'https://some-random-api.ml/canvas/horny?avatar={member.display_avatar.with_format("png").url}'
+            f'https://some-random-api.ml/canvas/horny?avatar={user.display_avatar.with_size(128).with_static_format("png").url}'
         ) as af:
                 if 300 > af.status >= 200:
                     fp = io.BytesIO(await af.read())
