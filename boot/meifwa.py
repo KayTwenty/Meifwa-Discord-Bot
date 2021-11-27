@@ -53,6 +53,7 @@ class MeifwaBot(commands.AutoShardedBot):
         self.db = Database("sqlite:///meifwa.db")
         self.executed_commands = 0
         self.prefixes = {}
+        
 
     @property
     def database(self) -> Database:
@@ -119,6 +120,8 @@ class MeifwaBot(commands.AutoShardedBot):
         formatted_time_difference = str(time_difference).replace("-", "")
         self.logger.info(f"Elapsed Time Since Startup: {formatted_time_difference} Ms")
         self.logger.info("STARTUP COMPLETE. READY!")
+        
+        
 
     async def on_shard_disconnect(self, shard_id):
         self.logger.warning(f"SHARD {shard_id} IS NOW IN A DISCONNECTED STATE FROM DISCORD")
