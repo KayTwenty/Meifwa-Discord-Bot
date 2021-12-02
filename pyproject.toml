@@ -39,6 +39,7 @@ novus = {git = "https://github.com/Voxel-Fox-Ltd/Novus.git"}
 jishaku = {git = "https://github.com/6days9weeks/jishaku.git"}
 voxelbotutils = {git = "https://github.com/6days9weeks/VoxelBotUtils", branch = "siesta"}
 tabulate = "^0.8.9"
+discord-together = "1.2.2"
 
 [tool.poetry.dev-dependencies]
 

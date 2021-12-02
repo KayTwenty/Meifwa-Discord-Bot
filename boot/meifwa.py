@@ -8,6 +8,7 @@ import datetime
 from aiohttp import ClientSession
 from databases import Database
 from discord.ext import commands
+from discord_together import DiscordTogether
 
 from .context import MeifwaContext
 from .log import LoggingHandler
@@ -119,8 +120,9 @@ class MeifwaBot(commands.AutoShardedBot):
         time_difference = ((self.startup_time - datetime.datetime.utcnow()) * 1000).total_seconds()
         formatted_time_difference = str(time_difference).replace("-", "")
         self.logger.info(f"Elapsed Time Since Startup: {formatted_time_difference} Ms")
+        self.logger.info("CONNECTING TO DISCORD GAME CLIENT")
+        self.togetherControl = await DiscordTogether(self.get_config("config", "config", "token"))
         self.logger.info("STARTUP COMPLETE. READY!")
-        
         
 
     async def on_shard_disconnect(self, shard_id):

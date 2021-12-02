@@ -1,23 +1,15 @@
 import discord, asyncio
-import aiohttp
 
 from discord.ext import commands
-from discord.ext.commands import cooldown, BucketType
 from boot.meifwa import MeifwaBot
 
-async def api_call(call_uri, state=True):
-	async with aiohttp.ClientSession() as session:
-		async with session.get(f"{call_uri}") as response:
-			response = await response.json()
-			if state:
-				return response['url']
-			if state == False:
-				return response
 
+expiry = 7200 # Max expiry time (2 Hours max)
 
 class Fun(commands.Cog):
     def __init__(self, bot: MeifwaBot):
         self.bot = bot
+
 
     @commands.command(aliases=['sex', 'fuck'], description="You know what this does") #Frick Command
     async def frick(self, ctx, member: discord.Member):
@@ -39,6 +31,138 @@ class Fun(commands.Cog):
         await ctx.reply(embed=embed)
     
 
+    @commands.command()
+    async def youtube(self, ctx):
+        link = await self.client.togetherControl.create_link(ctx.author.voice.channel.id, 'youtube', max_age=expiry)
+        embed = discord.Embed(
+            color=ctx.message.author.color,
+            title='YouTube Together Generated!',
+            description=f'To open a room, [Click Here]({link})'
+        )
+        embed.set_thumbnail(url='https://cdn.vox-cdn.com/thumbor/0kpe316UpZWk53iw3bOLoJfF6hI=/0x0:1680x1050/1400x1400/filters:focal(706x391:974x659):format(gif)/cdn.vox-cdn.com/uploads/chorus_image/image/56414325/YTLogo_old_new_animation.0.gif')
+        embed.set_footer(text='This link will expire after 2 hours')
+        await ctx.reply(embed=embed)
+
+
+    @commands.command()
+    async def poker(self, ctx):
+        link = await self.client.togetherControl.create_link(ctx.author.voice.channel.id, 'poker', max_age=expiry)
+        embed = discord.Embed(
+            color=ctx.message.author.color,
+            title='Poker Room Generated!',
+            description=f'To open a room, [Click Here]({link})'
+        )
+        embed.set_thumbnail(url='https://cdn.dribbble.com/users/1320536/screenshots/3151889/poker-chip.gif')
+        embed.set_footer(text='This link will expire after 2 hours')
+        await ctx.reply(embed=embed)
+
+
+    @commands.command()
+    async def chess(self, ctx):
+        link = await self.client.togetherControl.create_link(ctx.author.voice.channel.id, 'chess', max_age=expiry)
+        embed = discord.Embed(
+            color=ctx.message.author.color,
+            title='Chess Room Generated!',
+            description=f'To open a room, [Click Here]({link})'
+        )
+        embed.set_footer(text='This link will expire after 2 hours')
+        await ctx.reply(embed=embed)
+
+
+    @commands.command()
+    async def betrayal(self, ctx):
+        link = await self.client.togetherControl.create_link(ctx.author.voice.channel.id, 'betrayal', max_age=expiry)
+        embed = discord.Embed(
+            color=ctx.message.author.color,
+            title='Betrayal.io Room Generated!',
+            description=f'To open a room, [Click Here]({link})'
+        )
+        embed.set_footer(text='This link will expire after 2 hours')
+        await ctx.reply(embed=embed)
+    
+
+    @commands.command()
+    async def fishington(self, ctx):
+        link = await self.client.togetherControl.create_link(ctx.author.voice.channel.id, 'fishing', max_age=expiry)
+        embed = discord.Embed(
+            color=ctx.message.author.color,
+            title='Fishington.io Room Generated!',
+            description=f'To open a room, [Click Here]({link})'
+        )
+        embed.set_footer(text='This link will expire after 2 hours')
+        await ctx.reply(embed=embed)
+    
+
+    @commands.command()
+    async def lettertile(self, ctx):
+        link = await self.client.togetherControl.create_link(ctx.author.voice.channel.id, 'letter-tile', max_age=expiry)
+        embed = discord.Embed(
+            color=ctx.message.author.color,
+            title='Letter Tile Room Generated!',
+            description=f'To open a room, [Click Here]({link})'
+        )
+        embed.set_footer(text='This link will expire after 2 hours')
+        await ctx.reply(embed=embed)
+
+
+    @commands.command()
+    async def wordsnack(self, ctx):
+        link = await self.client.togetherControl.create_link(ctx.author.voice.channel.id, 'word-snack', max_age=expiry)
+        embed = discord.Embed(
+            color=ctx.message.author.color,
+            title='Word Snack Room Generated!',
+            description=f'To open a room, [Click Here]({link})'
+        )
+        embed.set_footer(text='This link will expire after 2 hours')
+        await ctx.reply(embed=embed)
+
+
+    @commands.command()
+    async def doodlecrew(self, ctx):
+        link = await self.client.togetherControl.create_link(ctx.author.voice.channel.id, 'doodle-crew', max_age=expiry)
+        embed = discord.Embed(
+            color=ctx.message.author.color,
+            title='Doodle-Crew Room Generated!',
+            description=f'To open a room, [Click Here]({link})'
+        )
+        embed.set_footer(text='This link will expire after 2 hours')
+        await ctx.reply(embed=embed)
+    
+
+    @commands.command()
+    async def spellcast(self, ctx):
+        link = await self.client.togetherControl.create_link(ctx.author.voice.channel.id, 'spellcast', max_age=expiry)
+        embed = discord.Embed(
+            color=ctx.message.author.color,
+            title='SpellCast Room Generated!',
+            description=f'To open a room, [Click Here]({link})'
+        )
+        embed.set_footer(text='This link will expire after 2 hours')
+        await ctx.reply(embed=embed)
+
+
+    @commands.command()
+    async def awkword(self, ctx):
+        link = await self.client.togetherControl.create_link(ctx.author.voice.channel.id, 'awkword', max_age=expiry)
+        embed = discord.Embed(
+            color=ctx.message.author.color,
+            title='Awkword Room Generated!',
+            description=f'To open a room, [Click Here]({link})'
+        )
+        embed.set_footer(text='This link will expire after 2 hours')
+        await ctx.reply(embed=embed)
+
+
+    @commands.command()
+    async def checkers(self, ctx):
+        link = await self.client.togetherControl.create_link(ctx.author.voice.channel.id, 'checkers', max_age=expiry)
+        embed = discord.Embed(
+            color=ctx.message.author.color,
+            title='Checkers in the Park Room Generated!',
+            description=f'To open a room, [Click Here]({link})'
+        )
+        embed.set_footer(text='This link will expire after 2 hours')
+        await ctx.reply(embed=embed)
 
 def setup(bot):
     bot.add_cog(Fun(bot))
