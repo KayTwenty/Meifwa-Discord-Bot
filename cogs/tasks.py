@@ -1,6 +1,4 @@
-import asyncio
 from asyncio import sleep
-from asyncio.tasks import Task
 
 from discord.ext import commands, tasks
 import discord
@@ -18,20 +16,14 @@ class Tasks(commands.Cog):
         await self.bot.wait_until_ready()
         await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=f"@{self.bot.user.name} help"))
         await sleep(800)
-        await self.bot.change_presence(activity=discord.Streaming(name=";invite", url="https://www.youtube.com/watch?v=eDiu5rk8Mno"))
-        await sleep(800)
         await self.bot.change_presence(activity=discord.Game(f"with {len(self.bot.users)} humans!"))
         await sleep(800)
-        await self.bot.change_presence(activity=discord.Game(f"in {len(self.bot.guilds)} guilds"))
+        await self.bot.change_presence(activity=discord.Game(f"in {len(self.bot.guilds)} servers"))
         await sleep(800)
-        await self.bot.change_presence(activity=discord.Game("NNN Time :3"))
+        await self.bot.change_presence(activity=discord.Game("PADORU PADORU"))
         await sleep(800)
         await self.bot.change_presence(activity=discord.Game("Onii Chan"))
         await sleep(800)
-        await self.bot.change_presence(activity=discord.Game("When we go high, they go low"))
-        await sleep(800)
-        await self.bot.change_presence(activity=discord.Game("Nyah Nyah"))
-        await sleep(800)
-
+        
 def setup(bot):
     bot.add_cog(Tasks(bot))

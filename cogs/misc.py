@@ -2,10 +2,9 @@ import os
 import platform
 import time
 
-from datetime import datetime, timezone
+from datetime import datetime
 from discord.ext import commands, vbu
 
-import aiohttp
 import discord
 import humanize
 import psutil

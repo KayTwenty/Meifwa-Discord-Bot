@@ -1,8 +1,5 @@
 import discord, asyncio
 import aiohttp
-import random
-import logging
-import io
 
 from discord.ext import commands
 from discord.ext.commands import cooldown, BucketType

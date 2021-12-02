@@ -17,6 +17,15 @@ async def api_call(call_uri, returnObj=False):
 			elif returnObj == True:
 				return response
 
+async def api_link(call_uri, returnObj=False):
+	async with aiohttp.ClientSession() as session:
+		async with session.get(f"{call_uri}") as response:
+			response = await response.json()
+			if returnObj == False:
+				return response["link"]
+			elif returnObj == True:
+				return response
+
 class Nsfw(commands.Cog):
     def __init__(self, bot: MeifwaBot):
 	    self.bot = bot
@@ -206,8 +215,12 @@ class Nsfw(commands.Cog):
 
     @commands.cooldown(5, 7, commands.BucketType.user)
     @commands.command(name="blowjob", aliases=["bj"], description="No It doesn't say PJ")
-    async def blowjob(self, ctx):
+    async def blowjob(self, ctx, user: commands.Greedy[discord.Member] = None):
         if ctx.channel.is_nsfw():
+            if user == None:
+                await ctx.message.reply(f"U need to mention someone")
+                return
+
             embed = discord.Embed(
                 title="Blow. Job.",
                 color=ctx.message.author.color,
@@ -267,6 +280,7 @@ class Nsfw(commands.Cog):
             if user == None:
                 await ctx.message.reply("Who do you want to spank?")
                 return
+            
             spanked_users = "".join([f"{users.mention} " for users in user])
             embed = discord.Embed(
                 title="Oooof!",
@@ -373,8 +387,12 @@ class Nsfw(commands.Cog):
 
     @commands.cooldown(5, 7, commands.BucketType.user)
     @commands.command(name="lesbian", description="Yk what it does..")
-    async def lesbian(self, ctx):
+    async def lesbian(self, ctx, user: commands.Greedy[discord.Member] = None):
         if ctx.channel.is_nsfw():
+            if user == None:
+                await ctx.message.reply("Mention someone")
+                return
+
             embed = discord.Embed(
                 color=ctx.message.author.color, timestamp=ctx.message.created_at
             )

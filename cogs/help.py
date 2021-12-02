@@ -5,7 +5,6 @@ import DiscordUtils
 from discord import Embed
 from discord.ext import commands
 from discord.errors import Forbidden
-from discord.utils import normalise_optional_params
 from boot.meifwa import MeifwaBot
 
 log = logging.getLogger("help cog")
