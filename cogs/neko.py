@@ -18,7 +18,7 @@ async def api_call(call_uri, state=True):
 			if state == False:
 				return response
 
-class Social(commands.Cog):
+class Anime(commands.Cog):
     def __init__(self, bot: MeifwaBot):
         self.bot = bot
 
@@ -309,4 +309,4 @@ class Social(commands.Cog):
         await ctx.reply(embed=embed)
 
 def setup(bot):
-    bot.add_cog(Social(bot))
+    bot.add_cog(Anime(bot))

@@ -1,4 +1,4 @@
-import discord, asyncio
+import discord, random
 
 from discord.ext import commands
 from boot.meifwa import MeifwaBot
@@ -10,25 +10,45 @@ class Fun(commands.Cog):
     def __init__(self, bot: MeifwaBot):
         self.bot = bot
 
-    @commands.command(aliases=['sex', 'fuck'], description="You know what this does") #Frick Command
-    async def frick(self, ctx, member: discord.Member):
-        embed = discord.Embed(title=f"{ctx.message.author.name} wants to fuck you. Do you accept?", description="Type yes or no.", color=self.bot.error_color, timestamp=ctx.message.created_at)
-        embed.set_author(name=ctx.message.author.display_name, icon_url=self.bot.user.avatar.url)
+    @commands.command(aliases=['8balls', '8b']) #The Main 9Ball command
+    async def _8ball(self, ctx, *, question):
+        responses = ["As I see it, no.",
+                    "It is decidedly so.",
+                    "Without a doubt.",
+                    "Yes - definitely",
+                    "You may rely on it.",
+                    "Most likely.",
+                    "Kinda.",
+                    "Yes.",
+                    "Signs point to yes.",
+                    "Yup.",
+                    "Affirmative.",
+                    "Don't count on it.",
+                    "My reply is no",
+                    "My Sources say no.",
+                    "very doubtful.",
+                    "**Yes.**",
+                    "**No.**",
+                    "Simp!",
+                    "Definitely not!",
+                    "Ask an admin",
+                    "Maybe Not.",
+                    "Nie.",
+                    "Negative.",
+                    "Definitely yes!",
+                    "I can see it as true.",
+                    "I can see it as false.",
+                    "Idk m8... Ask Artic...",
+                    "Oh hecc naw!",
+                    "Definitely."]
+
+        embed=discord.Embed(title="The official 9Ball has Spoken.", color=ctx.message.author.color)
+        embed.set_author(name="Asked by " + str(ctx.message.author), icon_url=ctx.message.author.avatar.url)
+        embed.add_field(name="Question:", value=question, inline=False)
+        embed.add_field(name="Answer:", value=random.choice(responses), inline=False)
+        embed.set_footer(text=f"Commands: {ctx.prefix}8ball *question*")
         await ctx.send(embed=embed)
-        
-        try:
-            msg = await self.bot.wait_for("message", check=lambda x: x.channel == ctx.message.channel and x.author == member, timeout=60.0)
-            if msg.content.lower() != "yes":
-                return await ctx.send(f"**{member.name} declined** :|")
-        except asyncio.TimeoutError:
-            return await ctx.send("**Cancelled.**")
-         
-        embed = discord.Embed(title="This person had sex with you ;)", description="**{1}** fucked **{0}**!".format(member.name, ctx.message.author.name), color=ctx.message.author.color, timestamp=ctx.message.created_at)
-        embed.set_author(name="Fucked by " + str(ctx.message.author), icon_url=ctx.message.author.avatar.url)
-        embed.set_image(url="https://media1.tenor.com/images/fa98b23ca1dba1925da62f834f27153f/tenor.gif?itemid=19355212")
-        embed.set_footer(text=f"Command: {ctx.prefix}fuck @mention")
-        await ctx.reply(embed=embed)
-    
+        await ctx.message.delete()
 
     @commands.command()
     async def youtube(self, ctx):
