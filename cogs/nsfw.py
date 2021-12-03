@@ -219,7 +219,7 @@ class Nsfw(commands.Cog):
             )
             await ctx.message.reply(embed=embed, delete_after=20)
 
-    
+
     @commands.cooldown(5, 7, commands.BucketType.user)
     @commands.command(name="anal", description="Goop wanted this")
     async def anal(self, ctx, user: commands.Greedy[discord.Member] = None):
@@ -227,7 +227,7 @@ class Nsfw(commands.Cog):
             if user == None:
                 await ctx.message.reply("Pls @GoopFoop#4854 for anal")
                 return
-            
+
             anal_users = "".join([f"{users.mention} " for users in user])
             embed = discord.Embed(
                 title="Senpai UwU anal pounding",
@@ -249,7 +249,7 @@ class Nsfw(commands.Cog):
                 timestamp=ctx.message.created_at,
             )
             await ctx.message.reply(embed=embed, delete_after=20)
-
+    
 
     @commands.cooldown(5, 7, commands.BucketType.user)
     @commands.command(name="hentai", description="The best command")
