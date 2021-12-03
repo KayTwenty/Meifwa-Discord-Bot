@@ -8,7 +8,7 @@ class Fun(commands.Cog):
     def __init__(self, client: MeifwaBot):
         self.client = client
 
-    @commands.command(aliases=['8balls', '8b']) #The Main 9Ball command
+    @commands.command(name="8ball", aliases=['8balls', '8b']) #The Main 9Ball command
     async def _8ball(self, ctx, *, question):
         responses = ["As I see it, no.",
                     "It is decidedly so.",
@@ -40,7 +40,7 @@ class Fun(commands.Cog):
                     "Oh hecc naw!",
                     "Definitely."]
 
-        embed=discord.Embed(title="The official 9Ball has Spoken.", color=ctx.message.author.color)
+        embed=discord.Embed(title="The official 8Ball has Spoken.", color=ctx.message.author.color)
         embed.set_author(name="Asked by " + str(ctx.message.author), icon_url=ctx.message.author.avatar.url)
         embed.add_field(name="Question:", value=question, inline=False)
         embed.add_field(name="Answer:", value=random.choice(responses), inline=False)
