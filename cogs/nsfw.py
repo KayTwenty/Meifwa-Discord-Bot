@@ -1,4 +1,3 @@
-from functools import _Descriptor
 import discord, asyncio
 import aiohttp
 import logging
