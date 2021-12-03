@@ -481,7 +481,7 @@ class Nsfw(commands.Cog):
 
             if tag is None:
                 tag = random.choice(available_tags)
-                
+
             if tag is not None and tag.lower() == "list":
                 tags = "\n".join(available_tags)
                 return await ctx.send(
@@ -522,7 +522,8 @@ class Nsfw(commands.Cog):
                 color=0xFF0000,
                 timestamp=ctx.message.created_at,
             )
-            await ctx.message.reply(embed=embed, delete_after=20) 
+            await ctx.message.reply(embed=embed, delete_after=20)
+
 
 def setup(bot):
     bot.add_cog(Nsfw(bot))
