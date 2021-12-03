@@ -7,8 +7,8 @@ from boot.meifwa import MeifwaBot
 expiry = 7200 # Max expiry time (2 Hours max)
 
 class Fun(commands.Cog):
-    def __init__(self, bot: MeifwaBot):
-        self.bot = bot
+    def __init__(self, client: MeifwaBot):
+        self.client = client
 
     @commands.command(aliases=['8balls', '8b']) #The Main 9Ball command
     async def _8ball(self, ctx, *, question):
@@ -183,5 +183,5 @@ class Fun(commands.Cog):
         embed.set_footer(text='This link will expire after 2 hours')
         await ctx.reply(embed=embed)
 
-def setup(bot):
-    bot.add_cog(Fun(bot))
+def setup(client):
+    client.add_cog(Fun(client))
