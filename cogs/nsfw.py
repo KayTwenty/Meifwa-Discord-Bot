@@ -476,45 +476,53 @@ class Nsfw(commands.Cog):
     @commands.command(aliases=["hn"])
     @commands.cooldown(1, 20, commands.BucketType.user)
     async def hentainuke(self, ctx: commands.Context, *, tag: str = None):
-        available_tags = ["waifu", "neko", "trap", "blowjob"]
+        if ctx.channel.is_nsfw():
+            available_tags = ["waifu", "neko", "trap", "blowjob"]
 
-        if tag is None:
-            tag = random.choice(available_tags)
-
-        if tag is not None and tag.lower() == "list":
-            tags = "\n".join(available_tags)
-            return await ctx.send(
-                embed=discord.Embed(
-                    title="Available Tags",
-                    description=tags,
-                    color=self.bot.ok_color,
+            if tag is None:
+                tag = random.choice(available_tags)
+                
+            if tag is not None and tag.lower() == "list":
+                tags = "\n".join(available_tags)
+                return await ctx.send(
+                    embed=discord.Embed(
+                        title="Available Tags",
+                        description=tags,
+                        color=self.bot.ok_color,
+                    )
                 )
-            )
-
-        if tag is not None and tag.lower() in available_tags:
-            async with self.bot.session.post(
-                url=f"https://api.waifu.pics/many/nsfw/{tag}",
-                headers={
-                    "Accept": "application/json",
-                    "content-type": "application/json",
-                },
-                json={"files": ""},
-            ) as resp:
-                step = 5  # the amount of files to display at a time
-                idx = 5  # set the index to start with
-                files = (await resp.json())["files"]
-                while idx < len(files):
-                    sublist = files[idx - step : idx]  # [0:5], [5:10], etc
-                    await ctx.send("\n".join(map(str, sublist)))
-                    idx += step
+            if tag is not None and tag.lower() in available_tags:
+                async with self.bot.session.post(
+                    url=f"https://api.waifu.pics/many/nsfw/{tag}",
+                    headers={
+                        "Accept": "application/json",
+                        "content-type": "application/json",
+                    },
+                    json={"files": ""},
+                ) as resp:
+                    step = 5  # the amount of files to display at a time
+                    idx = 5  # set the index to start with
+                    files = (await resp.json())["files"]
+                    while idx < len(files):
+                        sublist = files[idx - step : idx]  # [0:5], [5:10], etc
+                        await ctx.send("\n".join(map(str, sublist)))
+                        idx += step
+            else:
+                await ctx.send(
+                    embed=discord.Embed(
+                        title="TAG NOT FOUND",
+                        description=f"{tag} was not found in the available tag list. Please run `{ctx.prefix}hb list`",
+                        color=self.bot.error_color,
+                    )
+                )
         else:
-            await ctx.send(
-                embed=discord.Embed(
-                    title="TAG NOT FOUND",
-                    description=f"{tag} was not found in the available tag list. Please run `{ctx.prefix}hb list`",
-                    color=self.bot.error_color,
-                )
+            embed = discord.Embed(
+                title="HoldUp!!",
+                description="This command can only be used in a NSFW channel.",
+                color=0xFF0000,
+                timestamp=ctx.message.created_at,
             )
+            await ctx.message.reply(embed=embed, delete_after=20) 
 
 def setup(bot):
     bot.add_cog(Nsfw(bot))
