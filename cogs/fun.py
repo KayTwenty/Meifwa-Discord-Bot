@@ -52,7 +52,7 @@ class Fun(commands.Cog):
 
     @commands.command()
     async def youtube(self, ctx):
-        link = await self.client.togetherControl.create_link(ctx.author.voice.channel.id, 'youtube', max_age=expiry)
+        link = await self.client.togetherControl.create_link(discord.VoiceChannel.id, 'youtube', max_age=expiry)
         embed = discord.Embed(
             color=ctx.message.author.color,
             title='YouTube Together Generated!',
@@ -65,7 +65,7 @@ class Fun(commands.Cog):
 
     @commands.command()
     async def poker(self, ctx):
-        link = await self.client.togetherControl.create_link(ctx.author.voice.channel.id, 'poker', max_age=expiry)
+        link = await self.client.togetherControl.create_link(discord.VoiceChannel.id, 'poker', max_age=expiry)
         embed = discord.Embed(
             color=ctx.message.author.color,
             title='Poker Room Generated!',
@@ -78,7 +78,7 @@ class Fun(commands.Cog):
 
     @commands.command()
     async def chess(self, ctx):
-        link = await self.client.togetherControl.create_link(ctx.author.voice.channel.id, 'chess', max_age=expiry)
+        link = await self.client.togetherControl.create_link(discord.VoiceChannel.id, 'chess', max_age=expiry)
         embed = discord.Embed(
             color=ctx.message.author.color,
             title='Chess Room Generated!',
@@ -90,7 +90,7 @@ class Fun(commands.Cog):
 
     @commands.command()
     async def betrayal(self, ctx):
-        link = await self.client.togetherControl.create_link(ctx.author.voice.channel.id, 'betrayal', max_age=expiry)
+        link = await self.client.togetherControl.create_link(discord.VoiceChannel.id, 'betrayal', max_age=expiry)
         embed = discord.Embed(
             color=ctx.message.author.color,
             title='Betrayal.io Room Generated!',
@@ -102,7 +102,7 @@ class Fun(commands.Cog):
 
     @commands.command()
     async def fishington(self, ctx):
-        link = await self.client.togetherControl.create_link(ctx.author.voice.channel.id, 'fishing', max_age=expiry)
+        link = await self.client.togetherControl.create_link(discord.VoiceChannel.id, 'fishing', max_age=expiry)
         embed = discord.Embed(
             color=ctx.message.author.color,
             title='Fishington.io Room Generated!',
@@ -114,7 +114,7 @@ class Fun(commands.Cog):
 
     @commands.command()
     async def lettertile(self, ctx):
-        link = await self.client.togetherControl.create_link(ctx.author.voice.channel.id, 'letter-tile', max_age=expiry)
+        link = await self.client.togetherControl.create_link(discord.VoiceChannel.id, 'letter-tile', max_age=expiry)
         embed = discord.Embed(
             color=ctx.message.author.color,
             title='Letter Tile Room Generated!',
@@ -126,7 +126,7 @@ class Fun(commands.Cog):
 
     @commands.command()
     async def wordsnack(self, ctx):
-        link = await self.client.togetherControl.create_link(ctx.author.voice.channel.id, 'word-snack', max_age=expiry)
+        link = await self.client.togetherControl.create_link(discord.VoiceChannel.id, 'word-snack', max_age=expiry)
         embed = discord.Embed(
             color=ctx.message.author.color,
             title='Word Snack Room Generated!',
@@ -138,7 +138,7 @@ class Fun(commands.Cog):
 
     @commands.command()
     async def doodlecrew(self, ctx):
-        link = await self.client.togetherControl.create_link(ctx.author.voice.channel.id, 'doodle-crew', max_age=expiry)
+        link = await self.client.togetherControl.create_link(discord.VoiceChannel.id, 'doodle-crew', max_age=expiry)
         embed = discord.Embed(
             color=ctx.message.author.color,
             title='Doodle-Crew Room Generated!',
@@ -150,7 +150,7 @@ class Fun(commands.Cog):
 
     @commands.command()
     async def spellcast(self, ctx):
-        link = await self.client.togetherControl.create_link(ctx.author.voice.channel.id, 'spellcast', max_age=expiry)
+        link = await self.client.togetherControl.create_link(discord.VoiceChannel.id, 'spellcast', max_age=expiry)
         embed = discord.Embed(
             color=ctx.message.author.color,
             title='SpellCast Room Generated!',
@@ -162,7 +162,7 @@ class Fun(commands.Cog):
 
     @commands.command()
     async def awkword(self, ctx):
-        link = await self.client.togetherControl.create_link(ctx.author.voice.channel.id, 'awkword', max_age=expiry)
+        link = await self.client.togetherControl.create_link(discord.VoiceChannel.id, 'awkword', max_age=expiry)
         embed = discord.Embed(
             color=ctx.message.author.color,
             title='Awkword Room Generated!',
@@ -174,7 +174,7 @@ class Fun(commands.Cog):
 
     @commands.command()
     async def checkers(self, ctx):
-        link = await self.client.togetherControl.create_link(ctx.author.voice.channel.id, 'checkers', max_age=expiry)
+        link = await self.client.togetherControl.create_link(discord.VoiceChannel.id, 'checkers', max_age=expiry)
         embed = discord.Embed(
             color=ctx.message.author.color,
             title='Checkers in the Park Room Generated!',
