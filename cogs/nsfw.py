@@ -21,17 +21,6 @@ async def api_call(call_uri, returnObj=False):
             elif returnObj == True:
                 return response
 
-
-async def nsfwwarning(ctx):
-    embed = discord.Embed(
-                title="HoldUp!!",
-                description="This command can only be used in a NSFW channel.",
-                color=0xFF0000,
-                timestamp=ctx.message.created_at,
-            )
-    await ctx.message.reply(embed=embed, delete_after=20)
-
-
 class Nsfw(commands.Cog):
     def __init__(self, bot: MeifwaBot):
         self.bot = bot
@@ -60,7 +49,13 @@ class Nsfw(commands.Cog):
             embed.set_footer(text=f"Command: {ctx.prefix}fuck @mention")
             await ctx.reply(embed=embed)
         else:
-            await ctx.reply(embed=nsfwwarning)
+            embed = discord.Embed(
+                title="HoldUp!!",
+                description="This command can only be used in a NSFW channel.",
+                color=0xFF0000,
+                timestamp=ctx.message.created_at,
+            )
+            await ctx.message.reply(embed=embed, delete_after=20)
 
     @commands.cooldown(5, 7, commands.BucketType.user)
     @commands.command(name="cum", description="Squirts milk")
@@ -516,7 +511,7 @@ class Nsfw(commands.Cog):
     @commands.cooldown(5, 7, commands.BucketType.user)
     async def yuri(self, ctx):
         r = asyncpraw.Reddit(client_id="myVr7vToLuADLQLCMBrfpQ",
-        client_secret=self.client.get_config("config", "config", "reddit_secret"),
+        client_secret=self.bot.get_config("config", "config", "reddit_secret"),
         user_agent="meifwa")
         
         subreddit = await r.subreddit("yuri")
@@ -526,7 +521,6 @@ class Nsfw(commands.Cog):
             all_subs.append(submission)
 
         random_sub = random.choice(all_subs)
-        name = random_sub.title
         url = random_sub.url 
 
         embed = discord.Embed(
@@ -548,7 +542,7 @@ class Nsfw(commands.Cog):
     @commands.cooldown(5, 7, commands.BucketType.user)
     async def yurigifs(self, ctx):
         r = asyncpraw.Reddit(client_id="myVr7vToLuADLQLCMBrfpQ",
-        client_secret=self.client.get_config("config", "config", "reddit_secret"),
+        client_secret=self.bot.get_config("config", "config", "reddit_secret"),
         user_agent="meifwa")
         
         subreddit = await r.subreddit("yurigifs")
@@ -578,7 +572,7 @@ class Nsfw(commands.Cog):
     @commands.cooldown(5, 7, commands.BucketType.user)
     async def yurihentai(self, ctx):
         r = asyncpraw.Reddit(client_id="myVr7vToLuADLQLCMBrfpQ",
-        client_secret=self.client.get_config("config", "config", "reddit_secret"),
+        client_secret=self.bot.get_config("config", "config", "reddit_secret"),
         user_agent="meifwa")
         
         subreddit = await r.subreddit("yurihentai")
@@ -609,7 +603,7 @@ class Nsfw(commands.Cog):
     @commands.cooldown(5, 7, commands.BucketType.user)
     async def pantsu(self, ctx):
         r = asyncpraw.Reddit(client_id="myVr7vToLuADLQLCMBrfpQ",
-        client_secret=self.client.get_config("config", "config", "reddit_secret"),
+        client_secret=self.bot.get_config("config", "config", "reddit_secret"),
         user_agent="meifwa")
         
         subreddit = await r.subreddit("pantsu")
@@ -640,7 +634,7 @@ class Nsfw(commands.Cog):
     @commands.cooldown(5, 7, commands.BucketType.user)
     async def hentaigif(self, ctx):
         r = asyncpraw.Reddit(client_id="myVr7vToLuADLQLCMBrfpQ",
-        client_secret=self.client.get_config("config", "config", "reddit_secret"),
+        client_secret=self.bot.get_config("config", "config", "reddit_secret"),
         user_agent="meifwa")
         
         subreddit = await r.subreddit("hentai_gif")
@@ -671,7 +665,7 @@ class Nsfw(commands.Cog):
     @commands.cooldown(5, 7, commands.BucketType.user)
     async def rhentai(self, ctx):
         r = asyncpraw.Reddit(client_id="myVr7vToLuADLQLCMBrfpQ",
-        client_secret=self.client.get_config("config", "config", "reddit_secret"),
+        client_secret=self.bot.get_config("config", "config", "reddit_secret"),
         user_agent="meifwa")
         
         subreddit = await r.subreddit("hentai")
@@ -702,7 +696,7 @@ class Nsfw(commands.Cog):
     @commands.cooldown(5, 7, commands.BucketType.user)
     async def tentai(self, ctx):
         r = asyncpraw.Reddit(client_id="myVr7vToLuADLQLCMBrfpQ",
-        client_secret=self.client.get_config("config", "config", "reddit_secret"),
+        client_secret=self.bot.get_config("config", "config", "reddit_secret"),
         user_agent="meifwa")
         
         subreddit = await r.subreddit("tentai")
@@ -733,7 +727,7 @@ class Nsfw(commands.Cog):
     @commands.cooldown(5, 7, commands.BucketType.user)
     async def thickhentai(self, ctx):
         r = asyncpraw.Reddit(client_id="myVr7vToLuADLQLCMBrfpQ",
-        client_secret=self.client.get_config("config", "config", "reddit_secret"),
+        client_secret=self.bot.get_config("config", "config", "reddit_secret"),
         user_agent="meifwa")
         
         subreddit = await r.subreddit("thick_hentai")
