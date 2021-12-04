@@ -29,7 +29,7 @@ class Reddit(commands.Cog):
         if not check_subreddit(subreddit):
             await ctx.send("Invalid subreddit.")
             return
-        for submission in r.subreddit(subreddit).hot(limit=50):
+        async for submission in r.subreddit(subreddit).hot(limit=50):
             submissions.append(submission)
         submission = submissions[random.randint(0, len(submissions) - 1)]
         embed = discord.Embed(
