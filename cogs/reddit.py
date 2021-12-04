@@ -11,7 +11,7 @@ class Reddit(commands.Cog):
     @commands.command(aliases = ['r', 'reddi', 'redd', 'red', 're'])
     @commands.cooldown(3, 30, commands.BucketType.channel)
     async def reddit(self, ctx, subreddit):
-        r = asyncpraw.Reddit(client_id="myVr7vToLuADLQLCMBrfpQ",
+        reddit = asyncpraw.Reddit(client_id="myVr7vToLuADLQLCMBrfpQ",
         client_secret=self.client.get_config("config", "config", "reddit_secret"),
         user_agent="meifwa")
 
@@ -22,14 +22,15 @@ class Reddit(commands.Cog):
             if subreddit == 'all' or subreddit == 'popular':
                 return valid
             try:
-                r.subreddit(subreddit).subreddit_type
+                subreddit = reddit.subreddit(subreddit).subreddit_type
             except:
                 valid = False
             return valid
         if not check_subreddit(subreddit):
             await ctx.send("Invalid subreddit.")
             return
-        async for submission in r.subreddit(subreddit).hot(limit=50):
+        hot = reddit.subreddit(subreddit).hot(limit=50)
+        async for submission in hot:
             submissions.append(submission)
         submission = submissions[random.randint(0, len(submissions) - 1)]
         embed = discord.Embed(
