@@ -1,4 +1,4 @@
-import discord, random, asyncpraw, os
+import discord, random, praw
 
 from discord.ext import commands
 from boot.meifwa import MeifwaBot
@@ -11,7 +11,7 @@ class Reddit(commands.Cog):
     @commands.command(aliases = ['r', 'reddi', 'redd', 'red', 're'])
     @commands.cooldown(3, 30, commands.BucketType.channel)
     async def reddit(self, ctx, subreddit):
-        reddit = asyncpraw.Reddit(client_id="myVr7vToLuADLQLCMBrfpQ",
+        r = praw.Reddit(client_id="myVr7vToLuADLQLCMBrfpQ",
         client_secret=self.client.get_config("config", "config", "reddit_secret"),
         user_agent="meifwa")
 
@@ -21,13 +21,15 @@ class Reddit(commands.Cog):
             valid = True
             if subreddit == 'all' or subreddit == 'popular':
                 return valid
-
-        subreddit = await reddit.subreddit(subreddit)
+            try:
+                r.subreddit(subreddit).subreddit_type
+            except:
+                valid = False
+            return valid
         if not check_subreddit(subreddit):
             await ctx.send("Invalid subreddit.")
             return
-        hot = reddit.subreddit(subreddit).hot(limit=50)
-        async for submission in hot:
+        for submission in r.subreddit(subreddit).hot(limit=50):
             submissions.append(submission)
         submission = submissions[random.randint(0, len(submissions) - 1)]
         embed = discord.Embed(

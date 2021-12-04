@@ -1,7 +1,9 @@
-import discord, asyncio
+import discord
+import asyncio
 import aiohttp
 import logging
 import random
+import asyncpraw
 
 from discord.ext import commands
 from discord.ext.commands import cooldown, BucketType
@@ -9,32 +11,34 @@ from boot.meifwa import MeifwaBot
 
 log = logging.getLogger("NSFW cog")
 
-async def api_call(call_uri, returnObj=False):
-	async with aiohttp.ClientSession() as session:
-		async with session.get(f"{call_uri}") as response:
-			response = await response.json()
-			if returnObj == False:
-				return response["url"]
-			elif returnObj == True:
-				return response
 
-async def api_link(call_uri, returnObj=False):
-	async with aiohttp.ClientSession() as session:
-		async with session.get(f"{call_uri}") as response:
-			response = await response.json()
-			if returnObj == False:
-				return response["link"]
-			elif returnObj == True:
-				return response
+async def api_call(call_uri, returnObj=False):
+    async with aiohttp.ClientSession() as session:
+        async with session.get(f"{call_uri}") as response:
+            response = await response.json()
+            if returnObj == False:
+                return response["url"]
+            elif returnObj == True:
+                return response
+
+
+async def nsfwwarning(ctx):
+    embed = discord.Embed(
+                title="HoldUp!!",
+                description="This command can only be used in a NSFW channel.",
+                color=0xFF0000,
+                timestamp=ctx.message.created_at,
+            )
+    await ctx.message.reply(embed=embed, delete_after=20)
+
 
 class Nsfw(commands.Cog):
     def __init__(self, bot: MeifwaBot):
-	    self.bot = bot
+        self.bot = bot
 
     @commands.Cog.listener()
     async def on_ready(self):
         log.warn(f"{self.__class__.__name__} Cog has been loaded")
-
 
     @commands.command(aliases=['sex', 'fuck'], description="You know what this does") #Frick Command
     async def frick(self, ctx, member: discord.Member):
@@ -56,13 +60,7 @@ class Nsfw(commands.Cog):
             embed.set_footer(text=f"Command: {ctx.prefix}fuck @mention")
             await ctx.reply(embed=embed)
         else:
-            embed = discord.Embed(
-                title="HoldUp!!",
-                description="This command can only be used in a NSFW channel.",
-                color=0xFF0000,
-                timestamp=ctx.message.created_at,
-            )
-            await ctx.message.reply(embed=embed, delete_after=20)
+            await ctx.reply(embed=nsfwwarning)
 
     @commands.cooldown(5, 7, commands.BucketType.user)
     @commands.command(name="cum", description="Squirts milk")
@@ -514,7 +512,255 @@ class Nsfw(commands.Cog):
             await ctx.message.reply(embed=embed, delete_after=20) 
 
 
-    @commands.command(aliases=["hn"])
+    @commands.command(name="yuri")
+    @commands.cooldown(5, 7, commands.BucketType.user)
+    async def yuri(self, ctx):
+        r = asyncpraw.Reddit(client_id="myVr7vToLuADLQLCMBrfpQ",
+        client_secret=self.client.get_config("config", "config", "reddit_secret"),
+        user_agent="meifwa")
+        
+        subreddit = await r.subreddit("yuri")
+        all_subs = []
+        top = subreddit.top(limit = 50)
+        async for submission in top:
+            all_subs.append(submission)
+
+        random_sub = random.choice(all_subs)
+        name = random_sub.title
+        url = random_sub.url 
+
+        embed = discord.Embed(
+            title = f"r/{subreddit}", 
+            description = f"[{submission.title}](https://reddit.com{submission.permalink})",
+            color=ctx.message.author.color,
+            timestamp=ctx.message.created_at
+        )
+        embed.set_image(url = url)
+        embed.set_author(name="Requested By: " + str(ctx.message.author), icon_url=ctx.message.author.avatar.url)
+        embed.set_footer(text = f"{submission.score} points | {submission.num_comments} comments")
+        if submission.over_18 and not ctx.channel.is_nsfw():
+            await ctx.send("NSFW commands can only be used in a NSFW channel.")
+            return
+        await ctx.reply(embed=embed)
+
+    
+    @commands.command(name="yurigifs")
+    @commands.cooldown(5, 7, commands.BucketType.user)
+    async def yurigifs(self, ctx):
+        r = asyncpraw.Reddit(client_id="myVr7vToLuADLQLCMBrfpQ",
+        client_secret=self.client.get_config("config", "config", "reddit_secret"),
+        user_agent="meifwa")
+        
+        subreddit = await r.subreddit("yurigifs")
+        all_subs = []
+        top = subreddit.top(limit = 50)
+        async for submission in top:
+            all_subs.append(submission)
+
+        random_sub = random.choice(all_subs)
+        url = random_sub.url 
+
+        embed = discord.Embed(
+            title = f"r/{subreddit}", 
+            description = f"[{submission.title}](https://reddit.com{submission.permalink})",
+            color=ctx.message.author.color,
+            timestamp=ctx.message.created_at
+        )
+        embed.set_image(url = url)
+        embed.set_author(name="Requested By: " + str(ctx.message.author), icon_url=ctx.message.author.avatar.url)
+        embed.set_footer(text = f"{submission.score} points | {submission.num_comments} comments")
+        if submission.over_18 and not ctx.channel.is_nsfw():
+            await ctx.send("NSFW commands can only be used in a NSFW channel.")
+            return
+        await ctx.reply(embed=embed)
+    
+    @commands.command(name="yurihentai")
+    @commands.cooldown(5, 7, commands.BucketType.user)
+    async def yurihentai(self, ctx):
+        r = asyncpraw.Reddit(client_id="myVr7vToLuADLQLCMBrfpQ",
+        client_secret=self.client.get_config("config", "config", "reddit_secret"),
+        user_agent="meifwa")
+        
+        subreddit = await r.subreddit("yurihentai")
+        all_subs = []
+        top = subreddit.top(limit = 50)
+        async for submission in top:
+            all_subs.append(submission)
+
+        random_sub = random.choice(all_subs)
+        url = random_sub.url 
+
+        embed = discord.Embed(
+            title = f"r/{subreddit}", 
+            description = f"[{submission.title}](https://reddit.com{submission.permalink})",
+            color=ctx.message.author.color,
+            timestamp=ctx.message.created_at
+        )
+        embed.set_image(url = url)
+        embed.set_author(name="Requested By: " + str(ctx.message.author), icon_url=ctx.message.author.avatar.url)
+        embed.set_footer(text = f"{submission.score} points | {submission.num_comments} comments")
+        if submission.over_18 and not ctx.channel.is_nsfw():
+            await ctx.send("NSFW commands can only be used in a NSFW channel.")
+            return
+        await ctx.reply(embed=embed)
+
+    
+    @commands.command(name="pantsu")
+    @commands.cooldown(5, 7, commands.BucketType.user)
+    async def pantsu(self, ctx):
+        r = asyncpraw.Reddit(client_id="myVr7vToLuADLQLCMBrfpQ",
+        client_secret=self.client.get_config("config", "config", "reddit_secret"),
+        user_agent="meifwa")
+        
+        subreddit = await r.subreddit("pantsu")
+        all_subs = []
+        top = subreddit.top(limit = 50)
+        async for submission in top:
+            all_subs.append(submission)
+
+        random_sub = random.choice(all_subs)
+        url = random_sub.url 
+
+        embed = discord.Embed(
+            title = f"r/{subreddit}", 
+            description = f"[{submission.title}](https://reddit.com{submission.permalink})",
+            color=ctx.message.author.color,
+            timestamp=ctx.message.created_at
+        )
+        embed.set_image(url = url)
+        embed.set_author(name="Requested By: " + str(ctx.message.author), icon_url=ctx.message.author.avatar.url)
+        embed.set_footer(text = f"{submission.score} points | {submission.num_comments} comments")
+        if submission.over_18 and not ctx.channel.is_nsfw():
+            await ctx.send("NSFW commands can only be used in a NSFW channel.")
+            return
+        await ctx.reply(embed=embed)
+
+    
+    @commands.command(name="hentaigif")
+    @commands.cooldown(5, 7, commands.BucketType.user)
+    async def hentaigif(self, ctx):
+        r = asyncpraw.Reddit(client_id="myVr7vToLuADLQLCMBrfpQ",
+        client_secret=self.client.get_config("config", "config", "reddit_secret"),
+        user_agent="meifwa")
+        
+        subreddit = await r.subreddit("hentai_gif")
+        all_subs = []
+        top = subreddit.top(limit = 50)
+        async for submission in top:
+            all_subs.append(submission)
+
+        random_sub = random.choice(all_subs)
+        url = random_sub.url 
+
+        embed = discord.Embed(
+            title = f"r/{subreddit}", 
+            description = f"[{submission.title}](https://reddit.com{submission.permalink})",
+            color=ctx.message.author.color,
+            timestamp=ctx.message.created_at
+        )
+        embed.set_image(url = url)
+        embed.set_author(name="Requested By: " + str(ctx.message.author), icon_url=ctx.message.author.avatar.url)
+        embed.set_footer(text = f"{submission.score} points | {submission.num_comments} comments")
+        if submission.over_18 and not ctx.channel.is_nsfw():
+            await ctx.send("NSFW commands can only be used in a NSFW channel.")
+            return
+        await ctx.reply(embed=embed)
+
+    
+    @commands.command(name="rhentai")
+    @commands.cooldown(5, 7, commands.BucketType.user)
+    async def rhentai(self, ctx):
+        r = asyncpraw.Reddit(client_id="myVr7vToLuADLQLCMBrfpQ",
+        client_secret=self.client.get_config("config", "config", "reddit_secret"),
+        user_agent="meifwa")
+        
+        subreddit = await r.subreddit("hentai")
+        all_subs = []
+        top = subreddit.top(limit = 50)
+        async for submission in top:
+            all_subs.append(submission)
+
+        random_sub = random.choice(all_subs)
+        url = random_sub.url 
+
+        embed = discord.Embed(
+            title = f"r/{subreddit}", 
+            description = f"[{submission.title}](https://reddit.com{submission.permalink})",
+            color=ctx.message.author.color,
+            timestamp=ctx.message.created_at
+        )
+        embed.set_image(url = url)
+        embed.set_author(name="Requested By: " + str(ctx.message.author), icon_url=ctx.message.author.avatar.url)
+        embed.set_footer(text = f"{submission.score} points | {submission.num_comments} comments")
+        if submission.over_18 and not ctx.channel.is_nsfw():
+            await ctx.send("NSFW commands can only be used in a NSFW channel.")
+            return
+        await ctx.reply(embed=embed)
+    
+
+    @commands.command(name="tentai")
+    @commands.cooldown(5, 7, commands.BucketType.user)
+    async def tentai(self, ctx):
+        r = asyncpraw.Reddit(client_id="myVr7vToLuADLQLCMBrfpQ",
+        client_secret=self.client.get_config("config", "config", "reddit_secret"),
+        user_agent="meifwa")
+        
+        subreddit = await r.subreddit("tentai")
+        all_subs = []
+        top = subreddit.top(limit = 50)
+        async for submission in top:
+            all_subs.append(submission)
+
+        random_sub = random.choice(all_subs)
+        url = random_sub.url 
+
+        embed = discord.Embed(
+            title = f"r/{subreddit}", 
+            description = f"[{submission.title}](https://reddit.com{submission.permalink})",
+            color=ctx.message.author.color,
+            timestamp=ctx.message.created_at
+        )
+        embed.set_image(url = url)
+        embed.set_author(name="Requested By: " + str(ctx.message.author), icon_url=ctx.message.author.avatar.url)
+        embed.set_footer(text = f"{submission.score} points | {submission.num_comments} comments")
+        if submission.over_18 and not ctx.channel.is_nsfw():
+            await ctx.send("NSFW commands can only be used in a NSFW channel.")
+            return
+        await ctx.reply(embed=embed)
+
+    
+    @commands.command(name="thickhentai")
+    @commands.cooldown(5, 7, commands.BucketType.user)
+    async def thickhentai(self, ctx):
+        r = asyncpraw.Reddit(client_id="myVr7vToLuADLQLCMBrfpQ",
+        client_secret=self.client.get_config("config", "config", "reddit_secret"),
+        user_agent="meifwa")
+        
+        subreddit = await r.subreddit("thick_hentai")
+        all_subs = []
+        top = subreddit.top(limit = 50)
+        async for submission in top:
+            all_subs.append(submission)
+
+        random_sub = random.choice(all_subs)
+        url = random_sub.url 
+
+        embed = discord.Embed(
+            title = f"r/{subreddit}", 
+            description = f"[{submission.title}](https://reddit.com{submission.permalink})",
+            color=ctx.message.author.color,
+            timestamp=ctx.message.created_at
+        )
+        embed.set_image(url = url)
+        embed.set_author(name="Requested By: " + str(ctx.message.author), icon_url=ctx.message.author.avatar.url)
+        embed.set_footer(text = f"{submission.score} points | {submission.num_comments} comments")
+        if submission.over_18 and not ctx.channel.is_nsfw():
+            await ctx.send("NSFW commands can only be used in a NSFW channel.")
+            return
+        await ctx.reply(embed=embed)
+    
+
+    @commands.command(name="hentainuke", aliases=["hn"])
     @commands.cooldown(1, 20, commands.BucketType.user)
     async def hentainuke(self, ctx: commands.Context, *, tag: str = None):
         if ctx.channel.is_nsfw():
@@ -564,7 +810,6 @@ class Nsfw(commands.Cog):
                 timestamp=ctx.message.created_at,
             )
             await ctx.message.reply(embed=embed, delete_after=20)
-
 
 
 def setup(bot):
