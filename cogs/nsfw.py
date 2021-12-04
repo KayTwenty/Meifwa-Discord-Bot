@@ -540,12 +540,12 @@ class Nsfw(commands.Cog):
     
     @commands.command(name="yurigifs")
     @commands.cooldown(5, 7, commands.BucketType.user)
-    async def yurigifs(self, ctx):
+    async def yurigif(self, ctx):
         r = asyncpraw.Reddit(client_id="myVr7vToLuADLQLCMBrfpQ",
         client_secret=self.bot.get_config("config", "config", "reddit_secret"),
         user_agent="meifwa")
         
-        subreddit = await r.subreddit("yurigifs")
+        subreddit = await r.subreddit("yurigif")
         all_subs = []
         top = subreddit.top(limit = 50)
         async for submission in top:
