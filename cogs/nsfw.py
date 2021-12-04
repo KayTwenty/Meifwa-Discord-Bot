@@ -538,7 +538,7 @@ class Nsfw(commands.Cog):
         await ctx.reply(embed=embed)
 
     
-    @commands.command(name="yurigifs")
+    @commands.command(name="yurigif")
     @commands.cooldown(5, 7, commands.BucketType.user)
     async def yurigif(self, ctx):
         r = asyncpraw.Reddit(client_id="myVr7vToLuADLQLCMBrfpQ",
