@@ -22,7 +22,7 @@ class Reddit(commands.Cog):
             if subreddit == 'all' or subreddit == 'popular':
                 return valid
 
-        subreddit = await reddit.subreddit(subreddit).subreddit_type
+        subreddit = await reddit.subreddit(subreddit)
         if not check_subreddit(subreddit):
             await ctx.send("Invalid subreddit.")
             return
