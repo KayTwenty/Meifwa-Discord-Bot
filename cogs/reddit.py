@@ -8,13 +8,13 @@ class Reddit(commands.Cog):
     def __init__(self, client: MeifwaBot):
         self.client = client
     
-    
     @commands.command(aliases = ['r', 'reddi', 'redd', 'red', 're'])
     @commands.cooldown(3, 30, commands.BucketType.channel)
     async def reddit(self, ctx, subreddit):
         r = praw.Reddit(client_id="myVr7vToLuADLQLCMBrfpQ",
         client_secret=self.client.get_config("config", "config", "reddit_secret"),
         user_agent="meifwa")
+
         print(f"{ctx.guild.name} - #{ctx.channel.name} - {ctx.author.name} - {ctx.message.content}")
         submissions = []
         def check_subreddit(subreddit):
@@ -35,8 +35,10 @@ class Reddit(commands.Cog):
         embed = discord.Embed(
             description = f"[{submission.title}](https://reddit.com{submission.permalink})",
             title = f"r/{subreddit}",
-            color = ctx.author.color,
+            color=ctx.message.author.color,
+            timestamp=ctx.message.created_at
         )
+        embed.set_author(name="Requested By: " + str(ctx.message.author), icon_url=ctx.message.author.avatar.url)
         embed.set_footer(text = f"{submission.score} points | {submission.num_comments} comments")
         if submission.is_self:
             embed.description += f"\n\n{submission.selftext}"
@@ -56,6 +58,7 @@ class Reddit(commands.Cog):
         else:
             await ctx.send(embed = embed)
             await ctx.send(submission.url)
+    
     @reddit.error
     async def reddit_error(self, ctx, error):
         print(error)
