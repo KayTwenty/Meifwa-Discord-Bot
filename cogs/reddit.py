@@ -1,4 +1,4 @@
-import discord, random, praw, os
+import discord, random, asyncpraw, os
 
 from discord.ext import commands
 from boot.meifwa import MeifwaBot
@@ -11,7 +11,7 @@ class Reddit(commands.Cog):
     @commands.command(aliases = ['r', 'reddi', 'redd', 'red', 're'])
     @commands.cooldown(3, 30, commands.BucketType.channel)
     async def reddit(self, ctx, subreddit):
-        r = praw.Reddit(client_id="myVr7vToLuADLQLCMBrfpQ",
+        r = asyncpraw.Reddit(client_id="myVr7vToLuADLQLCMBrfpQ",
         client_secret=self.client.get_config("config", "config", "reddit_secret"),
         user_agent="meifwa")
 
