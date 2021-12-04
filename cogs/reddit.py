@@ -61,3 +61,5 @@ class Reddit(commands.Cog):
         print(error)
         await ctx.send("Please follow format: `y.reddit {subreddit}`")
     
+def setup(client):
+    client.add_cog(Reddit(client))
