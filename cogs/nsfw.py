@@ -12,6 +12,7 @@ from boot.meifwa import MeifwaBot
 log = logging.getLogger("NSFW cog")
 
 
+
 async def api_call(call_uri, returnObj=False):
     async with aiohttp.ClientSession() as session:
         async with session.get(f"{call_uri}") as response:
