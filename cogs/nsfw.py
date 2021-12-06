@@ -29,7 +29,7 @@ class NSFWWarning(Exception):
                         color=0xFF0000,
                         timestamp=ctx.message.created_at,
                     )
-        super().__init__(self.embed)
+        super().__init__(self.ctx.embed)
 
 class Nsfw(commands.Cog):
     def __init__(self, bot: MeifwaBot):
