@@ -12,7 +12,6 @@ from boot.meifwa import MeifwaBot
 log = logging.getLogger("NSFW cog")
 
 
-
 async def api_call(call_uri, returnObj=False):
     async with aiohttp.ClientSession() as session:
         async with session.get(f"{call_uri}") as response:
@@ -21,6 +20,16 @@ async def api_call(call_uri, returnObj=False):
                 return response["url"]
             elif returnObj == True:
                 return response
+
+class NSFWWarning(Exception):
+    def __init__(self, ctx):
+        self.embed = discord.Embed(
+                        title="Haha Nice try!",
+                        description="This command can only be used in a NSFW channel.",
+                        color=0xFF0000,
+                        timestamp=ctx.message.created_at,
+                    )
+        super().__init__(self.embed)
 
 class Nsfw(commands.Cog):
     def __init__(self, bot: MeifwaBot):
@@ -50,13 +59,7 @@ class Nsfw(commands.Cog):
             embed.set_footer(text=f"Command: {ctx.prefix}fuck @mention")
             await ctx.reply(embed=embed)
         else:
-            embed = discord.Embed(
-                title="HoldUp!!",
-                description="This command can only be used in a NSFW channel.",
-                color=0xFF0000,
-                timestamp=ctx.message.created_at,
-            )
-            await ctx.message.reply(embed=embed, delete_after=20)
+            raise NSFWWarning()
 
     @commands.cooldown(5, 7, commands.BucketType.user)
     @commands.command(name="cum", description="Squirts milk")
@@ -81,7 +84,7 @@ class Nsfw(commands.Cog):
             await ctx.message.reply(embed=embed)
         else:
             embed = discord.Embed(
-                title="HoldUp!!",
+                title="Haha Nice try!",
                 description="This command can only be used in a NSFW channel.",
                 color=0xFF0000,
                 timestamp=ctx.message.created_at,
@@ -114,7 +117,7 @@ class Nsfw(commands.Cog):
             await ctx.message.reply(embed=embed)
         else:
             embed = discord.Embed(
-                title="HoldUp!!",
+                title="Haha Nice try!",
                 description="This command can only be used in a NSFW channel.",
                 color=0xFF0000,
                 timestamp=ctx.message.created_at,
@@ -144,7 +147,7 @@ class Nsfw(commands.Cog):
             await ctx.message.reply(embed=embed)
         else:
             embed = discord.Embed(
-                title="HoldUp!!",
+                title="Haha Nice try!",
                 description="This command can only be used in a NSFW channel.",
                 color=0xFF0000,
                 timestamp=ctx.message.created_at,
@@ -175,7 +178,7 @@ class Nsfw(commands.Cog):
             await ctx.message.reply(embed=embed)
         else:
             embed = discord.Embed(
-                title="HoldUp!!",
+                title="Haha Nice try!",
                 description="This command can only be used in a NSFW channel.",
                 color=0xFF0000,
                 timestamp=ctx.message.created_at,
@@ -205,7 +208,7 @@ class Nsfw(commands.Cog):
             await ctx.message.reply(embed=embed)
         else:
             embed = discord.Embed(
-                title="HoldUp!!",
+                title="Haha Nice try!",
                 description="This command can only be used in a NSFW channel.",
                 color=0xFF0000,
                 timestamp=ctx.message.created_at,
@@ -236,7 +239,38 @@ class Nsfw(commands.Cog):
             await ctx.message.reply(embed=embed)
         else:
             embed = discord.Embed(
-                title="HoldUp!!",
+                title="Haha Nice try!",
+                description="This command can only be used in a NSFW channel.",
+                color=0xFF0000,
+                timestamp=ctx.message.created_at,
+            )
+            await ctx.message.reply(embed=embed, delete_after=20)
+        
+    
+    @commands.cooldown(5, 7, commands.BucketType.user)
+    @commands.command(name="vore", description="eat someone")
+    async def cum(self, ctx, user: commands.Greedy[discord.Member] = None):
+        if ctx.channel.is_nsfw():
+            if user == None:
+                await ctx.message.reply(f"No eating yourself... :)")
+                return
+            
+            eat_users = "".join(f'{users.mention} ' for users in user)
+            embed = discord.Embed(
+                title="***Chomp***",
+                description=f"**{ctx.message.author.name}** just swallowed {eat_users}",
+                color=ctx.message.author.color,
+                timestamp=ctx.message.created_at,
+            )
+            embed.set_footer(text=f"Command: {ctx.prefix}vore @mention")
+            embed.set_author(
+                name=self.bot.user.display_name, icon_url=self.bot.user.avatar.url
+            )
+            embed.set_image(url="https://c.tenor.com/JUFJW7eAJV4AAAAC/baby-eat.gif")
+            await ctx.message.reply(embed=embed)
+        else:
+            embed = discord.Embed(
+                title="Haha Nice try!",
                 description="This command can only be used in a NSFW channel.",
                 color=0xFF0000,
                 timestamp=ctx.message.created_at,
@@ -268,7 +302,7 @@ class Nsfw(commands.Cog):
             await ctx.message.reply(embed=embed)
         else:
             embed = discord.Embed(
-                title="HoldUp!!",
+                title="Haha Nice try!",
                 description="This command can only be used in a NSFW channel.",
                 color=0xFF0000,
                 timestamp=ctx.message.created_at,
@@ -298,7 +332,7 @@ class Nsfw(commands.Cog):
             await ctx.message.reply(embed=embed)
         else:
             embed = discord.Embed(
-                title="HoldUp!!",
+                title="Haha Nice try!",
                 description="This command can only be used in a NSFW channel.",
                 color=0xFF0000,
                 timestamp=ctx.message.created_at,
@@ -328,7 +362,7 @@ class Nsfw(commands.Cog):
             await ctx.message.reply(embed=embed)
         else:
             embed = discord.Embed(
-                title="HoldUp!!",
+                title="Haha Nice try!",
                 description="This command can only be used in a NSFW channel.",
                 color=0xFF0000,
                 timestamp=ctx.message.created_at,
@@ -357,7 +391,7 @@ class Nsfw(commands.Cog):
             await ctx.message.reply(embed=embed)
         else:
             embed = discord.Embed(
-                title="HoldUp!!",
+                title="Haha Nice try!",
                 description="This command can only be used in a NSFW channel.",
                 color=0xFF0000,
                 timestamp=ctx.message.created_at,
@@ -386,7 +420,7 @@ class Nsfw(commands.Cog):
             await ctx.message.reply(embed=embed)
         else:
             embed = discord.Embed(
-                title="HoldUp!!",
+                title="Haha Nice try!",
                 description="This command can only be used in a NSFW channel.",
                 color=0xFF0000,
                 timestamp=ctx.message.created_at,
@@ -412,7 +446,7 @@ class Nsfw(commands.Cog):
             await ctx.message.reply(embed=embed)
         else:
             embed = discord.Embed(
-                title="HoldUp!!",
+                title="Haha Nice try!",
                 description="This command can only be used in a NSFW channel.",
                 color=0xFF0000,
                 timestamp=ctx.message.created_at,
@@ -442,7 +476,7 @@ class Nsfw(commands.Cog):
             await ctx.message.reply(embed=embed)
         else:
             embed = discord.Embed(
-                title="HoldUp!!",
+                title="Haha Nice try!",
                 description="This command can only be used in a NSFW channel.",
                 color=0xFF0000,
                 timestamp=ctx.message.created_at,
@@ -471,7 +505,7 @@ class Nsfw(commands.Cog):
             await ctx.message.reply(embed=embed)
         else:
             embed = discord.Embed(
-                title="HoldUp!!",
+                title="Haha Nice try!",
                 description="This command can only be used in a NSFW channel.",
                 color=0xFF0000,
                 timestamp=ctx.message.created_at,
@@ -500,7 +534,7 @@ class Nsfw(commands.Cog):
             await ctx.message.reply(embed=embed)
         else:
             embed = discord.Embed(
-                title="HoldUp!!",
+                title="Haha Nice try!",
                 description="This command can only be used in a NSFW channel.",
                 color=0xFF0000,
                 timestamp=ctx.message.created_at,
@@ -799,7 +833,7 @@ class Nsfw(commands.Cog):
                 )
         else:
             embed = discord.Embed(
-                title="HoldUp!!",
+                title="Haha Nice try!",
                 description="This command can only be used in a NSFW channel.",
                 color=0xFF0000,
                 timestamp=ctx.message.created_at,
