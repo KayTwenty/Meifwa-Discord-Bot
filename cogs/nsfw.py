@@ -22,14 +22,14 @@ async def api_call(call_uri, returnObj=False):
                 return response
 
 class NSFWWarning(Exception):
-    def __init__(self, ctx):
+    def __init__(self):
         self.embed = discord.Embed(
                         title="Haha Nice try!",
                         description="This command can only be used in a NSFW channel.",
                         color=0xFF0000,
-                        timestamp=ctx.message.created_at,
+                        timestamp=self.message.created_at,
                     )
-        super().__init__(self.ctx.embed)
+        super().__init__(self.embed)
 
 class Nsfw(commands.Cog):
     def __init__(self, bot: MeifwaBot):
