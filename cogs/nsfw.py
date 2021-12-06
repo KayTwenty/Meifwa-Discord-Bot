@@ -21,16 +21,7 @@ async def api_call(call_uri, returnObj=False):
             elif returnObj == True:
                 return response
 
-class NSFWWarning(Exception):
-    def __init__(self):
-        self.embed = discord.Embed(
-                        title="Haha Nice try!",
-                        description="This command can only be used in a NSFW channel.",
-                        color=0xFF0000,
-                        timestamp=self.message.created_at,
-                    )
-        super().__init__(self.embed)
-
+                
 class Nsfw(commands.Cog):
     def __init__(self, bot: MeifwaBot):
         self.bot = bot
@@ -59,7 +50,14 @@ class Nsfw(commands.Cog):
             embed.set_footer(text=f"Command: {ctx.prefix}fuck @mention")
             await ctx.reply(embed=embed)
         else:
-            raise NSFWWarning()
+            embed = discord.Embed(
+                title="Haha Nice try!",
+                description="This command can only be used in a NSFW channel.",
+                color=0xFF0000,
+                timestamp=ctx.message.created_at,
+            )
+            await ctx.message.reply(embed=embed, delete_after=20)
+
 
     @commands.cooldown(5, 7, commands.BucketType.user)
     @commands.command(name="cum", description="Squirts milk")
