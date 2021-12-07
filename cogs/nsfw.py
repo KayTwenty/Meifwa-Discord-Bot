@@ -247,7 +247,7 @@ class Nsfw(commands.Cog):
     
     @commands.cooldown(5, 7, commands.BucketType.user)
     @commands.command(name="vore", description="eat someone")
-    async def cum(self, ctx, user: commands.Greedy[discord.Member] = None):
+    async def vore(self, ctx, user: commands.Greedy[discord.Member] = None):
         if ctx.channel.is_nsfw():
             if user == None:
                 await ctx.message.reply(f"No eating yourself... :)")
