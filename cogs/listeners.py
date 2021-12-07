@@ -47,6 +47,17 @@ class Listeners(commands.Cog):
                 )
             )
 
+        elif isinstance(error, commands.NSFWChannelRequired):
+            await ctx.send(
+                embed=discord.Embed(
+                    title="Nice try!",
+                    description="This command can only be used in a NSFW channel.",
+                    color=0xFF0000,
+                    timestamp=ctx.message.created_at,
+                ),
+                delete_after=20 
+            )
+            
         elif isinstance(
             error,
             (
