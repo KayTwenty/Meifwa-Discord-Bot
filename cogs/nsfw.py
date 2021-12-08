@@ -524,7 +524,7 @@ class Nsfw(commands.Cog):
         client_secret=self.bot.get_config("config", "config", "reddit_secret"),
         user_agent="meifwa")
         
-        subreddit = await r.subreddit("hentai_gif")
+        subreddit = await r.subreddit("HENTAI_GIF")
         all_subs = []
         top = subreddit.top(limit = 50)
         async for submission in top:
@@ -670,7 +670,7 @@ class Nsfw(commands.Cog):
             await ctx.send(
                 embed=discord.Embed(
                     title="TAG NOT FOUND",
-                    description=f"{tag} was not found in the available tag list. Please run `{ctx.prefix}hb list`",
+                    description=f"{tag} was not found in the available tag list. The current tags are: `waifu, neko, trap, blowjob`",
                     color=self.bot.error_color,
                 )
             )
