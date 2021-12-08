@@ -60,7 +60,7 @@ class Anime(commands.Cog):
         await ctx.reply(embed=embed)
 
     @commands.cooldown(3, 5, commands.BucketType.user)
-    @commands.command(name="pat", description="Pat someone")
+    @commands.command(name="pat", description="Pat someone", aliases=['headpat'])
     async def pat(self, ctx, user: commands.Greedy[discord.Member] = None):
         if user == None:
             await ctx.message.reply(f"Mention someone you wanna pat ;)")
