@@ -632,6 +632,7 @@ class Nsfw(commands.Cog):
         await ctx.reply(embed=embed)
 
     
+    @commands.is_nsfw()
     @commands.command(name="hentainuke", aliases=["hn"])
     @commands.cooldown(1, 20, commands.BucketType.user)
     async def hentainuke(self, ctx: commands.Context, *, tag: str = None):

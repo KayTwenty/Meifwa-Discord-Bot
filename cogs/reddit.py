@@ -65,7 +65,6 @@ class Reddit(commands.Cog):
         await ctx.send("Please follow format: `y.reddit {subreddit}`")
     
 
-    @commands.is_nsfw()
     @commands.command(name="gura", aliases=['gawrgura', 'gawr'])
     @commands.cooldown(5, 7, commands.BucketType.user)
     async def gura(self, ctx):
