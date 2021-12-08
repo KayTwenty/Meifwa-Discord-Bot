@@ -14,15 +14,15 @@ class Tasks(commands.Cog):
     async def status_handler(self):
         await self.bot.wait_until_ready()
         await self.bot.change_presence(activity=discord.Game("PADORU PADORU!!"))
-        await sleep(6000)
+        await sleep(100)
         await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=f"@{self.bot.user.name} help"))
-        await sleep(800)
+        await sleep(100)
         await self.bot.change_presence(activity=discord.Game(f"with {len(self.bot.users)} humans!"))
-        await sleep(800)
+        await sleep(100)
         await self.bot.change_presence(activity=discord.Game(f"in {len(self.bot.guilds)} servers"))
-        await sleep(800)
+        await sleep(100)
         await self.bot.change_presence(activity=discord.Game("Onii Chan"))
-        await sleep(800)
+        await sleep(100)
         
 def setup(bot):
     bot.add_cog(Tasks(bot))
