@@ -1,4 +1,4 @@
-import discord, random, praw
+import discord, random, praw, asyncpraw
 
 from discord.ext import commands
 from boot.meifwa import MeifwaBot
@@ -64,5 +64,35 @@ class Reddit(commands.Cog):
         print(error)
         await ctx.send("Please follow format: `y.reddit {subreddit}`")
     
+
+    @commands.is_nsfw()
+    @commands.command(name="gura", aliases=['gawrgura', 'gawr'])
+    @commands.cooldown(5, 7, commands.BucketType.user)
+    async def gura(self, ctx):
+        r = asyncpraw.Reddit(client_id="myVr7vToLuADLQLCMBrfpQ",
+        client_secret=self.client.get_config("config", "config", "reddit_secret"),
+        user_agent="meifwa")
+        
+        subreddit = await r.subreddit("GawrGura")
+        all_subs = []
+        top = subreddit.top(limit = 50)
+        async for submission in top:
+            all_subs.append(submission)
+
+        random_sub = random.choice(all_subs)
+        url = random_sub.url 
+
+        embed = discord.Embed(
+            title = f"r/{subreddit}", 
+            description = f"[{submission.title}](https://reddit.com{submission.permalink})",
+            color=ctx.message.author.color,
+            timestamp=ctx.message.created_at
+        )
+        embed.set_image(url = url)
+        embed.set_author(name="Requested By: " + str(ctx.message.author), icon_url=ctx.message.author.avatar.url)
+        embed.set_footer(text = f"{submission.score} points | {submission.num_comments} comments")
+        await ctx.reply(embed=embed)
+
+
 def setup(client):
     client.add_cog(Reddit(client))
