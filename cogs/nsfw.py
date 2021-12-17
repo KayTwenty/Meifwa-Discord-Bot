@@ -62,7 +62,7 @@ class Nsfw(commands.Cog):
         cum_users = "".join(f'{users.mention} ' for users in user)
         embed = discord.Embed(
             title="***Sticky white stuff!***",
-            description=f"**{ctx.message.author.name}** just cummed to {cum_users}",
+            description=f"**{ctx.message.author.name}** just coom into {cum_users}",
             color=ctx.message.author.color,
             timestamp=ctx.message.created_at,
         )
