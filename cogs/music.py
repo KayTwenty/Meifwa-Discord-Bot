@@ -237,7 +237,7 @@ class Music(commands.Cog):
             await ctx.send_ok(f"Added {tracks.tracks[a_int].title} to the queue.")
         else:
             embed = discord.Embed(title=f"Now Playing {tracks.tracks[a_int].title}", color=0xffb6c1)
-            embed.add_field(name="Like what you hear?", value=f"Check out [Spot](https://tinyurl.com/2v2pkr8e) For Crispier Audio", inline=False)
+            embed.add_field(name="Like what you hear?", value=f"Check out [Spot](https://discord.com/api/oauth2/authorize?client_id=886349150923390986&permissions=157550509761&scope=bot%20applications.commands) For Crispier Audio", inline=False)
             await ctx.send(embed=embed)
         if not player.current:
             await player.play()
