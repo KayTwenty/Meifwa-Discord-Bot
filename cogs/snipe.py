@@ -5,7 +5,6 @@ from discord.ext import commands
 import discord
 
 from boot.meifwa import MeifwaBot
-from boot.context import MeifwaContext
 
 snipe = {
     "id": None,
@@ -44,7 +43,7 @@ class Snipe(commands.Cog):
         if message.attachments:
             snipe["attachment"] = message.attachments[0].proxy_url
 
-        await asyncio.sleep(60)
+        await asyncio.sleep(43200)
 
         if message.id == snipe["id"]:
             snipe["id"] = None
@@ -67,7 +66,7 @@ class Snipe(commands.Cog):
         edit_snipe["guild"] = before.guild
         edit_snipe["channel"] = before.channel
 
-        await asyncio.sleep(60)
+        await asyncio.sleep(43200)
 
         if before.id == after.id:
             edit_snipe["author"] = None
@@ -75,15 +74,16 @@ class Snipe(commands.Cog):
             edit_snipe["guild"] = None
             edit_snipe["channel"] = None
 
-    @commands.command(aliases=["imagesnipe"])
+    @commands.command(name="snipe", aliases=["imagesnipe"], description="Shows deleted msgs and images")
     @commands.cooldown(1, 10, commands.BucketType.member)
-    async def snipe(self, ctx: MeifwaContext):
+    async def snipe(self, ctx: commands.Context):
+        """Snipe the last deleted message, works with images"""
         global snipe
 
         if (
-                snipe["guild"] != ctx.guild
-                or snipe["channel"] != ctx.channel
-                or snipe["content"] == None
+            snipe["guild"] != ctx.guild
+            or snipe["channel"] != ctx.channel
+            or snipe["content"] == None
         ):
             emb = discord.Embed(
                 color=self.bot.ok_color,
@@ -91,9 +91,7 @@ class Snipe(commands.Cog):
             )
             return await ctx.send(embed=emb)
 
-        embed = discord.Embed(
-            description=str(snipe["content"]), colour=0xFFCDCD
-        )
+        embed = discord.Embed(description=str(snipe["content"]), colour=0xFFCDCD)
         embed.set_author(
             name="{0.name}#{0.discriminator}".format(snipe["author"]),
             icon_url=snipe["author"].avatar.url,
@@ -106,31 +104,29 @@ class Snipe(commands.Cog):
             async with self.bot.session.get(snipe["attachment"]) as r:
                 file = BytesIO(await r.read())
             embed.set_image(url="attachment://snipe.jpg")
-            await ctx.send(
-                embed=embed, file=discord.File(file, filename="snipe.jpg")
-            )
+            await ctx.send(embed=embed, file=discord.File(file, filename="snipe.jpg"))
             snipe["attachment"] = None
         else:
             await ctx.send(embed=embed)
             snipe["attachment"] = None
 
-    @commands.command(aliases=["esnipe"])
+    @commands.command(name="editsnipe", aliases=["esnipe"], description="It can show past edited msg")
     @commands.cooldown(1, 10, commands.BucketType.member)
-    async def editsnipe(self, ctx: MeifwaContext):
+    async def editsnipe(self, ctx: commands.Context):
+        """Sneaky Sneaky snipe the edited message"""
+
         if (
-                edit_snipe["guild"] != ctx.guild
-                or edit_snipe["channel"] != ctx.channel
-                or edit_snipe["content"] == None
+            edit_snipe["guild"] != ctx.guild
+            or edit_snipe["channel"] != ctx.channel
+            or edit_snipe["content"] == None
         ):
             emb = discord.Embed(
                 color=self.bot.ok_color,
                 description="There's nothing to esnipe!",
             )
-            return await ctx.send(embed=emb)
+            return await ctx.send(embed=emb, delete_after=5)
 
-        embed = discord.Embed(
-            description=str(edit_snipe["content"]), colour=0xFFCDCD
-        )
+        embed = discord.Embed(description=str(edit_snipe["content"]), colour=0xFFCDCD)
         embed.set_footer(
             text=f"sniped by {ctx.author.name}#{ctx.author.discriminator}",
             icon_url=ctx.author.avatar.url,
@@ -140,7 +136,6 @@ class Snipe(commands.Cog):
             icon_url=edit_snipe["author"].avatar.url,
         )
         await ctx.send(embed=embed)
-
 
 def setup(bot):
     bot.add_cog(Snipe(bot))
