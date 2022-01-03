@@ -89,7 +89,7 @@ class Snipe(commands.Cog):
                 color=self.bot.ok_color,
                 description="There's nothing to snipe!",
             )
-            return await ctx.send(embed=emb, delete_after=5)
+            return await ctx.send(embed=emb)
 
         embed = discord.Embed(
             description=str(snipe["content"]), colour=0xFFCDCD
@@ -126,7 +126,7 @@ class Snipe(commands.Cog):
                 color=self.bot.ok_color,
                 description="There's nothing to esnipe!",
             )
-            return await ctx.send(embed=emb, delete_after=5)
+            return await ctx.send(embed=emb)
 
         embed = discord.Embed(
             description=str(edit_snipe["content"]), colour=0xFFCDCD
