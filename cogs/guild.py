@@ -127,7 +127,7 @@ class Guild(commands.Cog):
             embed.set_image(url=guild.splash.url)
 
         embed.set_footer(text=f"ID: {guild.id}")
-        await ctx.send(embed=embed)
+        await ctx.reply(embed=embed)
 
     @commands.command(aliases=["uinfo", "memberinfo", "minfo"])
     @commands.guild_only()
@@ -175,7 +175,7 @@ class Guild(commands.Cog):
         if not user.bot:
             if banner := (await self.bot.fetch_user(user.id)).banner:
                 embed.set_image(url=banner.url)
-        await ctx.send(embed=embed)
+        await ctx.reply(embed=embed)
 
     @commands.command(aliases=["av"])
     @commands.cooldown(1, 5, commands.BucketType.user)
@@ -202,7 +202,7 @@ class Guild(commands.Cog):
         )
         e.set_image(url=av.with_size(4096))
         e.set_footer(text=f"ID: {user.id}")
-        await ctx.send(embed=e)
+        await ctx.reply(embed=e)
 
 def setup(bot):
     bot.add_cog(Guild(bot))
